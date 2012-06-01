@@ -58,6 +58,7 @@ public class MainActivity extends Activity implements OnClickListener{
 	private int sourceIds2[];
 	private String telephone;
 	private ImageView cancelAdIv;
+	
 	private AdView adView;
 	
 	@Override
