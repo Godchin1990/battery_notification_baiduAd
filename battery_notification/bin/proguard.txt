@@ -1,0 +1,9 @@
+# view AndroidManifest.xml #generated:74
+-keep class minggo.battery.BatteryService { <init>(...); }
+
+# view AndroidManifest.xml #generated:56
+-keep class minggo.battery.activity.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:68
+-keep class minggo.battery.reciever.TurnOnReciever { <init>(...); }
+
