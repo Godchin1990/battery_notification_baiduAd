@@ -28,6 +28,7 @@ import com.baidu.mobstat.StatService;
  * @date 2013-8-7上午09:17:24
  */
 public class MainActivity extends Activity implements OnClickListener{
+	
 	private TextView versionTips;
 	private Button lowPowerbt;
 	private Button timeSoundbt;
