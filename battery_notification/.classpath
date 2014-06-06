@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="libs/baidu_mtj_api.jar"/>
 	<classpathentry kind="lib" path="libs/Baidu_MobAds_SDK.jar"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
