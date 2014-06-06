@@ -10,10 +10,13 @@ import minggo.battery.util.ShakeListener;
 import minggo.battery.util.ShakeListener.OnShakeListener;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.telephony.TelephonyManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -47,6 +50,8 @@ public class MainActivity extends Activity implements OnClickListener{
 	private boolean changejiawu;
 	private int sourceIds[];
 	private int sourceIds2[];
+	private String telephone;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -80,8 +85,22 @@ public class MainActivity extends Activity implements OnClickListener{
 				R.drawable.dice_4,R.drawable.dice_5,R.drawable.dice_6};
 		sourceIds2 = new int[]{R.drawable.se_dice_1,R.drawable.se_dice_2,R.drawable.se_dice_3,
 				R.drawable.se_dice_4,R.drawable.se_dice_5,R.drawable.se_dice_6};
+		PackageInfo packageInfo = null;
+		try {
+			packageInfo = this.getPackageManager().getPackageInfo(this.getPackageName(), 0);
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		versionTips.setText(this.getString(R.string.minggo_battery)+"["+packageInfo.versionName+"]");
 		
 		initShock();
+		
+		TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
+		if (tm.getLine1Number()!=null&&!tm.getLine1Number().equals("")) {
+			telephone = tm.getLine1Number();
+			StatService.onEvent(MainActivity.this, "user", "telephone_"+telephone);
+		}
 	}
 	/**
 	 * 初始化色子甩过程
@@ -93,6 +112,8 @@ public class MainActivity extends Activity implements OnClickListener{
 		mShakeListener = new ShakeListener(this);
         mShakeListener.setOnShakeListener(new OnShakeListener() {
 			public void onShake() {
+				StatService.onEvent(MainActivity.this, "play_type", changejiawu==true?"甩家务":"甩点子");
+				StatService.onEvent(MainActivity.this, "shake", telephone);//统计用户使用甩色子
 				
 				mShakeListener.stop();
 				if(startVibrato()){
@@ -196,13 +217,19 @@ public class MainActivity extends Activity implements OnClickListener{
 			BatteryService.lowPowerSoundFlag = !lowPowerbt.isSelected();
 			lowPowerbt.setSelected(BatteryService.lowPowerSoundFlag);
 			PreferenceShareUtil.saveLowPowerFlag(this, BatteryService.lowPowerSoundFlag);
+			//统计用户设置低电量提醒
+			StatService.onEvent(MainActivity.this, "battery_alert", BatteryService.lowPowerSoundFlag+"");
 			break;
 		case R.id.zheng_sound_bt:
 			BatteryService.zhengSoundFlag = !timeSoundbt.isSelected();
 			timeSoundbt.setSelected(BatteryService.zhengSoundFlag);
 			PreferenceShareUtil.saveZhengTimeFlag(this, BatteryService.zhengSoundFlag);
+			//统计用户设置整点报时提醒
+			StatService.onEvent(MainActivity.this, "time_alert", BatteryService.zhengSoundFlag+"");
 			break;
 		case R.id.exitapp:
+			//统计用户点击退出应用
+			StatService.onEvent(MainActivity.this, "exit_app", "exit");
 			stopService(new Intent(this, BatteryService.class));
 			finish();
 		case R.id.submitButton:

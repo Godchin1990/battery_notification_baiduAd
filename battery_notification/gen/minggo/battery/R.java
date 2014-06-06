@@ -171,13 +171,14 @@ public final class R {
         public static final int se_dice_action_3=0x7f020093;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000b;
+        public static final int action_settings=0x7f08000c;
+        public static final int adView=0x7f080009;
         public static final int app_version_tv=0x7f080000;
-        public static final int battery_iv=0x7f080009;
+        public static final int battery_iv=0x7f08000a;
         public static final int changebt=0x7f080008;
         public static final int content=0x7f080005;
         public static final int exitapp=0x7f080003;
-        public static final int feelings_tv=0x7f08000a;
+        public static final int feelings_tv=0x7f08000b;
         public static final int game_shack_iv=0x7f080006;
         public static final int low_power_bt=0x7f080001;
         public static final int submitButton=0x7f080004;

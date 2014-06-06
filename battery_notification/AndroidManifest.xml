@@ -23,16 +23,21 @@
     </uses-permission>
 	<uses-permission android:name="android.permission.VIBRATE" >
     </uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	
     <application
         android:allowBackup="false"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
+		
+        <meta-data android:name="BaiduMobAd_APP_ID" android:value="f8554d2e" /> 
+		<meta-data android:name="BaiduMobAd_APP_SEC" android:value="f8554d2e" />
+        
         <!-- 渠道商编号，其中name请不要改，将value修改为渠道商编号。渠道名称请到mtj.baidu.com的渠道管理中修改 -->
         <meta-data
             android:name="BaiduMobAd_CHANNEL"
-            android:value="360" />
+            android:value="百度_广告" />
         <!-- 您从百度网站获取的APP KEY -->
         <meta-data
             android:name="BaiduMobAd_STAT_ID"
