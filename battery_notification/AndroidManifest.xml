@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="minggo.battery"
-    android:versionCode="2"
+    android:versionCode="8"
     android:installLocation="internalOnly"
-    android:versionName="2.0" >
+    android:versionName="2.8" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -39,7 +39,7 @@
         <!-- 渠道商编号，其中name请不要改，将value修改为渠道商编号。渠道名称请到mtj.baidu.com的渠道管理中修改 -->
         <meta-data
             android:name="BaiduMobAd_CHANNEL"
-            android:value="百度_广告" />
+            android:value="应用汇_[bdAD]" />
         <!-- 您从百度网站获取的APP KEY -->
         <meta-data
             android:name="BaiduMobAd_STAT_ID"
