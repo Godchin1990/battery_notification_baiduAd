@@ -119,11 +119,31 @@
             android:textColor="#ffffff"
             android:textSize="18sp" />
     </RelativeLayout>
-	<com.baidu.mobads.AdView android:id="@+id/adView"
-		android:layout_width="fill_parent" 
-		android:layout_height="wrap_content"
-		android:layout_alignParentBottom="true"
-		android:layout_alignParentLeft="true"  
-		android:visibility="gone"
-		 />
+
+    <com.baidu.mobads.AdView
+        android:id="@+id/adView"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="6dp" >
+
+        <ImageView
+            android:id="@+id/cancel_ad_iv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/cancel_adl" />
+    </RelativeLayout>
+
 </RelativeLayout>
