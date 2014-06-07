@@ -60,8 +60,6 @@ public class MainActivity extends Activity implements OnClickListener{
 	private ImageView cancelAdIv;
 	private AdView adView;
 	
-	private boolean isFistClickCanelAd;
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -223,7 +221,15 @@ public class MainActivity extends Activity implements OnClickListener{
 		public void onAdReady(AdView arg0) {
 			super.onAdReady(arg0);
 			adView.setVisibility(View.VISIBLE);
-			cancelAdIv.setVisibility(View.VISIBLE);
+			hdl.postDelayed(new Runnable() {
+				
+				@Override
+				public void run() {
+					cancelAdIv.setVisibility(View.VISIBLE);
+					hdl.removeCallbacks(this);
+				}
+			}, 1500);
+			
 		}
 
 		@Override
