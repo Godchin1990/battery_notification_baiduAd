@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.baidu.mobads.AdView;
 import com.baidu.mobstat.StatService;
 /**
  * 电池通知点击到这个ativity
@@ -51,6 +52,8 @@ public class MainActivity extends Activity implements OnClickListener{
 	private int sourceIds[];
 	private int sourceIds2[];
 	private String telephone;
+	private ImageView cancelAdIv;
+	private AdView adView;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -202,11 +205,18 @@ public class MainActivity extends Activity implements OnClickListener{
 	@Override
 	protected void onResume() {
 		StatService.onResume(this);
+		if (mShakeListener != null) {
+			mShakeListener.start();
+		}
 		super.onResume();
+		
 	}
 	@Override
 	protected void onPause() {
 		StatService.onPause(this);
+		if (mShakeListener != null) {
+			mShakeListener.stop();
+		}
 		super.onPause();
 	}
 	@Override
@@ -272,6 +282,8 @@ public class MainActivity extends Activity implements OnClickListener{
 	public void shake_activity_back(View v) {     //标题栏 返回按钮
       	this.finish();
       }  
+	
+	
 	
 	@Override
 	protected void onDestroy() {

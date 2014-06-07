@@ -1,12 +1,12 @@
 # view res/layout/activity_main.xml #generated:122
 -keep class com.baidu.mobads.AdView { <init>(...); }
 
-# view AndroidManifest.xml #generated:79
+# view AndroidManifest.xml #generated:81
 -keep class minggo.battery.BatteryService { <init>(...); }
 
-# view AndroidManifest.xml #generated:61
+# view AndroidManifest.xml #generated:63
 -keep class minggo.battery.activity.MainActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:73
+# view AndroidManifest.xml #generated:75
 -keep class minggo.battery.reciever.TurnOnReciever { <init>(...); }
 

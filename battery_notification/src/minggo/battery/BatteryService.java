@@ -83,6 +83,7 @@ public class BatteryService extends Service {
 		date = new MinggoDate();
 		initImage();
 		initBattery();
+		
 	}
 	
 	/**
