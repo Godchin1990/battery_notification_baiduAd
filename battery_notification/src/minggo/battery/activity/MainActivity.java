@@ -2,8 +2,12 @@ package minggo.battery.activity;
 
 import java.io.IOException;
 
+import org.json.JSONObject;
+
 import minggo.battery.BatteryService;
 import minggo.battery.R;
+import minggo.battery.listener.BaiduAdListener;
+import minggo.battery.util.MinggoDate;
 import minggo.battery.util.PlaySound;
 import minggo.battery.util.PreferenceShareUtil;
 import minggo.battery.util.ShakeListener;
@@ -25,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.baidu.mobads.AdView;
+import com.baidu.mobads.AdViewListener;
 import com.baidu.mobstat.StatService;
 /**
  * 电池通知点击到这个ativity
@@ -46,7 +51,7 @@ public class MainActivity extends Activity implements OnClickListener{
 	private ImageView seZiiv;
 	private int i = 0;
 	private int j = 0;
-	Handler hdl;
+	private Handler hdl;
 	
 	private boolean changejiawu;
 	private int sourceIds[];
@@ -54,6 +59,8 @@ public class MainActivity extends Activity implements OnClickListener{
 	private String telephone;
 	private ImageView cancelAdIv;
 	private AdView adView;
+	
+	private boolean isFistClickCanelAd;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,12 +74,16 @@ public class MainActivity extends Activity implements OnClickListener{
 		submitbt = (Button) findViewById(R.id.submitButton); 
 		seZiiv = (ImageView) findViewById(R.id.game_shack_iv);
 		changebt = (Button) findViewById(R.id.changebt);
+		adView = (AdView) findViewById(R.id.adView);
+		cancelAdIv = (ImageView)findViewById(R.id.cancel_ad_iv);
 		
+		adView.setListener(new AdListener());
 		changebt.setOnClickListener(this);
 		exitbt.setOnClickListener(this);
 		timeSoundbt.setOnClickListener(this);
 		lowPowerbt.setOnClickListener(this);
 		submitbt.setOnClickListener(this);
+		
 		
 		BatteryService.lowPowerSoundFlag = PreferenceShareUtil.getLowPowerFlag(this);
 		BatteryService.zhengSoundFlag = PreferenceShareUtil.getZhengTimeFlag(this);
@@ -201,6 +212,36 @@ public class MainActivity extends Activity implements OnClickListener{
 			}
 		});
 	}
+	/**
+	 * 百度广告监听器
+	 * @author minggo
+	 * @time 2014-6-7 S下午6:03:45
+	 */
+	private class AdListener extends BaiduAdListener{
+
+		@Override
+		public void onAdReady(AdView arg0) {
+			super.onAdReady(arg0);
+			adView.setVisibility(View.VISIBLE);
+			cancelAdIv.setVisibility(View.VISIBLE);
+		}
+
+		@Override
+		public void onAdClick(JSONObject arg0) {
+			super.onAdClick(arg0);
+			cancelAdIv.setOnClickListener(MainActivity.this);
+			//统计用户点击删除广告
+			StatService.onEvent(MainActivity.this, "click_baidu_ad", telephone+"_"+new MinggoDate().toString());
+		}
+
+		@Override
+		public void onAdSwitch() {
+			super.onAdSwitch();
+			adView.setVisibility(View.VISIBLE);
+			cancelAdIv.setVisibility(View.VISIBLE);
+		}
+		
+	}
 	
 	@Override
 	protected void onResume() {
@@ -245,6 +286,12 @@ public class MainActivity extends Activity implements OnClickListener{
 		case R.id.submitButton:
 			finish();
 			break;
+		case R.id.cancel_ad_iv:
+			//统计用户点击删除广告
+			StatService.onEvent(MainActivity.this, "cancel_baidu_ad", telephone+"_"+new MinggoDate().toString());
+			adView.setVisibility(View.GONE);
+			cancelAdIv.setVisibility(View.GONE);
+			break;
 		case R.id.changebt:
 			if (!changejiawu) {
 				changejiawu = true;
@@ -269,6 +316,10 @@ public class MainActivity extends Activity implements OnClickListener{
 		return super.onKeyDown(keyCode, event);
 	}
 	
+	/**
+	 * 开启震动
+	 * @return
+	 */
 	public boolean startVibrato(){		//定义震动
 		mVibrator.vibrate( new long[]{500,200,500,200}, -1); //第一个｛｝里面是节奏数组， 第二个参数是重复次数，-1为不重复，非-1则从pattern的指定下标开始重复
 		try {
@@ -279,6 +330,10 @@ public class MainActivity extends Activity implements OnClickListener{
 		return true;
 	}
 	
+	/**
+	 * 返回
+	 * @param v
+	 */
 	public void shake_activity_back(View v) {     //标题栏 返回按钮
       	this.finish();
       }  
