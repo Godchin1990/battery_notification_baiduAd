@@ -134,7 +134,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:paddingBottom="6dp" >
+        android:paddingBottom="10dp" >
 
         <ImageView
             android:id="@+id/cancel_ad_iv"
@@ -143,6 +143,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="15dp"
+            android:visibility="gone"
             android:src="@drawable/cancel_adl" />
     </RelativeLayout>
 

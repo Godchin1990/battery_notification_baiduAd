@@ -23,7 +23,7 @@
             android:id="@+id/battery_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="-3dp"
+            android:layout_marginLeft="0dp"
             android:src="@drawable/notification_battery_logo_99" />
 
         <TextView
