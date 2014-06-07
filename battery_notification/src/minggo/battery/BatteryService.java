@@ -155,6 +155,7 @@ public class BatteryService extends Service {
 		//把下滑view绑定在通知上
 		notification.contentView = remoteViews;
 		
+		
 		//点击下滑view处理的跳转事件
 		Intent intent = new Intent(context, MainActivity.class);
 
