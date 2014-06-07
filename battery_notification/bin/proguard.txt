@@ -1,4 +1,4 @@
-# view res/layout/activity_main.xml #generated:122
+# view res/layout/activity_main.xml #generated:123
 -keep class com.baidu.mobads.AdView { <init>(...); }
 
 # view AndroidManifest.xml #generated:81
