@@ -10,6 +10,21 @@ package minggo.battery;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int all_bg=0x7f040000;
+        public static final int head_bg=0x7f040001;
+        public static final int head_navi_bg=0x7f040003;
+        public static final int head_tv_bg=0x7f040002;
+        /**  首页导航字体默认颜色 
+         */
+        public static final int index_navi_bt_normal=0x7f040005;
+        /**  首页导航字体选中颜色 
+         */
+        public static final int index_navi_bt_pressed=0x7f040006;
+        public static final int navi_index=0x7f040007;
+        public static final int navi_index_bg=0x7f040008;
+        public static final int transparent=0x7f040004;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -17,8 +32,8 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f050000;
+        public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
         public static final int battery_1_bg_0=0x7f020000;
@@ -145,73 +160,87 @@ public final class R {
         public static final int dice_action_3=0x7f020079;
         public static final int ic_preference_single_normal=0x7f02007a;
         public static final int ic_preference_single_pressed=0x7f02007b;
-        public static final int logo=0x7f02007c;
-        public static final int notification_battery_logo_15=0x7f02007d;
-        public static final int notification_battery_logo_25=0x7f02007e;
-        public static final int notification_battery_logo_50=0x7f02007f;
-        public static final int notification_battery_logo_75=0x7f020080;
-        public static final int notification_battery_logo_80=0x7f020081;
-        public static final int notification_battery_logo_85=0x7f020082;
-        public static final int notification_battery_logo_90=0x7f020083;
-        public static final int notification_battery_logo_95=0x7f020084;
-        public static final int notification_battery_logo_99=0x7f020085;
-        public static final int notification_information_bg=0x7f020086;
-        public static final int off_icon=0x7f020087;
-        public static final int on_icon=0x7f020088;
-        public static final int on_off_button=0x7f020089;
-        public static final int preference_single_item=0x7f02008a;
-        public static final int se_dice_1=0x7f02008b;
-        public static final int se_dice_2=0x7f02008c;
-        public static final int se_dice_3=0x7f02008d;
-        public static final int se_dice_4=0x7f02008e;
-        public static final int se_dice_5=0x7f02008f;
-        public static final int se_dice_6=0x7f020090;
-        public static final int se_dice_action_0=0x7f020091;
-        public static final int se_dice_action_1=0x7f020092;
-        public static final int se_dice_action_2=0x7f020093;
-        public static final int se_dice_action_3=0x7f020094;
+        public static final int index_navi_bottom=0x7f02007c;
+        public static final int logo=0x7f02007d;
+        public static final int notification_battery_logo_15=0x7f02007e;
+        public static final int notification_battery_logo_25=0x7f02007f;
+        public static final int notification_battery_logo_50=0x7f020080;
+        public static final int notification_battery_logo_75=0x7f020081;
+        public static final int notification_battery_logo_80=0x7f020082;
+        public static final int notification_battery_logo_85=0x7f020083;
+        public static final int notification_battery_logo_90=0x7f020084;
+        public static final int notification_battery_logo_95=0x7f020085;
+        public static final int notification_battery_logo_99=0x7f020086;
+        public static final int notification_information_bg=0x7f020087;
+        public static final int off_icon=0x7f020088;
+        public static final int on_icon=0x7f020089;
+        public static final int on_off_button=0x7f02008a;
+        public static final int preference_single_item=0x7f02008b;
+        public static final int se_dice_1=0x7f02008c;
+        public static final int se_dice_2=0x7f02008d;
+        public static final int se_dice_3=0x7f02008e;
+        public static final int se_dice_4=0x7f02008f;
+        public static final int se_dice_5=0x7f020090;
+        public static final int se_dice_6=0x7f020091;
+        public static final int se_dice_action_0=0x7f020092;
+        public static final int se_dice_action_1=0x7f020093;
+        public static final int se_dice_action_2=0x7f020094;
+        public static final int se_dice_action_3=0x7f020095;
+        public static final int selector_index_navi_bt=0x7f020096;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000d;
-        public static final int adView=0x7f080009;
-        public static final int app_version_tv=0x7f080000;
-        public static final int battery_iv=0x7f08000b;
-        public static final int cancel_ad_iv=0x7f08000a;
-        public static final int changebt=0x7f080008;
-        public static final int content=0x7f080005;
-        public static final int exitapp=0x7f080003;
-        public static final int feelings_tv=0x7f08000c;
-        public static final int game_shack_iv=0x7f080006;
-        public static final int low_power_bt=0x7f080001;
-        public static final int submitButton=0x7f080004;
-        public static final int textView1=0x7f080007;
-        public static final int zheng_sound_bt=0x7f080002;
+        public static final int action_settings=0x7f090016;
+        public static final int adView=0x7f090012;
+        public static final int app_version_tv=0x7f090009;
+        public static final int battery_iv=0x7f090014;
+        public static final int bt_index_alert=0x7f090004;
+        public static final int bt_index_feeling=0x7f090006;
+        public static final int bt_index_seii=0x7f090005;
+        public static final int cancel_ad_iv=0x7f090013;
+        public static final int changebt=0x7f090011;
+        public static final int content=0x7f09000e;
+        public static final int cursor=0x7f090007;
+        public static final int exitapp=0x7f09000c;
+        public static final int feelings_tv=0x7f090015;
+        public static final int game_shack_iv=0x7f09000f;
+        public static final int head=0x7f090000;
+        public static final int index_viewPager=0x7f090008;
+        public static final int iv_logo=0x7f090001;
+        public static final int lo_navi=0x7f090003;
+        public static final int low_power_bt=0x7f09000a;
+        public static final int submitButton=0x7f09000d;
+        public static final int textView1=0x7f090010;
+        public static final int tv_app_name=0x7f090002;
+        public static final int zheng_sound_bt=0x7f09000b;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int notification=0x7f030001;
+        public static final int activity_index=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int fragment_game=0x7f030002;
+        public static final int notification=0x7f030003;
     }
     public static final class menu {
-        public static final int main=0x7f070000;
+        public static final int main=0x7f080000;
     }
     public static final class string {
-        public static final int app_name=0x7f050000;
-        public static final int battery_low=0x7f050009;
-        public static final int exit=0x7f05000b;
-        public static final int friday=0x7f050006;
-        public static final int minggo_battery=0x7f050010;
-        public static final int monday=0x7f050002;
-        public static final int saturday=0x7f050007;
-        public static final int shuai_dian_shu=0x7f05000f;
-        public static final int shuai_jia_wu=0x7f05000e;
-        public static final int shuai_yi_shuai=0x7f05000d;
-        public static final int submit=0x7f05000c;
-        public static final int sunday=0x7f050001;
-        public static final int thursday=0x7f050005;
-        public static final int time_alarm=0x7f05000a;
-        public static final int tuestday=0x7f050003;
-        public static final int version=0x7f050008;
-        public static final int wednesday=0x7f050004;
+        public static final int app_name=0x7f060000;
+        public static final int author=0x7f060009;
+        public static final int battery_low=0x7f06000a;
+        public static final int exit=0x7f06000c;
+        public static final int friday=0x7f060006;
+        public static final int minggo_battery=0x7f060011;
+        public static final int monday=0x7f060002;
+        public static final int saturday=0x7f060007;
+        public static final int shuai_dian_shu=0x7f060010;
+        public static final int shuai_jia_wu=0x7f06000f;
+        public static final int shuai_yi_shuai=0x7f06000e;
+        public static final int submit=0x7f06000d;
+        public static final int sunday=0x7f060001;
+        public static final int thursday=0x7f060005;
+        public static final int time_alarm=0x7f06000b;
+        public static final int tuestday=0x7f060003;
+        public static final int version=0x7f060008;
+        public static final int wednesday=0x7f060004;
     }
     public static final class style {
         /** 
@@ -235,10 +264,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f070001;
     }
 }

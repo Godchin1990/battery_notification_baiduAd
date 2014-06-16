@@ -9,6 +9,7 @@
     <string name="friday">跟她逛逛街也不错哦！</string>
     <string name="saturday">适当的休息很重要哦！</string>
     <string name="version">Minggo电池[version 1.3]</string>
+    <string name="author">Minggo电池</string>
     <string name="battery_low">低电量声音</string>
     <string name="time_alarm">整点报时声音</string>
     <string name="exit">退出</string>

@@ -1,15 +1,19 @@
+# view res/layout/activity_index.xml #generated:102
+-keep class android.support.v4.view.ViewPager { <init>(...); }
+
 # view res/layout/activity_main.xml #generated:123
+# view res/layout/fragment_game.xml #generated:47
 -keep class com.baidu.mobads.AdView { <init>(...); }
 
 # view AndroidManifest.xml #generated:62
 -keep class com.baidu.mobads.AppActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:83
+# view AndroidManifest.xml #generated:94
 -keep class minggo.battery.BatteryService { <init>(...); }
 
-# view AndroidManifest.xml #generated:65
+# view AndroidManifest.xml #generated:76
 -keep class minggo.battery.activity.IndexActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:77
+# view AndroidManifest.xml #generated:88
 -keep class minggo.battery.reciever.TurnOnReciever { <init>(...); }
 

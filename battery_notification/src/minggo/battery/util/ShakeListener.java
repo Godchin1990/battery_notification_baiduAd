@@ -10,8 +10,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
 
-
-public class ShakeListener implements SensorEventListener ,HandshakeCompletedListener{
+public class ShakeListener implements SensorEventListener, HandshakeCompletedListener {
 	private static final int SPEED_SHRESHOLD = 2000;
 	private static final int UPTATE_INTERVAL_TIME = 70;
 	private SensorManager sensorManager;
@@ -29,14 +28,12 @@ public class ShakeListener implements SensorEventListener ,HandshakeCompletedLis
 	}
 
 	public void start() {
-		sensorManager = (SensorManager) mContext
-				.getSystemService(Context.SENSOR_SERVICE);
+		sensorManager = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
 		if (sensorManager != null) {
 			sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		}
 		if (sensor != null) {
-			sensorManager.registerListener(this, sensor,
-					SensorManager.SENSOR_DELAY_GAME);
+			sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_GAME);
 		}
 
 	}
@@ -68,10 +65,8 @@ public class ShakeListener implements SensorEventListener ,HandshakeCompletedLis
 		lastY = y;
 		lastZ = z;
 
-		double speed = Math.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ
-				* deltaZ)
-				/ timeInterval * 10000;
-		//Log.v("thelog", "===========log===================");
+		double speed = Math.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ) / timeInterval * 10000;
+		// Log.v("thelog", "===========log===================");
 		if (speed >= SPEED_SHRESHOLD) {
 			onShakeListener.onShake();
 		}
@@ -87,7 +82,7 @@ public class ShakeListener implements SensorEventListener ,HandshakeCompletedLis
 
 	@Override
 	public void handshakeCompleted(HandshakeCompletedEvent event) {
-		
+
 	}
-	
+
 }

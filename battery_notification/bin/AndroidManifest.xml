@@ -62,6 +62,17 @@
 		<activity android:name="com.baidu.mobads.AppActivity" 
 		    android:configChanges="keyboard|keyboardHidden|orientation" />
         
+       <!--  <activity
+            android:name="minggo.battery.activity.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> -->
         <activity
             android:name="minggo.battery.activity.IndexActivity"
             android:label="@string/app_name"

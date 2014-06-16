@@ -2,8 +2,6 @@ package minggo.battery.activity;
 
 import java.io.IOException;
 
-import org.json.JSONObject;
-
 import minggo.battery.BatteryService;
 import minggo.battery.R;
 import minggo.battery.listener.BaiduAdListener;
@@ -12,6 +10,9 @@ import minggo.battery.util.PlaySound;
 import minggo.battery.util.PreferenceShareUtil;
 import minggo.battery.util.ShakeListener;
 import minggo.battery.util.ShakeListener.OnShakeListener;
+
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -29,7 +30,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.baidu.mobads.AdView;
-import com.baidu.mobads.AdViewListener;
 import com.baidu.mobstat.StatService;
 /**
  * 电池通知点击到这个ativity
