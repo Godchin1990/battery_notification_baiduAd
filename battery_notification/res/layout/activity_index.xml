@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_bg" >
+
+    <RelativeLayout
+        android:id="@+id/head"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/head_bg" >
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/tv_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/iv_logo"
+            android:text="@string/author"
+            android:textColor="@color/head_tv_bg"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/lo_navi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/head"
+        android:orientation="vertical"
+        android:paddingBottom="1px" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="36dip"
+            android:background="@color/head_navi_bg" >
+
+            <Button
+                android:id="@+id/bt_index_alert"
+                android:layout_width="fill_parent"
+                android:layout_height="36dip"
+                android:layout_weight="1.0"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:paddingRight="8dp"
+                android:text="报时"
+                android:textColor="@drawable/selector_index_navi_bt"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/bt_index_seii"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:text="甩色子"
+                android:textColor="@drawable/selector_index_navi_bt"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/bt_index_feeling"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:text="心情"
+                android:textColor="@drawable/selector_index_navi_bt"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="4dp" 
+            android:background="@color/head_navi_bg">
+            <ImageView
+                android:id="@+id/cursor"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_alignParentTop="true"
+                android:scaleType="matrix"
+                android:src="@drawable/index_navi_bottom"
+                />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/navi_index_bg" />
+        </RelativeLayout>
+    </LinearLayout>
+    <!-- 页面 -->
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/index_viewPager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lo_navi"
+        android:layout_gravity="center"
+        android:background="@color/all_bg" >
+    </android.support.v4.view.ViewPager>
+
+</RelativeLayout>
