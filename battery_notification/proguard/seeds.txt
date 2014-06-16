@@ -1,0 +1,473 @@
+android.support.v4.app.BackStackState
+android.support.v4.app.BackStackState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.Fragment$SavedState
+android.support.v4.app.Fragment$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentManagerState
+android.support.v4.app.FragmentManagerState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentState
+android.support.v4.app.FragmentState: android.os.Parcelable$Creator CREATOR
+android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status[] values()
+android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status valueOf(java.lang.String)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColor(int)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColorResource(int)
+android.support.v4.view.PagerTabStrip: int getTabIndicatorColor()
+android.support.v4.view.PagerTabStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.PagerTabStrip: void setBackgroundColor(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundResource(int)
+android.support.v4.view.PagerTabStrip: void setDrawFullUnderline(boolean)
+android.support.v4.view.PagerTabStrip: boolean getDrawFullUnderline()
+android.support.v4.view.PagerTabStrip: int getMinHeight()
+android.support.v4.view.PagerTitleStrip: void setSingleLineAllCaps(android.widget.TextView)
+android.support.v4.view.PagerTitleStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTitleStrip: int getTextSpacing()
+android.support.v4.view.PagerTitleStrip: void setNonPrimaryAlpha(float)
+android.support.v4.view.PagerTitleStrip: void setTextColor(int)
+android.support.v4.view.PagerTitleStrip: void setGravity(int)
+android.support.v4.view.PagerTitleStrip: int getMinHeight()
+android.support.v4.view.ViewPager: void setScrollState(int)
+android.support.v4.view.ViewPager: void setAdapter(android.support.v4.view.PagerAdapter)
+android.support.v4.view.ViewPager: android.support.v4.view.PagerAdapter getAdapter()
+android.support.v4.view.ViewPager: void setOnAdapterChangeListener(android.support.v4.view.ViewPager$OnAdapterChangeListener)
+android.support.v4.view.ViewPager: void setCurrentItem(int)
+android.support.v4.view.ViewPager: int getCurrentItem()
+android.support.v4.view.ViewPager: void setOnPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener)
+android.support.v4.view.ViewPager: int getOffscreenPageLimit()
+android.support.v4.view.ViewPager: void setOffscreenPageLimit(int)
+android.support.v4.view.ViewPager: void setPageMargin(int)
+android.support.v4.view.ViewPager: int getPageMargin()
+android.support.v4.view.ViewPager: void setPageMarginDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.ViewPager: void setPageMarginDrawable(int)
+android.support.v4.view.ViewPager: void setScrollingCacheEnabled(boolean)
+android.support.v4.view.ViewPager$SavedState
+android.support.v4.view.ViewPager$SavedState: android.os.Parcelable$Creator CREATOR
+com.baidu.mobads.AdSettings
+com.baidu.mobads.AdSettings: AdSettings()
+com.baidu.mobads.AdSettings: org.json.JSONObject getAttr()
+com.baidu.mobads.AdSettings: void setKey(java.lang.String[])
+com.baidu.mobads.AdSettings: void setKey(java.util.List)
+com.baidu.mobads.AdSettings: void setSex(com.baidu.mobads.AdSettings$Sex)
+com.baidu.mobads.AdSettings: void setBirthday(java.util.Calendar)
+com.baidu.mobads.AdSettings: void setCity(java.lang.String)
+com.baidu.mobads.AdSettings: void setZip(java.lang.String)
+com.baidu.mobads.AdSettings: void setJob(java.lang.String)
+com.baidu.mobads.AdSettings: void setEducation(com.baidu.mobads.AdSettings$Education)
+com.baidu.mobads.AdSettings: void setSalary(com.baidu.mobads.AdSettings$Salary)
+com.baidu.mobads.AdSettings: void setHob(java.lang.String[])
+com.baidu.mobads.AdSettings: void setHob(java.util.List)
+com.baidu.mobads.AdSettings: void setUserAttr(java.lang.String,java.lang.String)
+com.baidu.mobads.AdSettings$Education
+com.baidu.mobads.AdSettings$Education: com.baidu.mobads.AdSettings$Education PRIMARY
+com.baidu.mobads.AdSettings$Education: com.baidu.mobads.AdSettings$Education JUNIOR
+com.baidu.mobads.AdSettings$Education: com.baidu.mobads.AdSettings$Education SENIOR
+com.baidu.mobads.AdSettings$Education: com.baidu.mobads.AdSettings$Education SPECIALTY
+com.baidu.mobads.AdSettings$Education: com.baidu.mobads.AdSettings$Education BACHELOR
+com.baidu.mobads.AdSettings$Education: com.baidu.mobads.AdSettings$Education MASTER
+com.baidu.mobads.AdSettings$Education: com.baidu.mobads.AdSettings$Education DOCTOR
+com.baidu.mobads.AdSettings$Education: com.baidu.mobads.AdSettings$Education[] values()
+com.baidu.mobads.AdSettings$Education: com.baidu.mobads.AdSettings$Education valueOf(java.lang.String)
+com.baidu.mobads.AdSettings$Education: int getValue()
+com.baidu.mobads.AdSettings$Salary
+com.baidu.mobads.AdSettings$Salary: com.baidu.mobads.AdSettings$Salary F0T1k
+com.baidu.mobads.AdSettings$Salary: com.baidu.mobads.AdSettings$Salary F1kT2k
+com.baidu.mobads.AdSettings$Salary: com.baidu.mobads.AdSettings$Salary F2kT3k
+com.baidu.mobads.AdSettings$Salary: com.baidu.mobads.AdSettings$Salary F3kT4k
+com.baidu.mobads.AdSettings$Salary: com.baidu.mobads.AdSettings$Salary F4kT5k
+com.baidu.mobads.AdSettings$Salary: com.baidu.mobads.AdSettings$Salary F5kT6k
+com.baidu.mobads.AdSettings$Salary: com.baidu.mobads.AdSettings$Salary F6kT7k
+com.baidu.mobads.AdSettings$Salary: com.baidu.mobads.AdSettings$Salary F7kT8k
+com.baidu.mobads.AdSettings$Salary: com.baidu.mobads.AdSettings$Salary F8kT9k
+com.baidu.mobads.AdSettings$Salary: com.baidu.mobads.AdSettings$Salary F9kT10k
+com.baidu.mobads.AdSettings$Salary: com.baidu.mobads.AdSettings$Salary F10kT15k
+com.baidu.mobads.AdSettings$Salary: com.baidu.mobads.AdSettings$Salary F15kT20k
+com.baidu.mobads.AdSettings$Salary: com.baidu.mobads.AdSettings$Salary F20
+com.baidu.mobads.AdSettings$Salary: com.baidu.mobads.AdSettings$Salary[] values()
+com.baidu.mobads.AdSettings$Salary: com.baidu.mobads.AdSettings$Salary valueOf(java.lang.String)
+com.baidu.mobads.AdSettings$Salary: int getValue()
+com.baidu.mobads.AdSettings$Sex
+com.baidu.mobads.AdSettings$Sex: com.baidu.mobads.AdSettings$Sex MALE
+com.baidu.mobads.AdSettings$Sex: com.baidu.mobads.AdSettings$Sex FEMALE
+com.baidu.mobads.AdSettings$Sex: com.baidu.mobads.AdSettings$Sex[] values()
+com.baidu.mobads.AdSettings$Sex: com.baidu.mobads.AdSettings$Sex valueOf(java.lang.String)
+com.baidu.mobads.AdSettings$Sex: int getValue()
+com.baidu.mobads.AdSize
+com.baidu.mobads.AdSize: com.baidu.mobads.AdSize Banner
+com.baidu.mobads.AdSize: com.baidu.mobads.AdSize Square
+com.baidu.mobads.AdSize: com.baidu.mobads.AdSize VideoInterstitial
+com.baidu.mobads.AdSize: com.baidu.mobads.AdSize VideoPause
+com.baidu.mobads.AdSize: com.baidu.mobads.AdSize VideoSwitch
+com.baidu.mobads.AdSize: com.baidu.mobads.AdSize InterstitialGame
+com.baidu.mobads.AdSize: com.baidu.mobads.AdSize InterstitialReader
+com.baidu.mobads.AdSize: com.baidu.mobads.AdSize InterstitialRefresh
+com.baidu.mobads.AdSize: com.baidu.mobads.AdSize InterstitialOther
+com.baidu.mobads.AdSize: com.baidu.mobads.AdSize[] values()
+com.baidu.mobads.AdSize: com.baidu.mobads.AdSize valueOf(java.lang.String)
+com.baidu.mobads.AdSize: int getValue()
+com.baidu.mobads.AdView
+com.baidu.mobads.AdView: java.lang.String P_VERSION
+com.baidu.mobads.AdView: AdView(android.content.Context)
+com.baidu.mobads.AdView: AdView(android.content.Context,com.baidu.mobads.AdSize,java.lang.String)
+com.baidu.mobads.AdView: AdView(android.content.Context,boolean,com.baidu.mobads.AdSize,java.lang.String)
+com.baidu.mobads.AdView: AdView(android.content.Context,android.util.AttributeSet)
+com.baidu.mobads.AdView: AdView(android.content.Context,android.util.AttributeSet,boolean,com.baidu.mobads.AdSize,java.lang.String)
+com.baidu.mobads.AdView: void setListener(com.baidu.mobads.AdViewListener)
+com.baidu.mobads.AdView: void prepareForInterstitial(boolean)
+com.baidu.mobads.AdView: void setInterstialListener(com.baidu.mobads.InterstitialAdListener,com.baidu.mobads.InterstitialAd)
+com.baidu.mobads.AdView: void setAlpha(float)
+com.baidu.mobads.AdView: void setBackgroundColor(int)
+com.baidu.mobads.AdView: void setAppSid(android.content.Context,java.lang.String)
+com.baidu.mobads.AdView: void setAppSec(android.content.Context,java.lang.String)
+com.baidu.mobads.AdViewListener
+com.baidu.mobads.AdViewListener: void onAdReady(com.baidu.mobads.AdView)
+com.baidu.mobads.AdViewListener: void onAdShow(org.json.JSONObject)
+com.baidu.mobads.AdViewListener: void onAdClick(org.json.JSONObject)
+com.baidu.mobads.AdViewListener: void onAdFailed(java.lang.String)
+com.baidu.mobads.AdViewListener: void onAdSwitch()
+com.baidu.mobads.AdViewListener: void onVideoStart()
+com.baidu.mobads.AdViewListener: void onVideoFinish()
+com.baidu.mobads.AdViewListener: void onVideoError()
+com.baidu.mobads.AdViewListener: void onVideoClickClose()
+com.baidu.mobads.AdViewListener: void onVideoClickAd()
+com.baidu.mobads.AdViewListener: void onVideoClickReplay()
+com.baidu.mobads.AppActivity
+com.baidu.mobads.AppActivity: AppActivity()
+com.baidu.mobads.AppActivity: boolean dispatchKeyEvent(android.view.KeyEvent)
+com.baidu.mobads.AppActivity: boolean dispatchTouchEvent(android.view.MotionEvent)
+com.baidu.mobads.AppActivity: boolean dispatchTrackballEvent(android.view.MotionEvent)
+com.baidu.mobads.AppActivity: void finalize()
+com.baidu.mobads.AppActivity: void onActivityResult(int,int,android.content.Intent)
+com.baidu.mobads.AppActivity: void onApplyThemeResource(android.content.res.Resources$Theme,int,boolean)
+com.baidu.mobads.AppActivity: void onChildTitleChanged(android.app.Activity,java.lang.CharSequence)
+com.baidu.mobads.AppActivity: void onConfigurationChanged(android.content.res.Configuration)
+com.baidu.mobads.AppActivity: void onContentChanged()
+com.baidu.mobads.AppActivity: boolean onContextItemSelected(android.view.MenuItem)
+com.baidu.mobads.AppActivity: void onContextMenuClosed(android.view.Menu)
+com.baidu.mobads.AppActivity: void onCreate(android.os.Bundle)
+com.baidu.mobads.AppActivity: void onCreateContextMenu(android.view.ContextMenu,android.view.View,android.view.ContextMenu$ContextMenuInfo)
+com.baidu.mobads.AppActivity: java.lang.CharSequence onCreateDescription()
+com.baidu.mobads.AppActivity: android.app.Dialog onCreateDialog(int)
+com.baidu.mobads.AppActivity: boolean onCreateOptionsMenu(android.view.Menu)
+com.baidu.mobads.AppActivity: boolean onCreatePanelMenu(int,android.view.Menu)
+com.baidu.mobads.AppActivity: android.view.View onCreatePanelView(int)
+com.baidu.mobads.AppActivity: boolean onCreateThumbnail(android.graphics.Bitmap,android.graphics.Canvas)
+com.baidu.mobads.AppActivity: android.view.View onCreateView(java.lang.String,android.content.Context,android.util.AttributeSet)
+com.baidu.mobads.AppActivity: void onDestroy()
+com.baidu.mobads.AppActivity: boolean onKeyDown(int,android.view.KeyEvent)
+com.baidu.mobads.AppActivity: boolean onKeyMultiple(int,int,android.view.KeyEvent)
+com.baidu.mobads.AppActivity: boolean onKeyUp(int,android.view.KeyEvent)
+com.baidu.mobads.AppActivity: void onLowMemory()
+com.baidu.mobads.AppActivity: boolean onMenuItemSelected(int,android.view.MenuItem)
+com.baidu.mobads.AppActivity: boolean onMenuOpened(int,android.view.Menu)
+com.baidu.mobads.AppActivity: void onNewIntent(android.content.Intent)
+com.baidu.mobads.AppActivity: boolean onOptionsItemSelected(android.view.MenuItem)
+com.baidu.mobads.AppActivity: void onOptionsMenuClosed(android.view.Menu)
+com.baidu.mobads.AppActivity: void onPanelClosed(int,android.view.Menu)
+com.baidu.mobads.AppActivity: void onPause()
+com.baidu.mobads.AppActivity: void onPostCreate(android.os.Bundle)
+com.baidu.mobads.AppActivity: void onPostResume()
+com.baidu.mobads.AppActivity: void onPrepareDialog(int,android.app.Dialog)
+com.baidu.mobads.AppActivity: boolean onPrepareOptionsMenu(android.view.Menu)
+com.baidu.mobads.AppActivity: boolean onPreparePanel(int,android.view.View,android.view.Menu)
+com.baidu.mobads.AppActivity: void onRestart()
+com.baidu.mobads.AppActivity: void onRestoreInstanceState(android.os.Bundle)
+com.baidu.mobads.AppActivity: void onResume()
+com.baidu.mobads.AppActivity: java.lang.Object onRetainNonConfigurationInstance()
+com.baidu.mobads.AppActivity: void onSaveInstanceState(android.os.Bundle)
+com.baidu.mobads.AppActivity: boolean onSearchRequested()
+com.baidu.mobads.AppActivity: void onStart()
+com.baidu.mobads.AppActivity: void onStop()
+com.baidu.mobads.AppActivity: void onTitleChanged(java.lang.CharSequence,int)
+com.baidu.mobads.AppActivity: boolean onTouchEvent(android.view.MotionEvent)
+com.baidu.mobads.AppActivity: boolean onTrackballEvent(android.view.MotionEvent)
+com.baidu.mobads.AppActivity: void onUserInteraction()
+com.baidu.mobads.AppActivity: void onUserLeaveHint()
+com.baidu.mobads.AppActivity: void onWindowAttributesChanged(android.view.WindowManager$LayoutParams)
+com.baidu.mobads.AppActivity: void onWindowFocusChanged(boolean)
+com.baidu.mobads.IconsAd
+com.baidu.mobads.IconsAd: IconsAd(android.app.Activity)
+com.baidu.mobads.IconsAd: IconsAd(android.app.Activity,int[])
+com.baidu.mobads.IconsAd: void loadAd(android.app.Activity)
+com.baidu.mobads.InterstitialAd
+com.baidu.mobads.InterstitialAd: InterstitialAd(android.content.Context)
+com.baidu.mobads.InterstitialAd: InterstitialAd(android.content.Context,com.baidu.mobads.AdSize,java.lang.String)
+com.baidu.mobads.InterstitialAd: boolean isAdReady()
+com.baidu.mobads.InterstitialAd: void setAdReady(boolean)
+com.baidu.mobads.InterstitialAd: com.baidu.mobads.AdView getAdView()
+com.baidu.mobads.InterstitialAd: void loadAd()
+com.baidu.mobads.InterstitialAd: void setListener(com.baidu.mobads.InterstitialAdListener)
+com.baidu.mobads.InterstitialAd: void showAd(android.app.Activity)
+com.baidu.mobads.InterstitialAd: void removeAd()
+com.baidu.mobads.InterstitialAd: void setAppSid(android.content.Context,java.lang.String)
+com.baidu.mobads.InterstitialAd: void setAppSec(android.content.Context,java.lang.String)
+com.baidu.mobads.InterstitialAdListener
+com.baidu.mobads.InterstitialAdListener: void onAdReady()
+com.baidu.mobads.InterstitialAdListener: void onAdPresent()
+com.baidu.mobads.InterstitialAdListener: void onAdClick(com.baidu.mobads.InterstitialAd)
+com.baidu.mobads.InterstitialAdListener: void onAdDismissed()
+com.baidu.mobads.InterstitialAdListener: void onAdFailed(java.lang.String)
+com.baidu.mobads.MultiFuncService
+com.baidu.mobads.MultiFuncService: com.baidu.mobads.MultiFuncService getInstance(android.content.Context)
+com.baidu.mobads.MultiFuncService: void videoPreLoad(android.app.Activity,java.lang.String)
+com.baidu.mobads.MultiFuncService: void showInFloatView(android.app.Activity,com.baidu.mobads.AdView,android.graphics.Rect)
+com.baidu.mobads.MultiFuncService: void removeFromFloatView(android.app.Activity,com.baidu.mobads.AdView)
+com.baidu.mobads.SplashAd
+com.baidu.mobads.SplashAd: SplashAd(android.content.Context,android.view.ViewGroup,com.baidu.mobads.SplashAdListener)
+com.baidu.mobads.SplashAd: SplashAd(android.content.Context,android.view.ViewGroup,com.baidu.mobads.SplashAdListener,java.lang.String)
+com.baidu.mobads.SplashAd: void setAppSid(android.content.Context,java.lang.String)
+com.baidu.mobads.SplashAd: void setAppSec(android.content.Context,java.lang.String)
+com.baidu.mobads.SplashAd$a
+com.baidu.mobads.SplashAd$a: SplashAd$a(com.baidu.mobads.SplashAd,com.baidu.mobads.SplashAdListener)
+com.baidu.mobads.SplashAd$a: boolean handleMessage(android.os.Message)
+com.baidu.mobads.SplashAdListener
+com.baidu.mobads.SplashAdListener: void onAdPresent()
+com.baidu.mobads.SplashAdListener: void onAdDismissed()
+com.baidu.mobads.SplashAdListener: void onAdFailed(java.lang.String)
+com.baidu.mobads.a
+com.baidu.mobads.a: a(com.baidu.mobads.AdViewListener,com.baidu.mobads.AdView)
+com.baidu.mobads.a: boolean handleMessage(android.os.Message)
+com.baidu.mobads.a.a
+com.baidu.mobads.a.a: boolean a
+com.baidu.mobads.a.a: int b
+com.baidu.mobads.a.a: java.lang.String c
+com.baidu.mobads.a.a: java.lang.String d
+com.baidu.mobads.a.a: java.lang.String e
+com.baidu.mobads.a.a: java.lang.String f
+com.baidu.mobads.a.a: boolean g
+com.baidu.mobads.a.b
+com.baidu.mobads.a.b: b()
+com.baidu.mobads.a.b: boolean a(java.lang.String)
+com.baidu.mobads.a.b: boolean a(boolean,android.content.Context,java.net.URL,java.lang.String)
+com.baidu.mobads.a.b: boolean b(boolean,android.content.Context,java.net.URL,java.lang.String)
+com.baidu.mobads.a.b: java.net.HttpURLConnection a(android.content.Context,java.lang.String,int,int)
+com.baidu.mobads.a.b: java.lang.String a(android.content.Context,java.lang.String)
+com.baidu.mobads.a.b: java.lang.String b(android.content.Context,java.lang.String,int,int)
+com.baidu.mobads.a.b: java.lang.Class b(android.content.Context,java.lang.String)
+com.baidu.mobads.a.c
+com.baidu.mobads.a.c: void run()
+com.baidu.mobads.a.d
+com.baidu.mobads.a.d: void a()
+com.baidu.mobads.a.d: boolean a(java.lang.String,int)
+com.baidu.mobads.a.d: boolean a(int)
+com.baidu.mobads.a.d: int a(java.lang.Throwable)
+com.baidu.mobads.a.d: int a(java.lang.String,java.lang.Throwable)
+com.baidu.mobads.a.d: int a(java.lang.Object[])
+com.baidu.mobads.a.d: int a(java.lang.String)
+com.baidu.mobads.a.d: int b(java.lang.Throwable)
+com.baidu.mobads.a.d: int b(java.lang.String,java.lang.Throwable)
+com.baidu.mobads.a.d: int b(java.lang.String)
+com.baidu.mobads.a.d: int c(java.lang.String,java.lang.Throwable)
+com.baidu.mobads.a.d: int c(java.lang.Throwable)
+com.baidu.mobads.a.d: int b(java.lang.Object[])
+com.baidu.mobads.a.d: int c(java.lang.String)
+com.baidu.mobads.a.d: int d(java.lang.String)
+com.baidu.mobads.a.d: int c(java.lang.Object[])
+com.baidu.mobads.b
+com.baidu.mobads.b: b(com.baidu.mobads.InterstitialAdListener,com.baidu.mobads.InterstitialAd)
+com.baidu.mobads.b: boolean handleMessage(android.os.Message)
+com.baidu.mobads.c
+com.baidu.mobads.c: void onAdReady()
+com.baidu.mobads.c: void onAdPresent()
+com.baidu.mobads.c: void onAdClick(com.baidu.mobads.InterstitialAd)
+com.baidu.mobads.c: void onAdDismissed()
+com.baidu.mobads.c: void onAdFailed(java.lang.String)
+com.baidu.mobads.d
+com.baidu.mobads.d: void onAdPresent()
+com.baidu.mobads.d: void onAdDismissed()
+com.baidu.mobads.d: void onAdFailed(java.lang.String)
+com.baidu.mobstat.SendStrategyEnum: com.baidu.mobstat.SendStrategyEnum[] values()
+com.baidu.mobstat.SendStrategyEnum: com.baidu.mobstat.SendStrategyEnum valueOf(java.lang.String)
+minggo.battery.BatteryService
+minggo.battery.BatteryService: BatteryService()
+minggo.battery.R$dimen: int activity_horizontal_margin
+minggo.battery.R$dimen: int activity_vertical_margin
+minggo.battery.R$drawable: int battery_1_bg_0
+minggo.battery.R$drawable: int battery_1_bg_01
+minggo.battery.R$drawable: int battery_1_bg_02
+minggo.battery.R$drawable: int battery_1_bg_03
+minggo.battery.R$drawable: int battery_1_bg_04
+minggo.battery.R$drawable: int battery_1_bg_05
+minggo.battery.R$drawable: int battery_1_bg_06
+minggo.battery.R$drawable: int battery_1_bg_07
+minggo.battery.R$drawable: int battery_1_bg_08
+minggo.battery.R$drawable: int battery_1_bg_09
+minggo.battery.R$drawable: int battery_1_bg_10
+minggo.battery.R$drawable: int battery_1_bg_11
+minggo.battery.R$drawable: int battery_1_bg_12
+minggo.battery.R$drawable: int battery_1_bg_13
+minggo.battery.R$drawable: int battery_1_bg_14
+minggo.battery.R$drawable: int battery_1_bg_15
+minggo.battery.R$drawable: int battery_1_bg_16
+minggo.battery.R$drawable: int battery_1_bg_17
+minggo.battery.R$drawable: int battery_1_bg_18
+minggo.battery.R$drawable: int battery_1_bg_19
+minggo.battery.R$drawable: int battery_1_bg_20
+minggo.battery.R$drawable: int battery_1_bg_21
+minggo.battery.R$drawable: int battery_1_bg_22
+minggo.battery.R$drawable: int battery_1_bg_23
+minggo.battery.R$drawable: int battery_1_bg_24
+minggo.battery.R$drawable: int battery_1_bg_25
+minggo.battery.R$drawable: int battery_1_bg_26
+minggo.battery.R$drawable: int battery_1_bg_27
+minggo.battery.R$drawable: int battery_1_bg_28
+minggo.battery.R$drawable: int battery_1_bg_29
+minggo.battery.R$drawable: int battery_1_bg_30
+minggo.battery.R$drawable: int battery_1_bg_31
+minggo.battery.R$drawable: int battery_1_bg_32
+minggo.battery.R$drawable: int battery_1_bg_33
+minggo.battery.R$drawable: int battery_1_bg_34
+minggo.battery.R$drawable: int battery_1_bg_35
+minggo.battery.R$drawable: int battery_1_bg_36
+minggo.battery.R$drawable: int battery_1_bg_37
+minggo.battery.R$drawable: int battery_1_bg_38
+minggo.battery.R$drawable: int battery_1_bg_39
+minggo.battery.R$drawable: int battery_1_bg_40
+minggo.battery.R$drawable: int battery_1_bg_41
+minggo.battery.R$drawable: int battery_1_bg_42
+minggo.battery.R$drawable: int battery_1_bg_43
+minggo.battery.R$drawable: int battery_1_bg_44
+minggo.battery.R$drawable: int battery_1_bg_45
+minggo.battery.R$drawable: int battery_1_bg_46
+minggo.battery.R$drawable: int battery_1_bg_47
+minggo.battery.R$drawable: int battery_1_bg_48
+minggo.battery.R$drawable: int battery_1_bg_49
+minggo.battery.R$drawable: int battery_1_bg_50
+minggo.battery.R$drawable: int battery_1_bg_51
+minggo.battery.R$drawable: int battery_1_bg_52
+minggo.battery.R$drawable: int battery_1_bg_53
+minggo.battery.R$drawable: int battery_1_bg_54
+minggo.battery.R$drawable: int battery_1_bg_55
+minggo.battery.R$drawable: int battery_1_bg_56
+minggo.battery.R$drawable: int battery_1_bg_57
+minggo.battery.R$drawable: int battery_1_bg_58
+minggo.battery.R$drawable: int battery_1_bg_59
+minggo.battery.R$drawable: int battery_1_bg_60
+minggo.battery.R$drawable: int battery_1_bg_61
+minggo.battery.R$drawable: int battery_1_bg_62
+minggo.battery.R$drawable: int battery_1_bg_63
+minggo.battery.R$drawable: int battery_1_bg_64
+minggo.battery.R$drawable: int battery_1_bg_65
+minggo.battery.R$drawable: int battery_1_bg_66
+minggo.battery.R$drawable: int battery_1_bg_67
+minggo.battery.R$drawable: int battery_1_bg_68
+minggo.battery.R$drawable: int battery_1_bg_69
+minggo.battery.R$drawable: int battery_1_bg_70
+minggo.battery.R$drawable: int battery_1_bg_71
+minggo.battery.R$drawable: int battery_1_bg_72
+minggo.battery.R$drawable: int battery_1_bg_73
+minggo.battery.R$drawable: int battery_1_bg_74
+minggo.battery.R$drawable: int battery_1_bg_75
+minggo.battery.R$drawable: int battery_1_bg_76
+minggo.battery.R$drawable: int battery_1_bg_77
+minggo.battery.R$drawable: int battery_1_bg_78
+minggo.battery.R$drawable: int battery_1_bg_79
+minggo.battery.R$drawable: int battery_1_bg_80
+minggo.battery.R$drawable: int battery_1_bg_81
+minggo.battery.R$drawable: int battery_1_bg_82
+minggo.battery.R$drawable: int battery_1_bg_83
+minggo.battery.R$drawable: int battery_1_bg_84
+minggo.battery.R$drawable: int battery_1_bg_85
+minggo.battery.R$drawable: int battery_1_bg_86
+minggo.battery.R$drawable: int battery_1_bg_87
+minggo.battery.R$drawable: int battery_1_bg_88
+minggo.battery.R$drawable: int battery_1_bg_89
+minggo.battery.R$drawable: int battery_1_bg_90
+minggo.battery.R$drawable: int battery_1_bg_91
+minggo.battery.R$drawable: int battery_1_bg_92
+minggo.battery.R$drawable: int battery_1_bg_93
+minggo.battery.R$drawable: int battery_1_bg_94
+minggo.battery.R$drawable: int battery_1_bg_95
+minggo.battery.R$drawable: int battery_1_bg_96
+minggo.battery.R$drawable: int battery_1_bg_97
+minggo.battery.R$drawable: int battery_1_bg_98
+minggo.battery.R$drawable: int battery_1_bg_99
+minggo.battery.R$drawable: int battery_1_bg_999
+minggo.battery.R$drawable: int body_line_2
+minggo.battery.R$drawable: int btn_style_green
+minggo.battery.R$drawable: int btn_style_one_disabled
+minggo.battery.R$drawable: int btn_style_one_focused
+minggo.battery.R$drawable: int btn_style_one_normal
+minggo.battery.R$drawable: int btn_style_one_pressed
+minggo.battery.R$drawable: int btn_style_red
+minggo.battery.R$drawable: int btn_style_zero_focused
+minggo.battery.R$drawable: int btn_style_zero_normal
+minggo.battery.R$drawable: int btn_style_zero_pressed
+minggo.battery.R$drawable: int cancel_adl
+minggo.battery.R$drawable: int dice_1
+minggo.battery.R$drawable: int dice_2
+minggo.battery.R$drawable: int dice_3
+minggo.battery.R$drawable: int dice_4
+minggo.battery.R$drawable: int dice_5
+minggo.battery.R$drawable: int dice_6
+minggo.battery.R$drawable: int dice_action_0
+minggo.battery.R$drawable: int dice_action_1
+minggo.battery.R$drawable: int dice_action_2
+minggo.battery.R$drawable: int dice_action_3
+minggo.battery.R$drawable: int ic_preference_single_normal
+minggo.battery.R$drawable: int ic_preference_single_pressed
+minggo.battery.R$drawable: int logo
+minggo.battery.R$drawable: int notification_battery_logo_15
+minggo.battery.R$drawable: int notification_battery_logo_25
+minggo.battery.R$drawable: int notification_battery_logo_50
+minggo.battery.R$drawable: int notification_battery_logo_75
+minggo.battery.R$drawable: int notification_battery_logo_80
+minggo.battery.R$drawable: int notification_battery_logo_85
+minggo.battery.R$drawable: int notification_battery_logo_90
+minggo.battery.R$drawable: int notification_battery_logo_95
+minggo.battery.R$drawable: int notification_battery_logo_99
+minggo.battery.R$drawable: int notification_information_bg
+minggo.battery.R$drawable: int off_icon
+minggo.battery.R$drawable: int on_icon
+minggo.battery.R$drawable: int on_off_button
+minggo.battery.R$drawable: int preference_single_item
+minggo.battery.R$drawable: int se_dice_1
+minggo.battery.R$drawable: int se_dice_2
+minggo.battery.R$drawable: int se_dice_3
+minggo.battery.R$drawable: int se_dice_4
+minggo.battery.R$drawable: int se_dice_5
+minggo.battery.R$drawable: int se_dice_6
+minggo.battery.R$drawable: int se_dice_action_0
+minggo.battery.R$drawable: int se_dice_action_1
+minggo.battery.R$drawable: int se_dice_action_2
+minggo.battery.R$drawable: int se_dice_action_3
+minggo.battery.R$id: int action_settings
+minggo.battery.R$id: int adView
+minggo.battery.R$id: int app_version_tv
+minggo.battery.R$id: int battery_iv
+minggo.battery.R$id: int cancel_ad_iv
+minggo.battery.R$id: int changebt
+minggo.battery.R$id: int content
+minggo.battery.R$id: int exitapp
+minggo.battery.R$id: int feelings_tv
+minggo.battery.R$id: int game_shack_iv
+minggo.battery.R$id: int low_power_bt
+minggo.battery.R$id: int submitButton
+minggo.battery.R$id: int textView1
+minggo.battery.R$id: int zheng_sound_bt
+minggo.battery.R$layout: int activity_main
+minggo.battery.R$layout: int notification
+minggo.battery.R$menu: int main
+minggo.battery.R$string: int app_name
+minggo.battery.R$string: int battery_low
+minggo.battery.R$string: int exit
+minggo.battery.R$string: int friday
+minggo.battery.R$string: int minggo_battery
+minggo.battery.R$string: int monday
+minggo.battery.R$string: int saturday
+minggo.battery.R$string: int shuai_dian_shu
+minggo.battery.R$string: int shuai_jia_wu
+minggo.battery.R$string: int shuai_yi_shuai
+minggo.battery.R$string: int submit
+minggo.battery.R$string: int sunday
+minggo.battery.R$string: int thursday
+minggo.battery.R$string: int time_alarm
+minggo.battery.R$string: int tuestday
+minggo.battery.R$string: int version
+minggo.battery.R$string: int wednesday
+minggo.battery.R$style: int AppBaseTheme
+minggo.battery.R$style: int AppTheme
+minggo.battery.activity.MainActivity
+minggo.battery.activity.MainActivity: MainActivity()
+minggo.battery.activity.MainActivity: void onClick(android.view.View)
+minggo.battery.activity.MainActivity: void shake_activity_back(android.view.View)
+minggo.battery.reciever.TurnOnReciever
+minggo.battery.reciever.TurnOnReciever: TurnOnReciever()

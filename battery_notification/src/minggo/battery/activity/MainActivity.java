@@ -220,6 +220,7 @@ public class MainActivity extends Activity implements OnClickListener{
 		@Override
 		public void onAdReady(AdView arg0) {
 			super.onAdReady(arg0);
+			System.out.println("准备显示");
 			adView.setVisibility(View.VISIBLE);
 			hdl.postDelayed(new Runnable() {
 				
@@ -235,6 +236,7 @@ public class MainActivity extends Activity implements OnClickListener{
 		@Override
 		public void onAdClick(JSONObject arg0) {
 			super.onAdClick(arg0);
+			System.out.println("点击");
 			cancelAdIv.setOnClickListener(MainActivity.this);
 			//统计用户点击删除广告
 			StatService.onEvent(MainActivity.this, "click_baidu_ad", telephone+"_"+new MinggoDate().toString());
@@ -243,6 +245,7 @@ public class MainActivity extends Activity implements OnClickListener{
 		@Override
 		public void onAdSwitch() {
 			super.onAdSwitch();
+			System.out.println("切换");
 			adView.setVisibility(View.VISIBLE);
 			cancelAdIv.setVisibility(View.VISIBLE);
 		}

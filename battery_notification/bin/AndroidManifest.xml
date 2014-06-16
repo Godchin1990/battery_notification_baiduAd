@@ -39,7 +39,7 @@
         <!-- 渠道商编号，其中name请不要改，将value修改为渠道商编号。渠道名称请到mtj.baidu.com的渠道管理中修改 -->
         <meta-data
             android:name="BaiduMobAd_CHANNEL"
-            android:value="360_广告" />
+            android:value="百度_[bdad]" />
         <!-- 您从百度网站获取的APP KEY -->
         <meta-data
             android:name="BaiduMobAd_STAT_ID"
@@ -59,7 +59,9 @@
         <meta-data
             android:name="BaiduMobAd_ONLY_WIFI"
             android:value="false" />
-
+		<activity android:name="com.baidu.mobads.AppActivity" 
+		    android:configChanges="keyboard|keyboardHidden|orientation" />
+        
         <activity
             android:name="minggo.battery.activity.IndexActivity"
             android:label="@string/app_name"
