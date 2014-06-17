@@ -33,7 +33,7 @@ public class FragmentFeelingSetting extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		this.inflater = inflater;
-		feelingSettingView = inflater.inflate(R.layout.fragment_game, container, false);
+		feelingSettingView = inflater.inflate(R.layout.fragment_feeling, container, false);
 		return feelingSettingView;
 	}
 }
