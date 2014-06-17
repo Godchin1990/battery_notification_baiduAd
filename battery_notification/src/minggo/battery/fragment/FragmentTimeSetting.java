@@ -1,9 +1,6 @@
 package minggo.battery.fragment;
 
-import java.util.zip.Inflater;
-
 import minggo.battery.R;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
