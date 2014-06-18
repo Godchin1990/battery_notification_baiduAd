@@ -92,6 +92,7 @@
         </receiver>
 
         <service android:name="minggo.battery.BatteryService" />
+        
     </application>
 
 </manifest>
