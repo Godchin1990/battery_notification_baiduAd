@@ -123,26 +123,49 @@ public class FragmentFeelingSetting extends Fragment implements OnClickListener 
 		String fridayFeeling = PreferenceShareUtil.getFeeling(activity, PreferenceShareUtil.FRIDAY_FELLING);
 		String saturdayFeeling = PreferenceShareUtil.getFeeling(activity, PreferenceShareUtil.SATURDAY_FELLING);
 
-		feeling1Tv.setText(sundayFeeling.equals("") == true ? activity.getString(R.string.sunday) : sundayFeeling);
-		feeling2Tv.setText(mondayFeeling.equals("") == true ? activity.getString(R.string.monday) : mondayFeeling);
-		feeling3Tv
-				.setText(tuestdayFeeling.equals("") == true ? activity.getString(R.string.tuestday) : tuestdayFeeling);
-		feeling4Tv.setText(wendnesdayFeeling.equals("") == true ? activity.getString(R.string.wednesday)
-				: wendnesdayFeeling);
-		feeling5Tv
-				.setText(thursdayFeeling.equals("") == true ? activity.getString(R.string.thursday) : thursdayFeeling);
-		feeling6Tv.setText(fridayFeeling.equals("") == true ? activity.getString(R.string.friday) : fridayFeeling);
-		feeling7Tv
-				.setText(saturdayFeeling.equals("") == true ? activity.getString(R.string.saturday) : saturdayFeeling);
+		if (PreferenceShareUtil.getUseFeeling(activity)) {
+			
+			feeling1Tv.setText(sundayFeeling.equals("") == true ? activity.getString(R.string.sunday) : sundayFeeling);
+			feeling2Tv.setText(mondayFeeling.equals("") == true ? activity.getString(R.string.monday) : mondayFeeling);
+			feeling3Tv.setText(tuestdayFeeling.equals("") == true ? activity.getString(R.string.tuestday)
+					: tuestdayFeeling);
+			feeling4Tv.setText(wendnesdayFeeling.equals("") == true ? activity.getString(R.string.wednesday)
+					: wendnesdayFeeling);
+			feeling5Tv.setText(thursdayFeeling.equals("") == true ? activity.getString(R.string.thursday)
+					: thursdayFeeling);
+			feeling6Tv.setText(fridayFeeling.equals("") == true ? activity.getString(R.string.friday) : fridayFeeling);
+			feeling7Tv.setText(saturdayFeeling.equals("") == true ? activity.getString(R.string.saturday)
+					: saturdayFeeling);
 
-		input1Ed.setText(sundayFeeling.equals("") == true ? activity.getString(R.string.sunday) : sundayFeeling);
-		input2Ed.setText(mondayFeeling.equals("") == true ? activity.getString(R.string.monday) : mondayFeeling);
-		input3Ed.setText(tuestdayFeeling.equals("") == true ? activity.getString(R.string.tuestday) : tuestdayFeeling);
-		input4Ed.setText(wendnesdayFeeling.equals("") == true ? activity.getString(R.string.wednesday)
-				: wendnesdayFeeling);
-		input5Ed.setText(thursdayFeeling.equals("") == true ? activity.getString(R.string.thursday) : thursdayFeeling);
-		input6Ed.setText(fridayFeeling.equals("") == true ? activity.getString(R.string.friday) : fridayFeeling);
-		input7Ed.setText(saturdayFeeling.equals("") == true ? activity.getString(R.string.saturday) : saturdayFeeling);
+			input1Ed.setText(sundayFeeling.equals("") == true ? activity.getString(R.string.sunday) : sundayFeeling);
+			input2Ed.setText(mondayFeeling.equals("") == true ? activity.getString(R.string.monday) : mondayFeeling);
+			input3Ed.setText(tuestdayFeeling.equals("") == true ? activity.getString(R.string.tuestday)
+					: tuestdayFeeling);
+			input4Ed.setText(wendnesdayFeeling.equals("") == true ? activity.getString(R.string.wednesday)
+					: wendnesdayFeeling);
+			input5Ed.setText(thursdayFeeling.equals("") == true ? activity.getString(R.string.thursday)
+					: thursdayFeeling);
+			input6Ed.setText(fridayFeeling.equals("") == true ? activity.getString(R.string.friday) : fridayFeeling);
+			input7Ed.setText(saturdayFeeling.equals("") == true ? activity.getString(R.string.saturday)
+					: saturdayFeeling);
+		}else{
+			
+			feeling1Tv.setText(activity.getString(R.string.sunday));
+			feeling2Tv.setText(activity.getString(R.string.monday));
+			feeling3Tv.setText(activity.getString(R.string.tuestday));
+			feeling4Tv.setText(activity.getString(R.string.wednesday));
+			feeling5Tv.setText(activity.getString(R.string.thursday));
+			feeling6Tv.setText(activity.getString(R.string.friday));
+			feeling7Tv.setText(activity.getString(R.string.saturday));
+
+			input1Ed.setText(activity.getString(R.string.sunday));
+			input2Ed.setText(activity.getString(R.string.monday));
+			input3Ed.setText(activity.getString(R.string.tuestday));
+			input4Ed.setText(activity.getString(R.string.wednesday));
+			input5Ed.setText(activity.getString(R.string.thursday));
+			input6Ed.setText(activity.getString(R.string.friday));
+			input7Ed.setText(activity.getString(R.string.saturday));
+		}
 
 	}
 
@@ -157,8 +180,9 @@ public class FragmentFeelingSetting extends Fragment implements OnClickListener 
 				String feeling = input1Ed.getText().toString();
 				if (!feeling.equals("")) {
 					PreferenceShareUtil.saveFeeling(activity, PreferenceShareUtil.SUNDAY_FELLING, feeling);
+					PreferenceShareUtil.saveUseFeeling(activity, true);
 					feeling1Tv.setText(feeling);
-					sendFeelingBroadcast(1,feeling);
+					sendFeelingBroadcast(1, feeling);
 				}
 			} else {
 				feeling1Tv.setVisibility(View.GONE);
@@ -173,8 +197,9 @@ public class FragmentFeelingSetting extends Fragment implements OnClickListener 
 				String feeling = input2Ed.getText().toString();
 				if (!feeling.equals("")) {
 					PreferenceShareUtil.saveFeeling(activity, PreferenceShareUtil.MONDAY_FELLING, feeling);
+					PreferenceShareUtil.saveUseFeeling(activity, true);
 					feeling2Tv.setText(feeling);
-					sendFeelingBroadcast(2,feeling);
+					sendFeelingBroadcast(2, feeling);
 				}
 
 			} else {
@@ -190,8 +215,9 @@ public class FragmentFeelingSetting extends Fragment implements OnClickListener 
 				String feeling = input3Ed.getText().toString();
 				if (!feeling.equals("")) {
 					PreferenceShareUtil.saveFeeling(activity, PreferenceShareUtil.TUESDAY_FELLING, feeling);
+					PreferenceShareUtil.saveUseFeeling(activity, true);
 					feeling3Tv.setText(feeling);
-					sendFeelingBroadcast(3,feeling);
+					sendFeelingBroadcast(3, feeling);
 				}
 			} else {
 
@@ -206,8 +232,9 @@ public class FragmentFeelingSetting extends Fragment implements OnClickListener 
 				String feeling = input4Ed.getText().toString();
 				if (!feeling.equals("")) {
 					PreferenceShareUtil.saveFeeling(activity, PreferenceShareUtil.WEDNESDAY_FELLING, feeling);
+					PreferenceShareUtil.saveUseFeeling(activity, true);
 					feeling4Tv.setText(feeling);
-					sendFeelingBroadcast(4,feeling);
+					sendFeelingBroadcast(4, feeling);
 				}
 			} else {
 
@@ -222,8 +249,9 @@ public class FragmentFeelingSetting extends Fragment implements OnClickListener 
 				String feeling = input5Ed.getText().toString();
 				if (!feeling.equals("")) {
 					PreferenceShareUtil.saveFeeling(activity, PreferenceShareUtil.THURSDAY_FELLING, feeling);
+					PreferenceShareUtil.saveUseFeeling(activity, true);
 					feeling5Tv.setText(feeling);
-					sendFeelingBroadcast(5,feeling);
+					sendFeelingBroadcast(5, feeling);
 				}
 			} else {
 
@@ -238,8 +266,9 @@ public class FragmentFeelingSetting extends Fragment implements OnClickListener 
 				String feeling = input6Ed.getText().toString();
 				if (!feeling.equals("")) {
 					PreferenceShareUtil.saveFeeling(activity, PreferenceShareUtil.FRIDAY_FELLING, feeling);
+					PreferenceShareUtil.saveUseFeeling(activity, true);
 					feeling6Tv.setText(feeling);
-					sendFeelingBroadcast(6,feeling);
+					sendFeelingBroadcast(6, feeling);
 				}
 			} else {
 
@@ -254,9 +283,10 @@ public class FragmentFeelingSetting extends Fragment implements OnClickListener 
 				String feeling = input7Ed.getText().toString();
 				if (!feeling.equals("")) {
 					PreferenceShareUtil.saveFeeling(activity, PreferenceShareUtil.SATURDAY_FELLING, feeling);
+					PreferenceShareUtil.saveUseFeeling(activity, true);
 					feeling7Tv.setText(feeling);
 
-					sendFeelingBroadcast(7,feeling);
+					sendFeelingBroadcast(7, feeling);
 				}
 			} else {
 

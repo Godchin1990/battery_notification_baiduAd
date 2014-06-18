@@ -20,7 +20,32 @@ public class PreferenceShareUtil {
 	public static final String THURSDAY_FELLING = "thursday_felling";
 	public static final String FRIDAY_FELLING = "friday_felling";
 	public static final String SATURDAY_FELLING = "saturday_felling";
+	public static final String DEFAULT_FELLING_SETTING = "default_felling_setting";
 	
+	
+	/**
+	 * 保存设置自定义心情提醒
+	 * @param context
+	 * @param flag
+	 */
+	public static void saveUseFeeling(Context context,boolean flag){
+		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_PRIVATE);
+		Editor editor = share.edit();
+		editor.putBoolean(DEFAULT_FELLING_SETTING, flag);
+		editor.commit();
+	}
+	/**
+	 * 获取是否适用自定义心情设置
+	 * @param context
+	 * @return
+	 */
+	public static boolean getUseFeeling(Context context){
+		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_APPEND);
+		if (share != null) {
+			return share.getBoolean(DEFAULT_FELLING_SETTING, false);
+		}
+		return false;
+	}
 	
 	/**
 	 * 获取某一天的心情
@@ -97,5 +122,7 @@ public class PreferenceShareUtil {
 		editor.putBoolean(ZHENG_TIME_SOUND, flag);
 		editor.commit();
 	}
-
+	
+	
+	
 }
