@@ -23,7 +23,7 @@ import android.widget.RemoteViews;
  * @author minggo
  * @date 2013-8-7上午09:11:27
  */
-public class BatteryService extends Service {
+public class BatteryService extends Service{
 	/**
 	 * 通告管理器
 	 */
@@ -80,6 +80,8 @@ public class BatteryService extends Service {
 		context = this.getApplicationContext();
 		this.registerReceiver(broadcastReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 		this.registerReceiver(timeChangeReciever, new IntentFilter(Intent.ACTION_TIME_TICK));
+		this.registerReceiver(feelingReceiever, new IntentFilter("minggo.bettery.feeling"));
+		
 		date = new MinggoDate();
 		initImage();
 		initBattery();
@@ -155,7 +157,6 @@ public class BatteryService extends Service {
 		//把下滑view绑定在通知上
 		notification.contentView = remoteViews;
 		
-		
 		//点击下滑view处理的跳转事件
 		Intent intent = new Intent(context, MainActivity.class);
 
@@ -216,8 +217,19 @@ public class BatteryService extends Service {
 		notification.contentView = remoteViews;
 		notification.icon = image[level];
 		notificationManager.notify(1, notification);
-		
 	}
+	/**
+	 * 更新心情
+	 * @param feeling
+	 */
+	private void modifyFeeling(String feeling){
+		
+		//下滑view的文字
+		remoteViews.setTextViewText(R.id.feelings_tv,feeling); 
+		notification.contentView = remoteViews;
+		notificationManager.notify(1, notification);
+	}
+	
 	/**
 	 * 电池广播接收器
 	 */
@@ -238,6 +250,23 @@ public class BatteryService extends Service {
 			}
 		}
 	};
+	/**
+	 * 心情提示改变接收器
+	 */
+	private BroadcastReceiver feelingReceiever = new BroadcastReceiver() {
+		
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			System.out.println("进入了广播");
+			String action = intent.getAction();
+			if (action.equals("minggo.bettery.feeling")) {
+				String feeling = intent.getStringExtra("feeling");
+				if (feeling!=null&&!feeling.equals("")) {
+					modifyFeeling(feeling);
+				}
+			}
+		}
+	};
 	
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -254,5 +283,7 @@ public class BatteryService extends Service {
 		System.exit(0);
 		super.onDestroy();
 	}
+
+	
 	
 }

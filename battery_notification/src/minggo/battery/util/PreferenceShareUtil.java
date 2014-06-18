@@ -12,6 +12,43 @@ public class PreferenceShareUtil {
 	private static final String USER_DATA = "minggo_battery";
 	private static final String LOW_POWER_SOUND = "low_power_sound";
 	private static final String ZHENG_TIME_SOUND = "zheng_time_sound";
+	
+	public static final String SUNDAY_FELLING = "sunday_felling";
+	public static final String MONDAY_FELLING = "monday_felling";
+	public static final String TUESDAY_FELLING = "tuesday_felling";
+	public static final String WEDNESDAY_FELLING = "wednesday_felling";
+	public static final String THURSDAY_FELLING = "thursday_felling";
+	public static final String FRIDAY_FELLING = "friday_felling";
+	public static final String SATURDAY_FELLING = "saturday_felling";
+	
+	
+	/**
+	 * 获取某一天的心情
+	 * @param context
+	 * @param whichDay
+	 * @return
+	 */
+	public static String getFeeling(Context context,String whichDay){
+		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_APPEND);
+		if (share != null) {
+			//System.out.println("数据库拿到的时候--->"+share.getBoolean(LOW_POWER_SOUND, false));
+			return share.getString(whichDay, "");
+		}
+		return "";
+	}
+	
+	/**
+	 * 保存用户低电量声音设置
+	 * @param context
+	 * @param flag
+	 */
+	public static void saveFeeling(Context context,String whichDay,String feeling) {
+		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_PRIVATE);
+		Editor editor = share.edit();
+		editor.putString(whichDay, feeling);
+		editor.commit();
+	}
+	
 	/**
 	 * 获取用户设置低电量的设置
 	 * @param context
