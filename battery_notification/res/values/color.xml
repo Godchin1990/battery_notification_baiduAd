@@ -12,5 +12,7 @@
     <color name="index_navi_bt_pressed">#30B900</color>
     <color name="navi_index">#33BA03</color>
     <color name="navi_index_bg">#E4E4E4</color>
+    <color name="menu_divider">#202224</color>
+    <color name="menu_item_pressed">#282A2B</color>
 
 </resources>

@@ -130,7 +130,9 @@ public class FragmentGame extends Fragment implements OnClickListener {
 		System.out.println("onHiddenChanged");
 		super.onHiddenChanged(hidden);
 	}
-
+	
+	
+	
 	/**
 	 * 初始化色子甩过程
 	 */

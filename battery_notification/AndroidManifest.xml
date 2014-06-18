@@ -84,7 +84,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name="minggo.battery.activity.SettingActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar"
+            />
         <receiver android:name="minggo.battery.reciever.TurnOnReciever" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

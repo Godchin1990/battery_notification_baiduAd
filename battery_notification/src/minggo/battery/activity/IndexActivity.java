@@ -14,7 +14,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -26,8 +25,8 @@ import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 /**
  * 首页
  * @author minggo
@@ -51,6 +50,11 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 	private FragmentGame gameFgm;
 	private FragmentTimeSetting timeSettingFgm;
 	
+	private ImageButton menuBt;
+	private View menuView;
+	private View loginView;
+	private View settingView;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -70,11 +74,18 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		alertBt = (Button) findViewById(R.id.bt_index_alert);
 		seziBt = (Button) findViewById(R.id.bt_index_seii);
 		feelingBt = (Button) findViewById(R.id.bt_index_feeling);
-
+		menuView = findViewById(R.id.lo_menu);
+		loginView = findViewById(R.id.lo_menu_1);
+		settingView = findViewById(R.id.lo_menu_2);
+		menuBt = (ImageButton) findViewById(R.id.bt_index_menu);
+		
+		
+		loginView.setOnClickListener(this);
+		settingView.setOnClickListener(this);
 		alertBt.setOnClickListener(this);
 		seziBt.setOnClickListener(this);
 		feelingBt.setOnClickListener(this);
-		
+		menuBt.setOnClickListener(this);
 		timeSettingFgm = new FragmentTimeSetting();
 		gameFgm = new FragmentGame();
 		feelingSettingFgm = new FragmentFeelingSetting();
@@ -149,6 +160,21 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		
+		case R.id.bt_index_menu:
+			if (menuView.getVisibility()==View.GONE) {
+				menuView.setVisibility(View.VISIBLE);
+			}else{
+				menuView.setVisibility(View.GONE);
+			}
+			break;
+		case R.id.lo_menu_1:
+			System.out.println("RRRRRRRRRRR");
+			menuView.setVisibility(View.GONE);
+			break;
+		case R.id.lo_menu_2:
+			startActivity(new Intent(this, SettingActivity.class));
+			menuView.setVisibility(View.GONE);
+			break;
 		case R.id.bt_index_alert:
 			viewPager.setCurrentItem(0);
 			break;
@@ -159,6 +185,11 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 			viewPager.setCurrentItem(2);
 			break;
 		default:
+			if (menuView.getVisibility()==View.GONE) {
+				menuView.setVisibility(View.VISIBLE);
+			}else{
+				menuView.setVisibility(View.GONE);
+			}
 			break;
 		}
 	}

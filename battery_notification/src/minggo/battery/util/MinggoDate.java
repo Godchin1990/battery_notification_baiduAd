@@ -129,4 +129,38 @@ public class MinggoDate{
 		}
 		return day;
 	}
+	/**
+	 * 获取英文字符串的星期
+	 * @return
+	 */
+	public String getWeek2ENstr(){
+		
+		String day = "";
+		switch (calendar.get(Calendar.DAY_OF_WEEK)) {
+		case 1:
+			day = PreferenceShareUtil.SUNDAY_FELLING;
+			break;
+		case 2:
+			day = PreferenceShareUtil.MONDAY_FELLING;
+			break;
+		case 3:
+			day = PreferenceShareUtil.TUESDAY_FELLING;
+			break;
+		case 4:
+			day = PreferenceShareUtil.WEDNESDAY_FELLING;
+			break;
+		case 5:
+			day = PreferenceShareUtil.THURSDAY_FELLING;
+			break;
+		case 6:
+			day = PreferenceShareUtil.FRIDAY_FELLING;
+			break;
+		case 7:
+			day = PreferenceShareUtil.SATURDAY_FELLING;
+			break;
+		default:
+			break;
+		}
+		return day;
+	}
 }

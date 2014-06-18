@@ -52,6 +52,8 @@ public class FragmentFeelingSetting extends Fragment implements OnClickListener 
 	private EditText input6Ed;
 	private EditText input7Ed;
 
+	private boolean isFirst = true;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -73,6 +75,25 @@ public class FragmentFeelingSetting extends Fragment implements OnClickListener 
 		return feelingSettingView;
 	}
 
+	@Override
+	public View getView() {
+		return super.getView();
+	}
+	
+	@Override
+	public void setUserVisibleHint(boolean isVisibleToUser) {
+		// TODO Auto-generated method stub
+		super.setUserVisibleHint(isVisibleToUser);
+		if (isVisibleToUser&&!isFirst) {
+			initData();
+			if (PreferenceShareUtil.getUseFeeling(activity)) {
+				sendFeelingBroadcast(date.getDayOfWeek(),PreferenceShareUtil.getFeeling(activity, date.getWeek2ENstr()));
+			}else{
+				sendFeelingBroadcast(date.getDayOfWeek(),getDayPrompt());
+			}
+		}
+	}
+	
 	/**
 	 * 初始化UI
 	 */
@@ -115,15 +136,19 @@ public class FragmentFeelingSetting extends Fragment implements OnClickListener 
 	 */
 	private void initData() {
 
-		String sundayFeeling = PreferenceShareUtil.getFeeling(activity, PreferenceShareUtil.SUNDAY_FELLING);
-		String mondayFeeling = PreferenceShareUtil.getFeeling(activity, PreferenceShareUtil.MONDAY_FELLING);
-		String tuestdayFeeling = PreferenceShareUtil.getFeeling(activity, PreferenceShareUtil.TUESDAY_FELLING);
-		String wendnesdayFeeling = PreferenceShareUtil.getFeeling(activity, PreferenceShareUtil.WEDNESDAY_FELLING);
-		String thursdayFeeling = PreferenceShareUtil.getFeeling(activity, PreferenceShareUtil.THURSDAY_FELLING);
-		String fridayFeeling = PreferenceShareUtil.getFeeling(activity, PreferenceShareUtil.FRIDAY_FELLING);
-		String saturdayFeeling = PreferenceShareUtil.getFeeling(activity, PreferenceShareUtil.SATURDAY_FELLING);
-
+		isFirst = false;
+		
+		
 		if (PreferenceShareUtil.getUseFeeling(activity)) {
+			
+			String sundayFeeling = PreferenceShareUtil.getFeeling(activity, PreferenceShareUtil.SUNDAY_FELLING);
+			String mondayFeeling = PreferenceShareUtil.getFeeling(activity, PreferenceShareUtil.MONDAY_FELLING);
+			String tuestdayFeeling = PreferenceShareUtil.getFeeling(activity, PreferenceShareUtil.TUESDAY_FELLING);
+			String wendnesdayFeeling = PreferenceShareUtil.getFeeling(activity, PreferenceShareUtil.WEDNESDAY_FELLING);
+			String thursdayFeeling = PreferenceShareUtil.getFeeling(activity, PreferenceShareUtil.THURSDAY_FELLING);
+			String fridayFeeling = PreferenceShareUtil.getFeeling(activity, PreferenceShareUtil.FRIDAY_FELLING);
+			String saturdayFeeling = PreferenceShareUtil.getFeeling(activity, PreferenceShareUtil.SATURDAY_FELLING);
+
 			
 			feeling1Tv.setText(sundayFeeling.equals("") == true ? activity.getString(R.string.sunday) : sundayFeeling);
 			feeling2Tv.setText(mondayFeeling.equals("") == true ? activity.getString(R.string.monday) : mondayFeeling);
@@ -314,5 +339,38 @@ public class FragmentFeelingSetting extends Fragment implements OnClickListener 
 			activity.sendBroadcast(intent);
 		}
 	}
-
+	
+	/**
+	 * 每天的提示语
+	 * @return
+	 */
+	private String getDayPrompt(){
+		String feeling = "";
+		switch (date.getDayOfWeek()) {
+		case 1:
+			feeling = this.getString(R.string.sunday);
+			break;
+		case 2:
+			feeling = this.getString(R.string.monday);
+			break;
+		case 3:
+			feeling = this.getString(R.string.tuestday);
+			break;
+		case 4:
+			feeling = this.getString(R.string.wednesday);
+			break;
+		case 5:
+			feeling = this.getString(R.string.thursday);
+			break;
+		case 6:
+			feeling = this.getString(R.string.friday);
+			break;
+		case 7:
+			feeling = this.getString(R.string.saturday);
+			break;
+		default:
+			break;
+		}
+		return feeling;
+	}
 }

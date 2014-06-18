@@ -30,13 +30,17 @@ public class FragmentTimeSetting extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		this.inflater = inflater;
-		timeSettinView = inflater.inflate(R.layout.fragment_game, container, false);
+		timeSettinView = inflater.inflate(R.layout.fragment_alert, container, false);
 		return timeSettinView;
 	}
 	@Override
 	public void setUserVisibleHint(boolean isVisibleToUser) {
 		super.setUserVisibleHint(isVisibleToUser);
 		System.out.println("时间XXXXX");
+	}
+	@Override
+	public View getView() {
+		return super.getView();
 	}
 	
 }
