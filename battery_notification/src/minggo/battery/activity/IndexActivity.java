@@ -3,6 +3,8 @@ package minggo.battery.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.baidu.mobstat.StatService;
+
 import minggo.battery.BatteryService;
 import minggo.battery.R;
 import minggo.battery.adapter.BatteryPagerAdpater;
@@ -27,13 +29,15 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+
 /**
  * 首页
+ * 
  * @author minggo
  * @time 2014-6-16 S下午9:15:33
  */
 public class IndexActivity extends FragmentActivity implements OnClickListener {
-	
+
 	private List<Fragment> fragmentList = new ArrayList<Fragment>();
 	private ImageView naviBottomIv;
 	private int currIndex = 1;// 当前页卡编号
@@ -49,12 +53,12 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 	private FragmentFeelingSetting feelingSettingFgm;
 	private FragmentGame gameFgm;
 	private FragmentTimeSetting timeSettingFgm;
-	
+
 	private ImageButton menuBt;
 	private View menuView;
 	private View loginView;
 	private View settingView;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -62,7 +66,7 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		this.startService(new Intent(this, BatteryService.class));
 		initView();
 	}
-	
+
 	/**
 	 * 初始化UI
 	 */
@@ -78,8 +82,7 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		loginView = findViewById(R.id.lo_menu_1);
 		settingView = findViewById(R.id.lo_menu_2);
 		menuBt = (ImageButton) findViewById(R.id.bt_index_menu);
-		
-		
+
 		loginView.setOnClickListener(this);
 		settingView.setOnClickListener(this);
 		alertBt.setOnClickListener(this);
@@ -89,8 +92,7 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		timeSettingFgm = new FragmentTimeSetting();
 		gameFgm = new FragmentGame();
 		feelingSettingFgm = new FragmentFeelingSetting();
-		
-		
+
 		fragmentList.add(timeSettingFgm);
 		fragmentList.add(gameFgm);
 		fragmentList.add(feelingSettingFgm);
@@ -100,19 +102,52 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		viewPager.setCurrentItem(currIndex);
 		viewPager.setOnPageChangeListener(new MyOnPageChangeListener());
 		viewPager.setOffscreenPageLimit(2);
+		
+		StatService.onPageStart(this, getFragment(currIndex));
 	}
+
+	
 	
 	public class MyOnPageChangeListener implements OnPageChangeListener {
 		public void onPageScrollStateChanged(int position) {
 		}
 
 		public void onPageScrolled(int position, float arg1, int arg2) {
-			
+
 		}
 
 		public void onPageSelected(int position) {
+			StatService.onPageEnd(IndexActivity.this, getFragment(currIndex));
+			StatService.onPageStart(IndexActivity.this, getFragment(position));
 			translate(position);
 		}
+	}
+
+	/**
+	 * 获取fragment名字
+	 * 
+	 * @param index
+	 * @return
+	 */
+	private String getFragment(int index) {
+		
+		String labelId = "";
+		switch (index) {
+		case 0:
+			labelId = "page_alert";
+			break;
+		case 1:
+			labelId = "page_game";
+			break;
+		case 2:
+			labelId = "page_feeling";
+			break;
+
+		default:
+			break;
+		}
+		return labelId;
+
 	}
 
 	/**
@@ -135,7 +170,7 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		animation.setDuration(300);
 		naviBottomIv.startAnimation(animation);
 	}
-	
+
 	/**
 	 * 初始化导航条
 	 */
@@ -146,7 +181,7 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		int screenW = dm.widthPixels;// 获取分辨率宽度
 
 		naviBottomIv = (ImageView) findViewById(R.id.cursor);
-		//Bitmap bm = ((BitmapDrawable)naviBottomIv.getDrawable()).getBitmap();
+		// Bitmap bm = ((BitmapDrawable)naviBottomIv.getDrawable()).getBitmap();
 		Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.index_navi_bottom);
 		bm = ImageUtils.zoomBitmap(bm, screenW / 3, bm.getHeight());
 		bmpW = bm.getWidth();// 获取图片宽度
@@ -155,15 +190,15 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		naviBottomIv.setImageMatrix(matrix);// 设置动画初始位置
 		naviBottomIv.setImageBitmap(bm);
 	}
-	
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		
+
 		case R.id.bt_index_menu:
-			if (menuView.getVisibility()==View.GONE) {
+			if (menuView.getVisibility() == View.GONE) {
 				menuView.setVisibility(View.VISIBLE);
-			}else{
+			} else {
 				menuView.setVisibility(View.GONE);
 			}
 			break;
@@ -185,9 +220,9 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 			viewPager.setCurrentItem(2);
 			break;
 		default:
-			if (menuView.getVisibility()==View.GONE) {
+			if (menuView.getVisibility() == View.GONE) {
 				menuView.setVisibility(View.VISIBLE);
-			}else{
+			} else {
 				menuView.setVisibility(View.GONE);
 			}
 			break;
