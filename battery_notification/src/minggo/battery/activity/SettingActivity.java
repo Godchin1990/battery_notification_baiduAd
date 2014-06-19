@@ -36,7 +36,7 @@ public class SettingActivity extends Activity implements OnClickListener{
 		backV.setOnClickListener(this);
 		feelingBt.setOnClickListener(this);
 		
-		feelingBt.setSelected(PreferenceShareUtil.getUseFeeling(this));
+		feelingBt.setSelected(!PreferenceShareUtil.getUseFeeling(this));
 	}
 	
 	@Override
@@ -49,6 +49,7 @@ public class SettingActivity extends Activity implements OnClickListener{
 		switch (v.getId()) {
 		case R.id.bt_feeling_setting:
 			boolean flag = !feelingBt.isSelected();
+			System.out.println("选择了什么东西--->"+flag);
 			feelingBt.setSelected(flag);
 			PreferenceShareUtil.saveUseFeeling(this, !feelingBt.isSelected());
 			StatService.onEvent(SettingActivity.this, "feeling_set", flag+"");

@@ -340,6 +340,17 @@ public class FragmentFeelingSetting extends Fragment implements OnClickListener 
 		}
 	}
 	
+	@Override
+	public void onResume() {
+		super.onResume();
+		initData();
+		if (PreferenceShareUtil.getUseFeeling(activity)) {
+			sendFeelingBroadcast(date.getDayOfWeek(),PreferenceShareUtil.getFeeling(activity, date.getWeek2ENstr()));
+		}else{
+			sendFeelingBroadcast(date.getDayOfWeek(),getDayPrompt());
+		}
+	}
+	
 	/**
 	 * 每天的提示语
 	 * @return
