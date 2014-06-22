@@ -4,71 +4,146 @@
     android:layout_height="match_parent" >
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:id="@+id/lo_drop_time_list"
+        android:layout_width="80dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/shape_alert_list_option_bg" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/tv_alert_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/game_shack_iv"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="40dp"
-            android:text="@string/shuai_yi_shuai"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="6:00"
+            android:textColor="@color/index_navi_bt_normal"
+            android:textSize="14dp" />
 
         <ImageView
-            android:id="@+id/game_shack_iv"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_below="@+id/textView1"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="53dp"
-            android:src="@drawable/dice_1" />
-			
-         <Button
-            android:id="@+id/changebt"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_below="@+id/game_shack_iv"
-            android:layout_marginTop="80dp"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/btn_style_green"
-            android:text="@string/shuai_jia_wu"
-            android:textColor="#ffffff"
-            android:textSize="18sp" />
-       
-
+            android:id="@+id/iv_list_time"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/arrow_down" />
     </RelativeLayout>
 
-    <com.baidu.mobads.AdView
-        android:id="@+id/adView"
-        android:layout_width="fill_parent"
-        android:layout_height="45dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:visibility="visible" />
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="120dp"
+        android:layout_height="28dp"
+        android:layout_alignTop="@+id/lo_drop_time_list"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/lo_drop_time_list"
+        android:background="@drawable/selector_bt_sound_listen"
+        android:paddingBottom="2dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="2dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/chatfrom_voice_playing_f3" />
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:paddingBottom="10dp" >
+        android:layout_alignBottom="@+id/imageButton1"
+        android:layout_alignRight="@+id/imageButton1"
+        android:layout_alignTop="@+id/imageButton1"
+        android:layout_marginRight="22dp"
+        android:gravity="center"
+        android:text="试听"
+        android:textColor="@color/index_navi_bt_normal"
+        android:textSize="14dp" />
 
-        <ImageView
-            android:id="@+id/cancel_ad_iv"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentBottom="true"
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignLeft="@+id/lo_drop_time_list"
+        android:layout_below="@+id/lo_drop_time_list"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp" >
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/tv_list_tips"
+                android:src="@drawable/divider_horizontal_timeline" />
+
+            <TextView
+                android:id="@+id/tv_list_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="报时提醒列表"
+                android:textColor="@color/index_navi_bt_normal"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/imageView1"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/tv_list_tips"
+                android:src="@drawable/divider_horizontal_timeline" />
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/lv_alert_sounds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="15dp"
-            android:src="@drawable/cancel_adl"
-            android:visibility="gone" />
+            android:layout_below="@+id/relativeLayout1"
+            android:divider="@drawable/divider_horizontal_timeline"
+            android:dividerHeight="1px"
+            android:fadingEdge="none"
+            android:scrollbars="none" >
+        </ListView>
     </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_time_option"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/relativeLayout2"
+        android:layout_alignLeft="@+id/relativeLayout2"
+        android:layout_alignRight="@+id/lo_drop_time_list"
+        android:layout_below="@+id/lo_drop_time_list"
+        android:divider="@drawable/divider_horizontal_timeline"
+        android:dividerHeight="1px"
+        android:visibility="gone"
+        android:fadingEdge="none" />
+
+    <Button
+        android:id="@+id/bt_record_sound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/relativeLayout2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_alignRight="@+id/relativeLayout2"
+        android:background="@drawable/selector_bt_sound_record"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:text="按住录音" />
 
 </RelativeLayout>

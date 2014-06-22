@@ -405,7 +405,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:background="@drawable/shape_reward_tips"
+                android:background="@drawable/shape_feeling_set_tips"
                 android:gravity="left"
                 android:lineSpacingExtra="3dp"
                 android:padding="10dp"
