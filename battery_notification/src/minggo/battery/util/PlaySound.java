@@ -14,7 +14,7 @@ import android.media.MediaPlayer.OnCompletionListener;
 public class PlaySound {
 	private static MediaPlayer player;
 	private static PlaySound playSound;
-	private boolean flag;
+	private static boolean flag;
 	private PlaySound(){
 		
 	}
@@ -32,7 +32,7 @@ public class PlaySound {
 	* @param asm AssetManager
 	* @throws IOException
 	*/
-	public final void play(String filename,AssetManager asm) throws IOException{
+	public static final void play(String filename,AssetManager asm) throws IOException{
 		if (!flag) {
 			flag = true;
 			AssetFileDescriptor afd = asm.openFd(filename);
