@@ -40,6 +40,20 @@ public class SoundRecordUtil {
 		db.close();
 		return giftTypeList;
 	}
+	/**
+	 * 根据类型获取录音列表
+	 * @param context
+	 * @param type
+	 * @return
+	 */
+	public static List<SoundRecord> getSoundRecordList(Context context,int type){
+		List<SoundRecord> soundRecords = null;
+		SQLiteDatabase db = new DbOpenHelper(context).getReadableDatabase();
+		Cursor query = db.query(DBConfig.TABLE_SOUND_RECORD,null,"type=?",new String[]{String.valueOf(type)},null, null, null);
+		soundRecords = DaoUtils.cursor2ObjectList(query, SoundRecord.class);
+		db.close();
+		return soundRecords;
+	}
 	
 	/**
 	 * 获取某一时间的录音
@@ -47,13 +61,13 @@ public class SoundRecordUtil {
 	 * @return
 	 */
 	public static SoundRecord getSoundRecord(Context context,int whichHour){
-		List<SoundRecord> giftTypeList = null;
+		List<SoundRecord> soundRecords = null;
 		SQLiteDatabase db = new DbOpenHelper(context).getReadableDatabase();
 		Cursor query = db.query(DBConfig.TABLE_SOUND_RECORD,null,"whichHour=?",new String[]{String.valueOf(whichHour)},null, null, null);
-		giftTypeList = DaoUtils.cursor2ObjectList(query, SoundRecord.class);
+		soundRecords = DaoUtils.cursor2ObjectList(query, SoundRecord.class);
 		db.close();
-		if (giftTypeList!=null&&!giftTypeList.isEmpty()) {
-			return giftTypeList.get(0);
+		if (soundRecords!=null&&!soundRecords.isEmpty()) {
+			return soundRecords.get(0);
 		}
 		return null;
 	}

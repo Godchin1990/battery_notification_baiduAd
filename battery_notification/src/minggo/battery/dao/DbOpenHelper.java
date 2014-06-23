@@ -1,6 +1,7 @@
 package minggo.battery.dao;
 
 import minggo.battery.model.SoundRecord;
+import minggo.battery.model.User;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -20,6 +21,7 @@ public class DbOpenHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		//创建录音表
 		db.execSQL(SQLHelper.getCreateTable(DBConfig.TABLE_SOUND_RECORD,SoundRecord.class));
+		db.execSQL(SQLHelper.getCreateTable(DBConfig.TABLE_USER,User.class));
 		
 	}
 

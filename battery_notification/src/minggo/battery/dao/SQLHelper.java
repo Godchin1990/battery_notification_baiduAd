@@ -19,7 +19,7 @@ public class SQLHelper {
 	 * @param clazz 要保存的实体
 	 * @return
 	 */
-	public static final String getCreateTable(String tableName,Class clazz){
+	public static final String getCreateTable(String tableName,Class<?> clazz){
 		StringBuilder sb = new StringBuilder();
 		sb.append("CREATE TABLE IF NOT EXISTS ");
 		sb.append(tableName);
