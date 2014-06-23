@@ -3,8 +3,6 @@ package minggo.battery.activity;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.baidu.mobstat.StatService;
-
 import minggo.battery.R;
 import minggo.battery.adapter.BatteryPagerAdpater;
 import minggo.battery.fragment.FragmentFeelingSetting;
@@ -12,11 +10,14 @@ import minggo.battery.fragment.FragmentGame;
 import minggo.battery.fragment.FragmentTimeSetting;
 import minggo.battery.service.BatteryService;
 import minggo.battery.util.ImageUtils;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -29,6 +30,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+
+import com.baidu.mobstat.StatService;
 
 /**
  * 首页
@@ -58,12 +61,20 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 	private View menuView;
 	private View loginView;
 	private View settingView;
+	
+	private boolean isFirst;// 判断是不是第一次打开运用
+	private SharedPreferences preferences;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_index);
 		this.startService(new Intent(this, BatteryService.class));
+		
+		preferences = getSharedPreferences("first", Context.MODE_PRIVATE);
+		isFirst = preferences.getBoolean("isfrist", true);
+		makeShortCut(isFirst);
+		
 		initView();
 	}
 
@@ -228,5 +239,28 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 			break;
 		}
 	}
+	/**
+	 * 设置快捷键
+	 * 
+	 * @param isFirst
+	 */
+	private void makeShortCut(boolean isFirst) {
 
+		if (isFirst) {
+			Intent shortcutIntent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
+			shortcutIntent.putExtra("duplicate", false);
+			shortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, getString(R.string.app_name));
+			Parcelable icon = Intent.ShortcutIconResource.fromContext(getApplicationContext(), R.drawable.logo);
+			shortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, icon);
+			Intent intent = new Intent(getApplicationContext(), IndexActivity.class);
+			intent.setAction("android.intent.action.MAIN");
+			intent.addCategory("android.intent.category.LAUNCHER");
+			shortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, intent);
+			sendBroadcast(shortcutIntent);
+			// 设置不是第一次进入标尺
+			SharedPreferences.Editor editor = preferences.edit();
+			editor.putBoolean("isfrist", false);
+			editor.commit();
+		}
+	}
 }

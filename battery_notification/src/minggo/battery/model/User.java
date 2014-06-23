@@ -9,8 +9,8 @@ import minggo.battery.annotation.Primarykey;
  */
 public class User {
 	
-	@Primarykey
 	public String email;
+	@Primarykey
 	public String name;
 	public String telephone;
 	public String password;

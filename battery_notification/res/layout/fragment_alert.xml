@@ -6,7 +6,7 @@
     <RelativeLayout
         android:id="@+id/lo_drop_time_list"
         android:layout_width="80dp"
-        android:layout_height="28dp"
+        android:layout_height="32dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="20dp"
@@ -26,8 +26,8 @@
 
         <ImageView
             android:id="@+id/iv_list_time"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="28dp"
+            android:layout_height="29dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:src="@drawable/arrow_down" />
@@ -36,7 +36,7 @@
     <ImageButton
         android:id="@+id/imageButton1"
         android:layout_width="120dp"
-        android:layout_height="28dp"
+        android:layout_height="32dp"
         android:layout_alignTop="@+id/lo_drop_time_list"
         android:layout_marginLeft="15dp"
         android:layout_toRightOf="@+id/lo_drop_time_list"
