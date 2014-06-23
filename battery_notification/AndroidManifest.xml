@@ -97,7 +97,7 @@
             </intent-filter>
         </receiver>
 
-        <service android:name="minggo.battery.BatteryService" />
+        <service android:name="minggo.battery.service.BatteryService" />
         
     </application>
 

@@ -1,7 +1,8 @@
-package minggo.battery;
+package minggo.battery.service;
 
 import java.io.IOException;
 
+import minggo.battery.R;
 import minggo.battery.activity.MainActivity;
 import minggo.battery.reciever.TimeChangeReciever;
 import minggo.battery.util.MinggoDate;

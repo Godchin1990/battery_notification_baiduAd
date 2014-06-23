@@ -2,8 +2,8 @@ package minggo.battery.activity;
 
 import com.baidu.mobstat.StatService;
 
-import minggo.battery.BatteryService;
 import minggo.battery.R;
+import minggo.battery.service.BatteryService;
 import minggo.battery.util.MinggoDate;
 import minggo.battery.util.PreferenceShareUtil;
 import android.app.Activity;

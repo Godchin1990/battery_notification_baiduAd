@@ -2,7 +2,7 @@ package minggo.battery.reciever;
 
 import java.io.IOException;
 
-import minggo.battery.BatteryService;
+import minggo.battery.service.BatteryService;
 import minggo.battery.util.MinggoDate;
 import minggo.battery.util.PlaySound;
 import minggo.battery.util.PreferenceShareUtil;

@@ -1,6 +1,6 @@
 package minggo.battery.reciever;
 
-import minggo.battery.BatteryService;
+import minggo.battery.service.BatteryService;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;

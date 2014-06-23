@@ -5,12 +5,12 @@ import java.util.List;
 
 import com.baidu.mobstat.StatService;
 
-import minggo.battery.BatteryService;
 import minggo.battery.R;
 import minggo.battery.adapter.BatteryPagerAdpater;
 import minggo.battery.fragment.FragmentFeelingSetting;
 import minggo.battery.fragment.FragmentGame;
 import minggo.battery.fragment.FragmentTimeSetting;
+import minggo.battery.service.BatteryService;
 import minggo.battery.util.ImageUtils;
 import android.content.Intent;
 import android.graphics.Bitmap;

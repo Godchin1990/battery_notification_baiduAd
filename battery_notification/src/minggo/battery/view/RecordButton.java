@@ -117,7 +117,7 @@ public class RecordButton extends Button{
 
 	private void finishRecord() {
 		stopRecording();
-		recordIndicator.dismiss();
+		
 		System.out.println(System.currentTimeMillis()+"==ddddddd==="+startTime+"ffff"+mFileName);
 		long intervalTime = System.currentTimeMillis() - startTime;
 		if (intervalTime < MIN_INTERVAL_TIME) {
@@ -125,9 +125,19 @@ public class RecordButton extends Button{
 			File f = new File(mFileName);
 			f.delete();
 		}else{
+			view.setImageResource(R.drawable.success_icon);
 			if (onEventListener != null)
 				onEventListener.onFinishedRecord(mFileName,(int)intervalTime/1000);
 		}
+		
+		view.postDelayed(new Runnable() {
+			
+			@Override
+			public void run() {
+				recordIndicator.dismiss();
+			}
+		}, 300);
+		
 		
 	}
 
@@ -217,17 +227,17 @@ public class RecordButton extends Button{
 						volumeHandler.sendEmptyMessage(5);
 					else if (f < 40)
 						volumeHandler.sendEmptyMessage(6);
-					else if (f < 45)
+					else if (f < 42)
 						volumeHandler.sendEmptyMessage(7);
-					else if (f < 50)
+					else if (f < 44)
 						volumeHandler.sendEmptyMessage(8);
-					else if (f < 53)
+					else if (f < 46)
 						volumeHandler.sendEmptyMessage(9);
-					else if (f < 56)
+					else if (f < 48)
 						volumeHandler.sendEmptyMessage(10);
-					else if (f < 59)
+					else if (f < 50)
 						volumeHandler.sendEmptyMessage(11);
-					else if (f < 60)
+					else if (f < 55)
 						volumeHandler.sendEmptyMessage(12);
 					else
 						volumeHandler.sendEmptyMessage(12);
