@@ -15,6 +15,7 @@ public class PlaySound {
 	private static MediaPlayer player;
 	private static PlaySound playSound;
 	private static boolean flag;
+	
 	private PlaySound(){
 		
 	}
@@ -49,5 +50,76 @@ public class PlaySound {
 			});
 		}
 		
+	}
+	
+	/**
+	 * 根据录音的路径播放
+	 * @param soundpath
+	 * @throws IOException
+	 */
+	public static void playVoice(String soundpath,final AssetManager asm,FinishListen finishListen) throws IOException{
+		
+		final FinishListen finishListenT = finishListen;
+		
+		player = new MediaPlayer();
+		//uri.fromFile(file);
+		//player.setDataSource(soundpath);
+		AssetFileDescriptor afd = asm.openFd(soundpath);
+		player.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(),afd.getLength());
+		player.prepare();
+		player.start();
+		player.setOnCompletionListener(new OnCompletionListener() {
+			@Override
+			public void onCompletion(MediaPlayer mp) {
+				mp.release();
+				MediaPlayer player = new MediaPlayer();
+				
+				AssetFileDescriptor afd = null;
+				try {
+					afd = asm.openFd("sound/qrcode_completed.mp3");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				try {
+					player.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(),afd.getLength());
+				} catch (IllegalArgumentException e) {
+					e.printStackTrace();
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				try {
+					player.prepare();
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				player.start();
+				
+				player.setOnCompletionListener(new OnCompletionListener() {
+					
+					@Override
+					public void onCompletion(MediaPlayer mp) {
+						
+						if (finishListenT!=null) {
+							finishListenT.onFinish();
+						}
+					}
+				});
+			}
+		});
+	}
+	
+	public static void stopVoice(){
+		if (player!=null) {
+			//player.stop();
+			player.release();
+		}
+	}
+	
+	public interface FinishListen{
+		public void onFinish();
 	}
 }

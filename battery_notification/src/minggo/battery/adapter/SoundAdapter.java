@@ -2,13 +2,12 @@ package minggo.battery.adapter;
 
 import java.util.List;
 
-import com.baidu.mobstat.c;
-
 import minggo.battery.R;
 import minggo.battery.model.SoundRecord;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
@@ -22,11 +21,12 @@ public class SoundAdapter extends BaseAdapter {
 
 	private Context context;
 	private List<SoundRecord> list;
+	private TryListener tryListener;
 	
-	
-	public SoundAdapter(Context context,List<SoundRecord> list){
+	public SoundAdapter(Context context,List<SoundRecord> list,TryListener tryListener){
 		this.context = context;
 		this.list = list;
+		this.tryListener = tryListener;
 	}
 	
 	@Override
@@ -44,9 +44,11 @@ public class SoundAdapter extends BaseAdapter {
 		// TODO Auto-generated method stub
 		return position;
 	}
-
+	
+	private int clickIndex = -1;
+	
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		ViewHolder viewHolder = null;
 		if (convertView==null) {
 			viewHolder = new ViewHolder();
@@ -59,6 +61,15 @@ public class SoundAdapter extends BaseAdapter {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		viewHolder.timeTv.setText(list.get(position).whichHour+":00");
+		
+		viewHolder.tryListenIb.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(final View v) {
+				tryListener.onTryClick(v,position);
+				clickIndex = position;
+			}
+		});
+		
 		return convertView;
 	}
 	
@@ -67,4 +78,7 @@ public class SoundAdapter extends BaseAdapter {
 		ImageButton tryListenIb;
 	}
 	
+	public interface TryListener{
+		public void onTryClick(View v,int position);
+	}
 }

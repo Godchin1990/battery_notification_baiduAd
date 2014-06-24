@@ -34,7 +34,7 @@
     </RelativeLayout>
 
     <ImageButton
-        android:id="@+id/imageButton1"
+        android:id="@+id/ib_try_top"
         android:layout_width="120dp"
         android:layout_height="32dp"
         android:layout_alignTop="@+id/lo_drop_time_list"
@@ -48,15 +48,15 @@
         android:src="@drawable/chatfrom_voice_playing_f3" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tv_user_try"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageButton1"
-        android:layout_alignRight="@+id/imageButton1"
-        android:layout_alignTop="@+id/imageButton1"
+        android:layout_alignBottom="@+id/ib_try_top"
+        android:layout_alignRight="@+id/ib_try_top"
+        android:layout_alignTop="@+id/ib_try_top"
         android:layout_marginRight="22dp"
         android:gravity="center"
-        android:text="试听"
+        android:text="录音试听"
         android:textColor="@color/index_navi_bt_normal"
         android:textSize="14dp" />
 

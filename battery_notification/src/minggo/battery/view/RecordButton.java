@@ -25,6 +25,7 @@ import android.widget.Toast;
  * @date 2014-6-23 下午1:21:42
  */
 public class RecordButton extends Button{
+	private boolean isEnable;
 	public RecordButton(Context context) {
 		super(context);
 		init();
@@ -40,8 +41,9 @@ public class RecordButton extends Button{
 		init();
 	}
 
-	public void setOnEventListener(OnEventListener onEventListener) {
+	public void setOnEventListener(OnEventListener onEventListener,boolean isEnable) {
 		this.onEventListener = onEventListener;
+		this.isEnable = isEnable;
 	}
 
 	private String mFileName = null;
@@ -71,27 +73,27 @@ public class RecordButton extends Button{
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		
-		int action = event.getAction();
-		switch (action) {
-		case MotionEvent.ACTION_DOWN:
-			//setBackgroundResource(R.drawable.voice_rcd_btn_pressed);
-			setText("松手 保存");
-			initDialogAndStartRecord();
-			break;
-		case MotionEvent.ACTION_UP:
-			finishRecord();
-			setText("按住 说话");
-			//setBackgroundResource(R.drawable.voice_rcd_btn_nor);
-			break;
-		case MotionEvent.ACTION_CANCEL:// 当手指移动到view外面，会cancel
-			cancelRecord();
-			setText("按住 说话");
-			//setBackgroundResource(R.drawable.voice_rcd_btn_nor);
-			Toast.makeText(getContext(), "已放弃录音", 2000).show();
-			break;
+		if (isEnable) {
+			int action = event.getAction();
+			switch (action) {
+			case MotionEvent.ACTION_DOWN:
+				//setBackgroundResource(R.drawable.voice_rcd_btn_pressed);
+				setText("松手 保存");
+				initDialogAndStartRecord();
+				break;
+			case MotionEvent.ACTION_UP:
+				finishRecord();
+				setText("按住 说话");
+				//setBackgroundResource(R.drawable.voice_rcd_btn_nor);
+				break;
+			case MotionEvent.ACTION_CANCEL:// 当手指移动到view外面，会cancel
+				cancelRecord();
+				setText("按住 说话");
+				//setBackgroundResource(R.drawable.voice_rcd_btn_nor);
+				Toast.makeText(getContext(), "已放弃录音", 2000).show();
+				break;
+			}
 		}
-
 		return true;
 	}
 	
