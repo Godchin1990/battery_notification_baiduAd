@@ -43,7 +43,7 @@ public class SoundRecordUtil {
 	/**
 	 * 根据类型获取录音列表
 	 * @param context
-	 * @param type
+	 * @param type 1：系统,2:用户
 	 * @return
 	 */
 	public static List<SoundRecord> getSoundRecordList(Context context,int type){

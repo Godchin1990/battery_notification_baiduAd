@@ -30,7 +30,7 @@
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@+id/tv_user_and_time"
             android:background="@drawable/selector_bt_sound_listen"
-            android:paddingLeft="10dp"
+            android:paddingLeft="5dp"
             android:scaleType="fitStart"
             android:src="@drawable/chatfrom_voice_playing_f3" />
 
