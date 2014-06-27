@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:text="6:00"
+            android:layout_marginLeft="5dp"
+            android:text="06:00"
             android:textColor="@color/index_navi_bt_normal"
             android:textSize="14dp" />
 
@@ -125,14 +125,15 @@
     <ListView
         android:id="@+id/lv_time_option"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/relativeLayout2"
+        android:layout_height="200dp"
         android:layout_alignLeft="@+id/relativeLayout2"
         android:layout_alignRight="@+id/lo_drop_time_list"
         android:layout_below="@+id/lo_drop_time_list"
         android:divider="@drawable/divider_horizontal_timeline"
-        android:dividerHeight="1px"
-        android:visibility="gone"
+        android:dividerHeight="1dp"
+        android:background="@drawable/shape_try_listen_bg"
+        android:padding="1px"
+        android:visibility="visible"
         android:fadingEdge="none" />
 
     <minggo.battery.view.RecordButton

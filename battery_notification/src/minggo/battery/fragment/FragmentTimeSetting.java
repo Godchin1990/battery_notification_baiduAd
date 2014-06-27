@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import minggo.battery.R;
+import minggo.battery.adapter.HourAdapter;
 import minggo.battery.adapter.SoundAdapter;
 import minggo.battery.adapter.SoundAdapter.TryListener;
 import minggo.battery.model.SoundRecord;
@@ -29,6 +30,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -40,7 +43,7 @@ import android.widget.TextView;
  * @author minggo
  * @time 2014-6-16 S下午9:18:35
  */
-public class FragmentTimeSetting extends Fragment implements TryListener, OnClickListener {
+public class FragmentTimeSetting extends Fragment implements TryListener, OnClickListener,OnItemClickListener {
 
 	private Activity activity;
 	private View timeSettinView;
@@ -56,6 +59,12 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 	private ImageView switchIv;
 	private User user;
 	private TextView listTipsTv;
+	private String[] hours;
+	private ListView hoursLv;
+	private HourAdapter hourAdapter;
+	private ImageView arrowDownIv;
+	private String currHour;
+	private TextView currHourTv;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -68,7 +77,7 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 		this.activity = activity;
 		assetManager = activity.getResources().getAssets();
 		soundRecordList = new ArrayList<SoundRecord>();
-
+		hours = activity.getResources().getStringArray(R.array.hour);
 	}
 
 	@Override
@@ -78,11 +87,15 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 		recordButton = (RecordButton) timeSettinView.findViewById(R.id.bt_record_sound);
 		tryButton = (ImageButton) timeSettinView.findViewById(R.id.ib_try_top);
 		soundLv = (ListView) timeSettinView.findViewById(R.id.lv_alert_sounds);
+		hoursLv = (ListView) timeSettinView.findViewById(R.id.lv_time_option);
 		userTryTv = (TextView) timeSettinView.findViewById(R.id.tv_user_try);
 		switchIv = (ImageView) timeSettinView.findViewById(R.id.iv_switch);
 		listTipsTv = (TextView) timeSettinView.findViewById(R.id.tv_list_tips);
+		currHourTv = (TextView) timeSettinView.findViewById(R.id.tv_alert_time);
+		arrowDownIv = (ImageView) timeSettinView.findViewById(R.id.iv_list_time);
 
 		tryButton.setOnClickListener(this);
+		arrowDownIv.setOnClickListener(this);
 		switchIv.setOnClickListener(this);
 
 		return timeSettinView;
@@ -108,6 +121,9 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 		case R.id.ib_try_top:
 
 			break;
+		case R.id.iv_list_time:
+			hoursLv.setVisibility(hoursLv.getVisibility()==View.GONE?View.VISIBLE:View.GONE);
+			break;
 		case R.id.iv_switch:
 			if (user.useDefineSound == 0) {
 				user.useDefineSound = 1;
@@ -129,6 +145,13 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 	 * 获取播放录音列表
 	 */
 	private void getSoundList() {
+		
+		if (hourAdapter==null) {
+			hourAdapter = new HourAdapter(activity, hours);
+			hoursLv.setAdapter(hourAdapter);
+			hoursLv.setOnItemClickListener(this);
+		}
+		
 		if (user == null) {
 			user = UserUtil.getUser(activity, MinggoApplication.EMAIL);
 		}
@@ -278,5 +301,12 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 			}
 		}
 	};
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		currHour = hours[position];
+		currHourTv.setText(currHour);
+		hoursLv.setVisibility(View.GONE);
+	}
 
 }
