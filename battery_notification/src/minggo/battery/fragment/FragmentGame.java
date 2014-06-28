@@ -91,6 +91,7 @@ public class FragmentGame extends Fragment implements OnClickListener {
 		this.inflater = inflater;
 		gameView = inflater.inflate(R.layout.fragment_game, container, false);
 		seZiiv = (ImageView) gameView.findViewById(R.id.game_shack_iv);
+		cancelAdIv = (ImageView) gameView.findViewById(R.id.cancel_ad_iv);
 		shuaiDianziBt = (Button) gameView.findViewById(R.id.bt_sezi_dian);
 		shuaijiawuBt = (Button) gameView.findViewById(R.id.bt_sezi_jiawu);
 		adView = (AdView) gameView.findViewById(R.id.adView);
@@ -99,6 +100,7 @@ public class FragmentGame extends Fragment implements OnClickListener {
 		shuaiDianziBt.setOnClickListener(this);
 		shuaijiawuBt.setOnClickListener(this);
 		seZiiv.setOnClickListener(this);
+		cancelAdIv.setOnClickListener(this);
 		
 		onClick(shuaiDianziBt);
 		
