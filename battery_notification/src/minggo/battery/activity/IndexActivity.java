@@ -9,6 +9,7 @@ import minggo.battery.fragment.FragmentFeelingSetting;
 import minggo.battery.fragment.FragmentGame;
 import minggo.battery.fragment.FragmentTimeSetting;
 import minggo.battery.service.BatteryService;
+import minggo.battery.service.MinggoApplication;
 import minggo.battery.util.ImageUtils;
 import android.content.Context;
 import android.content.Intent;
@@ -76,6 +77,8 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		makeShortCut(isFirst);
 		
 		initView();
+		
+		MinggoApplication.allActivities.add(this);
 	}
 
 	/**

@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.AssetManager;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.RemoteViews;
 /**
  * 电池后台服务
@@ -277,6 +278,7 @@ public class BatteryService extends Service{
 
 	@Override
 	public void onDestroy() {
+		Log.i("minggo.battery", "服务被杀死了");
 		notificationManager.cancelAll();
 		this.unregisterReceiver(broadcastReceiver);
 		this.unregisterReceiver(timeChangeReciever);
@@ -286,6 +288,10 @@ public class BatteryService extends Service{
 		super.onDestroy();
 	}
 
-	
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startId) {
+		Log.i("minggo.battery", "服务开启了");
+		return START_STICKY;
+	}
 	
 }

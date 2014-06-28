@@ -2,12 +2,15 @@ package minggo.battery.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import minggo.battery.model.SoundRecord;
 import minggo.battery.model.User;
 import minggo.battery.util.UserUtil;
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 /**
  * 应用全局
  * @author minggo
@@ -17,12 +20,36 @@ public class MinggoApplication extends Application {
 	
 	public List<SoundRecord> defaultSoundList;
 	public static final String EMAIL = "minggo8en@gmail.com";
+	public static Stack<Activity> allActivities;
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		allActivities = new Stack<Activity>();
 		firstInit();
 		initSoundList();
 	}
+	
+	/**
+	 * 结束所有Activity
+	 */
+	public static void finishAllActivity() {
+		for (int i = 0, size = allActivities.size(); i < size; i++) {
+			if (null != allActivities.get(i)) {
+				allActivities.get(i).finish();
+			}
+		}
+		allActivities.clear();
+	}
+	/**
+	 * 推出应用
+	 */
+	public void stopAPP(){
+		finishAllActivity();
+		this.stopService(new Intent("minggo.battery.alarm.service"));
+		android.os.Process.killProcess(android.os.Process.myPid());
+		System.exit(0);
+	}
+	
 	/**
 	 * 初始化默认孙燕姿播放列表
 	 */

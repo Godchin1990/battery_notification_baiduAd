@@ -4,6 +4,7 @@ import minggo.battery.service.BatteryService;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 /**
  * 开机完成广播接收
  * @author minggo
@@ -13,6 +14,7 @@ public class TurnOnReciever extends BroadcastReceiver {
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
+		Log.i("minggo.battery", "接收到开始服务广播");
 		//开启监听服务
 		context.startService(new Intent(context, BatteryService.class));
 	}

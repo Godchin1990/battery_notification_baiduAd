@@ -4,9 +4,11 @@ import com.baidu.mobstat.StatService;
 
 import minggo.battery.R;
 import minggo.battery.service.BatteryService;
+import minggo.battery.service.MinggoApplication;
 import minggo.battery.util.MinggoDate;
 import minggo.battery.util.PreferenceShareUtil;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,12 +24,14 @@ public class SettingActivity extends Activity implements OnClickListener{
 	private Button feelingBt;
 	private Button timeSoundbt;
 	private Button lowPowerbt;
+	private Button exitbt;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setting);
 		initUI();
+		MinggoApplication.allActivities.add(this);
 	}
 	/**
 	 * 初始化UI
@@ -37,11 +41,13 @@ public class SettingActivity extends Activity implements OnClickListener{
 		timeSoundbt = (Button) findViewById(R.id.zheng_sound_bt);
 		feelingBt = (Button) findViewById(R.id.bt_feeling_setting);
 		lowPowerbt = (Button) findViewById(R.id.low_power_bt);
+		exitbt = (Button) findViewById(R.id.exitapp);
 		
 		lowPowerbt.setOnClickListener(this);
 		backV.setOnClickListener(this);
 		feelingBt.setOnClickListener(this);
 		timeSoundbt.setOnClickListener(this);
+		exitbt.setOnClickListener(this);
 		
 		lowPowerbt.setSelected(!PreferenceShareUtil.getLowPowerFlag(this));
 		timeSoundbt.setSelected(!PreferenceShareUtil.getZhengTimeFlag(this));
@@ -56,6 +62,11 @@ public class SettingActivity extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.exitapp:
+			//统计用户点击退出应用
+			StatService.onEvent(SettingActivity.this, "exit_app", "exit");
+			((MinggoApplication)this.getApplication()).stopAPP();
+			break;
 		case R.id.low_power_bt:
 			boolean flag0 = !lowPowerbt.isSelected();
 			lowPowerbt.setSelected(flag0);
@@ -80,7 +91,6 @@ public class SettingActivity extends Activity implements OnClickListener{
 		case R.id.lo_setting_back:
 			onBackPressed();
 			break;
-
 		default:
 			break;
 		}
