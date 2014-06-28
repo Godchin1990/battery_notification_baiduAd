@@ -17,6 +17,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
@@ -62,7 +63,9 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 	private View menuView;
 	private View loginView;
 	private View settingView;
-	
+	private View shareView;
+	private View feedbackView;
+
 	private boolean isFirst;// 判断是不是第一次打开运用
 	private SharedPreferences preferences;
 
@@ -71,13 +74,13 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_index);
 		this.startService(new Intent(this, BatteryService.class));
-		
+
 		preferences = getSharedPreferences("first", Context.MODE_PRIVATE);
 		isFirst = preferences.getBoolean("isfrist", true);
 		makeShortCut(isFirst);
-		
+
 		initView();
-		
+
 		MinggoApplication.allActivities.add(this);
 	}
 
@@ -95,10 +98,14 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		menuView = findViewById(R.id.lo_menu);
 		loginView = findViewById(R.id.lo_menu_1);
 		settingView = findViewById(R.id.lo_menu_2);
+		shareView = findViewById(R.id.lo_menu_3);
+		feedbackView = findViewById(R.id.lo_menu_4);
 		menuBt = (ImageButton) findViewById(R.id.bt_index_menu);
 
+		feedbackView.setOnClickListener(this);
 		loginView.setOnClickListener(this);
 		settingView.setOnClickListener(this);
+		shareView.setOnClickListener(this);
 		alertBt.setOnClickListener(this);
 		seziBt.setOnClickListener(this);
 		feelingBt.setOnClickListener(this);
@@ -116,12 +123,10 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		viewPager.setCurrentItem(currIndex);
 		viewPager.setOnPageChangeListener(new MyOnPageChangeListener());
 		viewPager.setOffscreenPageLimit(2);
-		
+
 		StatService.onPageStart(this, getFragment(currIndex));
 	}
 
-	
-	
 	public class MyOnPageChangeListener implements OnPageChangeListener {
 		public void onPageScrollStateChanged(int position) {
 		}
@@ -144,7 +149,7 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 	 * @return
 	 */
 	private String getFragment(int index) {
-		
+
 		String labelId = "";
 		switch (index) {
 		case 0:
@@ -209,6 +214,21 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 
+		case R.id.lo_menu_4:
+			Intent intent4 = new Intent(Intent.ACTION_SENDTO);
+			intent4.setType("text/plain");
+			intent4.setData(Uri.parse("mailto:minggo8en@gmail.com"));
+			intent4.putExtra(Intent.EXTRA_SUBJECT, this.getString(R.string.email_title));
+			intent4.putExtra(Intent.EXTRA_TEXT, this.getString(R.string.email_content));
+			startActivity(Intent.createChooser(intent4, this.getString(R.string.email_select_tips)));
+			break;
+		case R.id.lo_menu_3:
+			Intent intent3 = new Intent(Intent.ACTION_SEND);
+			intent3.setType("text/plain");
+			intent3.putExtra(Intent.EXTRA_SUBJECT, this.getString(R.string.share_title));
+			intent3.putExtra(Intent.EXTRA_TEXT, this.getString(R.string.share_content));
+			startActivity(Intent.createChooser(intent3, this.getString(R.string.share_select_tips)));
+			break;
 		case R.id.bt_index_menu:
 			if (menuView.getVisibility() == View.GONE) {
 				menuView.setVisibility(View.VISIBLE);
@@ -242,6 +262,7 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 			break;
 		}
 	}
+
 	/**
 	 * 设置快捷键
 	 * 

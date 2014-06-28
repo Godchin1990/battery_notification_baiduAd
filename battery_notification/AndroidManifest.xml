@@ -70,19 +70,6 @@
             android:name="com.baidu.mobads.AppActivity"
             android:configChanges="keyboard|keyboardHidden|orientation" />
 
-        <!--
-        <activity
-            android:name="minggo.battery.activity.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.NoTitleBar"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        -->
         <activity
             android:name="minggo.battery.activity.IndexActivity"
             android:label="@string/app_name"
@@ -101,7 +88,7 @@
 
         <receiver
             android:name="minggo.battery.reciever.TurnOnReciever"
-           	android:permission="android.permission.BIND_DEVICE_ADMIN" >
+            android:permission="android.permission.BIND_DEVICE_ADMIN" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.SCREEN_ON" />
@@ -111,9 +98,9 @@
 
         <service
             android:name="minggo.battery.service.BatteryService"
-            android:process="minggo.battery.alarm">
-            <intent-filter android:priority="1000">
-                <action android:name="minggo.battery.alarm.service"/>
+            android:process="minggo.battery.alarm" >
+            <intent-filter android:priority="1000" >
+                <action android:name="minggo.battery.alarm.service" />
             </intent-filter>
         </service>
     </application>

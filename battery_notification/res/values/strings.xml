@@ -29,6 +29,12 @@
     <string name="record_sound">录音</string>
     <string name="alert_list_tips_sys">孙燕姿报时提醒</string>
     <string name="alert_list_tips_user">自定义报时提醒</string>
+    <string name="email_title">电量显示和整点报时意见反馈</string>
+    <string name="share_title">我正在使用电量显示和整点报时</string>
+    <string name="email_content">建议与意见：</string>
+    <string name="share_content">我正在使用minggo的电量显示和整点报时，觉得很不错。明星为您报时，每天每时都有心情：http://shouji.360tpcdn.com/140603/b7bc0490b262ac9fee04e025897ef6c2/minggo.battery_3.apk\n</string>
+    <string name="email_select_tips">请选择邮件软件发送</string>
+    <string name="share_select_tips">请选择可分享软件</string>
     <string-array name="hour">
 　　        <item>00:00</item>
 　　        <item>01:00</item>
