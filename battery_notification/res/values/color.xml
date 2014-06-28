@@ -3,6 +3,7 @@
 
     <color name="all_bg">#ffffff</color>
     <color name="head_bg">#303537</color>
+   <!--  <color name="head_bg">#37AF0C</color> -->
     <color name="head_tv_bg">#CFCFCF</color>
     <color name="head_navi_bg">#F7F7F7</color>
     <color name="transparent">#00000000</color>

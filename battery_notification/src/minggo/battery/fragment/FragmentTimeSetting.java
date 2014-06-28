@@ -50,12 +50,10 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 	private LayoutInflater inflater;
 	public static AssetManager assetManager;
 	private RecordButton recordButton;
-	private ImageButton tryButton;
 
 	private List<SoundRecord> soundRecordList;
 	private ListView soundLv;
 	private SoundAdapter soundAdapter;
-	private TextView userTryTv;
 	private ImageView switchIv;
 	private User user;
 	private TextView listTipsTv;
@@ -63,7 +61,7 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 	private ListView hoursLv;
 	private HourAdapter hourAdapter;
 	private ImageView arrowDownIv;
-	private String currHour;
+	private String currHour = "00:00";
 	private TextView currHourTv;
 	
 	@Override
@@ -85,20 +83,23 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 		this.inflater = inflater;
 		timeSettinView = inflater.inflate(R.layout.fragment_alert, container, false);
 		recordButton = (RecordButton) timeSettinView.findViewById(R.id.bt_record_sound);
-		tryButton = (ImageButton) timeSettinView.findViewById(R.id.ib_try_top);
 		soundLv = (ListView) timeSettinView.findViewById(R.id.lv_alert_sounds);
 		hoursLv = (ListView) timeSettinView.findViewById(R.id.lv_time_option);
-		userTryTv = (TextView) timeSettinView.findViewById(R.id.tv_user_try);
 		switchIv = (ImageView) timeSettinView.findViewById(R.id.iv_switch);
 		listTipsTv = (TextView) timeSettinView.findViewById(R.id.tv_list_tips);
 		currHourTv = (TextView) timeSettinView.findViewById(R.id.tv_alert_time);
 		arrowDownIv = (ImageView) timeSettinView.findViewById(R.id.iv_list_time);
 
-		tryButton.setOnClickListener(this);
 		arrowDownIv.setOnClickListener(this);
 		switchIv.setOnClickListener(this);
 
 		return timeSettinView;
+	}
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		getSoundList();
+		refreshSoundListUI();
 	}
 
 	@Override
@@ -162,10 +163,8 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 			
 			listTipsTv.setText(R.string.alert_list_tips_sys);
 			recordButton.setEnabled(false);
-			tryButton.setEnabled(false);
 			switchIv.setImageResource(R.drawable.switch_off);
 			recordButton.setOnEventListener(new VoiceListener(), false);
-			userTryTv.setTextColor(activity.getResources().getColor(R.color.white));
 		} else {
 			soundRecordList.clear();
 			List<SoundRecord> list = SoundRecordUtil.getSoundRecordList(activity, 2);
@@ -174,10 +173,8 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 			}
 			listTipsTv.setText(R.string.alert_list_tips_user);
 			recordButton.setEnabled(true);
-			tryButton.setEnabled(true);
 			switchIv.setImageResource(R.drawable.switch_on);
 			recordButton.setOnEventListener(new VoiceListener(), true);
-			userTryTv.setTextColor(activity.getResources().getColor(R.color.index_navi_bt_normal));
 		}
 	}
 
@@ -204,7 +201,19 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 		@Override
 		public void onFinishedRecord(String audioPath, int time) {
 			try {
+				
+				Log.i("record", audioPath+",time-->"+time);
+				SoundRecord soundRecord = new SoundRecord();
+				soundRecord.longTime = String.valueOf(time)+"''";
+				soundRecord.path = audioPath;
+				soundRecord.type =2;
+				soundRecord.whichHour = Integer.parseInt(currHour.substring(0, 2));
+				
+				SoundRecordUtil.saveSubscriptionGiftType(activity, soundRecord);
+				
 				PlaySound.play("sound/qrcode_completed.mp3", assetManager);
+				getSoundList();
+				refreshSoundListUI();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -214,12 +223,7 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 
 		@Override
 		public void onStartRecord() {
-			try {
-				VibratorUtil.Vibrate(activity, (long) 100);
-				PlaySound.play("sound/qrcode_completed.mp3", assetManager);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			VibratorUtil.Vibrate(activity, (long) 100);
 		}
 
 	}
@@ -262,7 +266,7 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 							public void onFinish() {
 								isRepeat0 = false;
 							}
-						});
+						},soundRecordList.get(position).type);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

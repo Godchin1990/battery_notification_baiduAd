@@ -54,14 +54,25 @@ public class SoundAdapter extends BaseAdapter {
 			viewHolder = new ViewHolder();
 			convertView = LayoutInflater.from(context).inflate(R.layout.item_sound_list, null);
 			viewHolder.timeTv = (TextView) convertView.findViewById(R.id.tv_user_and_time);
+			viewHolder.secondTv = (TextView) convertView.findViewById(R.id.tv_second);
 			viewHolder.tryListenIb = (ImageButton) convertView.findViewById(R.id.ib_try_listen);
 			
 			convertView.setTag(viewHolder);
 		}else{
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		viewHolder.timeTv.setText(list.get(position).whichHour+":00");
 		
+		if (list.get(position).whichHour<10) {
+			viewHolder.timeTv.setText("0"+list.get(position).whichHour+":00");
+		}else{
+			viewHolder.timeTv.setText(list.get(position).whichHour+":00");
+		}
+		if (list.get(position).type==2) {
+			viewHolder.secondTv.setVisibility(View.VISIBLE);
+			viewHolder.secondTv.setText(list.get(position).longTime);
+		}else{
+			viewHolder.secondTv.setVisibility(View.GONE);
+		}
 		viewHolder.tryListenIb.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(final View v) {
@@ -76,6 +87,7 @@ public class SoundAdapter extends BaseAdapter {
 	private class ViewHolder{
 		TextView timeTv;
 		ImageButton tryListenIb;
+		TextView secondTv;
 	}
 	
 	public interface TryListener{

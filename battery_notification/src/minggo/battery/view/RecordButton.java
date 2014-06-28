@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import minggo.battery.R;
 import minggo.battery.util.ClippingSounds;
+import minggo.battery.util.PlaySound;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,29 +20,36 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
 /**
  * 录音按钮
+ * 
  * @author minggo
  * @date 2014-6-23 下午1:21:42
  */
-public class RecordButton extends Button{
+public class RecordButton extends Button {
 	private boolean isEnable;
+	private Context context;
+
 	public RecordButton(Context context) {
 		super(context);
+		this.context = context;
 		init();
 	}
 
 	public RecordButton(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
+		this.context = context;
 		init();
 	}
 
 	public RecordButton(Context context, AttributeSet attrs) {
 		super(context, attrs);
+		this.context = context;
 		init();
 	}
 
-	public void setOnEventListener(OnEventListener onEventListener,boolean isEnable) {
+	public void setOnEventListener(OnEventListener onEventListener, boolean isEnable) {
 		this.onEventListener = onEventListener;
 		this.isEnable = isEnable;
 	}
@@ -52,11 +60,9 @@ public class RecordButton extends Button{
 	private long startTime;
 	private Dialog recordIndicator;
 
-	private static int[] res = { R.drawable.voice_0, R.drawable.voice_1,
-			R.drawable.voice_2, R.drawable.voice_3,R.drawable.voice_4 ,
-			R.drawable.voice_5,R.drawable.voice_6,R.drawable.voice_7,R.drawable.voice_8,R.drawable.voice_9,
-			R.drawable.voice_10,R.drawable.voice_11,R.drawable.voice_12
-			};
+	private static int[] res = { R.drawable.voice_0, R.drawable.voice_1, R.drawable.voice_2, R.drawable.voice_3,
+			R.drawable.voice_4, R.drawable.voice_5, R.drawable.voice_6, R.drawable.voice_7, R.drawable.voice_8,
+			R.drawable.voice_9, R.drawable.voice_10, R.drawable.voice_11, R.drawable.voice_12 };
 
 	private static ImageView view;
 
@@ -65,38 +71,36 @@ public class RecordButton extends Button{
 	private ObtainDecibelThread thread;
 
 	private Handler volumeHandler;
-	
-	
+
 	private void init() {
 		volumeHandler = new ShowVolumeHandler();
 	}
-	
+
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		if (isEnable) {
 			int action = event.getAction();
 			switch (action) {
 			case MotionEvent.ACTION_DOWN:
-				//setBackgroundResource(R.drawable.voice_rcd_btn_pressed);
+				// setBackgroundResource(R.drawable.voice_rcd_btn_pressed);
 				setText("松手 保存");
 				initDialogAndStartRecord();
 				break;
 			case MotionEvent.ACTION_UP:
 				finishRecord();
 				setText("按住 说话");
-				//setBackgroundResource(R.drawable.voice_rcd_btn_nor);
+				// setBackgroundResource(R.drawable.voice_rcd_btn_nor);
 				break;
 			case MotionEvent.ACTION_CANCEL:// 当手指移动到view外面，会cancel
 				cancelRecord();
 				setText("按住 说话");
-				//setBackgroundResource(R.drawable.voice_rcd_btn_nor);
+				// setBackgroundResource(R.drawable.voice_rcd_btn_nor);
 				Toast.makeText(getContext(), "已放弃录音", 2000).show();
 				break;
 			}
 		}
 		return true;
 	}
-	
 
 	private void initDialogAndStartRecord() {
 		startTime = System.currentTimeMillis();
@@ -108,39 +112,51 @@ public class RecordButton extends Button{
 		recordIndicator.setContentView(layout);
 		recordIndicator.setOnDismissListener(onDismiss);
 		recordIndicator.show();
-		
+
 		try {
-			startRecording();
+			PlaySound.play("sound/qrcode_completed.mp3", context.getAssets());
+			view.postDelayed(new Runnable() {
+
+				@Override
+				public void run() {
+					try {
+						startRecording();
+						removeCallbacks(this);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}, 500);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-			
+
 	}
 
 	private void finishRecord() {
 		stopRecording();
-		
-		System.out.println(System.currentTimeMillis()+"==ddddddd==="+startTime+"ffff"+mFileName);
+
+		System.out.println(System.currentTimeMillis() + "==ddddddd===" + startTime + "ffff" + mFileName);
 		long intervalTime = System.currentTimeMillis() - startTime;
 		if (intervalTime < MIN_INTERVAL_TIME) {
 			Toast.makeText(getContext(), "时间太短！", Toast.LENGTH_SHORT).show();
 			File f = new File(mFileName);
 			f.delete();
-		}else{
+		} else {
 			view.setImageResource(R.drawable.success_icon);
 			if (onEventListener != null)
-				onEventListener.onFinishedRecord(mFileName,(int)intervalTime/1000);
+				onEventListener.onFinishedRecord(mFileName, (int) intervalTime / 1000);
 		}
-		
+
 		view.postDelayed(new Runnable() {
-			
+
 			@Override
 			public void run() {
 				recordIndicator.dismiss();
 			}
 		}, 300);
-		
-		
+
 	}
 
 	private void cancelRecord() {
@@ -151,11 +167,12 @@ public class RecordButton extends Button{
 		file.delete();
 	}
 
-	private void startRecording()throws Exception{
+	private void startRecording() throws Exception {
 		mFileName = ClippingSounds.saveSounds();
-		System.out.println("开始的时候-----》"+mFileName);
+		System.out.println("开始的时候-----》" + mFileName);
+
 		recorder = new MediaRecorder();
-		if(onEventListener!=null){
+		if (onEventListener != null) {
 			onEventListener.onStartRecord();
 		}
 		try {
@@ -163,11 +180,11 @@ public class RecordButton extends Button{
 			recorder.setOutputFormat(MediaRecorder.OutputFormat.RAW_AMR);
 			recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 			recorder.setOutputFile(mFileName);
-			recorder.setMaxDuration(180*1000);
+			recorder.setMaxDuration(180 * 1000);
 			recorder.prepare();
-			//startRecordListener.onStartRecord();
+			// startRecordListener.onStartRecord();
 			recorder.start();
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -181,14 +198,14 @@ public class RecordButton extends Button{
 			thread = null;
 		}
 		if (recorder != null) {
-			try{
+			try {
 				recorder.stop();
 				recorder.release();
 				recorder = null;
-			}catch (Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 		}
 	}
 
@@ -213,11 +230,11 @@ public class RecordButton extends Button{
 				}
 				int x = recorder.getMaxAmplitude();
 				if (x != 0) {
-					System.out.println("有没有声音--->"+x);
+					System.out.println("有没有声音--->" + x);
 					int f = (int) (10 * Math.log(x) / Math.log(10));
-					if (f==0) {
+					if (f == 0) {
 						volumeHandler.sendEmptyMessage(0);
-					}else if (f < 10)
+					} else if (f < 10)
 						volumeHandler.sendEmptyMessage(1);
 					else if (f < 20)
 						volumeHandler.sendEmptyMessage(2);
@@ -266,8 +283,9 @@ public class RecordButton extends Button{
 	}
 
 	public interface OnEventListener {
-		public void onFinishedRecord(String audioPath,int time);
+		public void onFinishedRecord(String audioPath, int time);
+
 		public void onStartRecord();
 	}
-	
+
 }

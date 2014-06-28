@@ -55,17 +55,23 @@ public class PlaySound {
 	/**
 	 * 根据录音的路径播放
 	 * @param soundpath
+	 * @param asm
+	 * @param finishListen
+	 * @param type 1系统用户 2：自定义用户
 	 * @throws IOException
 	 */
-	public static void playVoice(String soundpath,final AssetManager asm,FinishListen finishListen) throws IOException{
+	public static void playVoice(String soundpath,final AssetManager asm,FinishListen finishListen,int type) throws IOException{
 		
 		final FinishListen finishListenT = finishListen;
 		
 		player = new MediaPlayer();
-		//uri.fromFile(file);
-		//player.setDataSource(soundpath);
-		AssetFileDescriptor afd = asm.openFd(soundpath);
-		player.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(),afd.getLength());
+		
+		if (type==1) {
+			AssetFileDescriptor afd = asm.openFd(soundpath);
+			player.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(),afd.getLength());
+		}else if (type==2) {
+			player.setDataSource(soundpath);
+		}
 		player.prepare();
 		player.start();
 		player.setOnCompletionListener(new OnCompletionListener() {
@@ -111,6 +117,37 @@ public class PlaySound {
 			}
 		});
 	}
+	/**
+	 * 根据录音的路径播放[不带开始和结束音]
+	 * @param soundpath
+	 * @param asm
+	 * @param finishListen
+	 * @param type 1系统用户 2：自定义用户
+	 * @throws IOException
+	 */
+	public static void playVoice2(String soundpath,final AssetManager asm,int type) throws IOException{
+		
+		
+		player = new MediaPlayer();
+		
+		if (type==1) {
+			AssetFileDescriptor afd = asm.openFd(soundpath);
+			player.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(),afd.getLength());
+		}else if (type==2) {
+			player.setDataSource(soundpath);
+		}
+		player.prepare();
+		player.start();
+		player.setOnCompletionListener(new OnCompletionListener() {
+			@Override
+			public void onCompletion(MediaPlayer mp) {
+				mp.release();
+			}
+		});
+	}
+	
+	
+	
 	
 	public static void stopVoice(){
 		if (player!=null) {

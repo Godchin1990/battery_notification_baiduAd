@@ -20,7 +20,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
-            android:text="06:00"
+            android:text="00:00"
             android:textColor="@color/index_navi_bt_normal"
             android:textSize="14dp" />
 
@@ -33,34 +33,22 @@
             android:src="@drawable/arrow_down" />
     </RelativeLayout>
 
-    <ImageButton
+    <TextView
         android:id="@+id/ib_try_top"
-        android:layout_width="90dp"
+        android:layout_width="wrap_content"
         android:layout_height="32dp"
         android:layout_alignTop="@+id/lo_drop_time_list"
-        android:layout_marginLeft="15dp"
-        android:layout_toLeftOf="@+id/textView1"
+        android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/lo_drop_time_list"
-        android:background="@drawable/selector_bt_sound_listen"
         android:paddingBottom="2dp"
         android:paddingLeft="5dp"
-        android:layout_marginRight="10dp"
-        android:paddingTop="2dp"
-        android:scaleType="fitStart"
-        android:src="@drawable/chatfrom_voice_playing_f3" />
-
-    <TextView
-        android:id="@+id/tv_user_try"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/ib_try_top"
-        android:layout_alignRight="@+id/ib_try_top"
-        android:layout_alignTop="@+id/ib_try_top"
         android:layout_marginRight="5dp"
+        android:paddingTop="2dp"
         android:gravity="center"
-        android:text="录音试听"
+        android:text="我要录音"
         android:textColor="@color/index_navi_bt_normal"
-        android:textSize="14dp" />
+        android:textSize="16dp"
+         />
 
     <RelativeLayout
         android:id="@+id/relativeLayout2"
@@ -133,7 +121,7 @@
         android:dividerHeight="1dp"
         android:background="@drawable/shape_try_listen_bg"
         android:padding="1px"
-        android:visibility="visible"
+        android:visibility="gone"
         android:fadingEdge="none" />
 
     <minggo.battery.view.RecordButton
@@ -167,8 +155,8 @@
         android:id="@+id/iv_switch"
         android:layout_width="80dp"
         android:layout_height="32dp"
-        android:layout_alignRight="@+id/relativeLayout2"
-        android:layout_alignTop="@+id/textView1"
+        android:layout_above="@+id/relativeLayout2"
+        android:layout_toRightOf="@+id/ib_try_top"
         android:src="@drawable/switch_off" />
 
 </RelativeLayout>
