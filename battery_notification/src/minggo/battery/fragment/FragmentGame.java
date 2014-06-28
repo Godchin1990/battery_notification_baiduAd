@@ -100,7 +100,7 @@ public class FragmentGame extends Fragment implements OnClickListener {
 		shuaiDianziBt.setOnClickListener(this);
 		shuaijiawuBt.setOnClickListener(this);
 		seZiiv.setOnClickListener(this);
-		cancelAdIv.setOnClickListener(this);
+		//cancelAdIv.setOnClickListener(this);
 		
 		onClick(shuaiDianziBt);
 		

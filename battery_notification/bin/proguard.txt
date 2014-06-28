@@ -1,19 +1,34 @@
-# view res/layout/activity_index.xml #generated:102
+# view res/layout/activity_index.xml #generated:113
 -keep class android.support.v4.view.ViewPager { <init>(...); }
 
 # view res/layout/activity_main.xml #generated:123
-# view res/layout/fragment_game.xml #generated:47
+# view res/layout/fragment_game.xml #generated:74
 -keep class com.baidu.mobads.AdView { <init>(...); }
 
-# view AndroidManifest.xml #generated:62
+# view AndroidManifest.xml #generated:69
 -keep class com.baidu.mobads.AppActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:94
--keep class minggo.battery.BatteryService { <init>(...); }
-
-# view AndroidManifest.xml #generated:76
+# view AndroidManifest.xml #generated:73
 -keep class minggo.battery.activity.IndexActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:88
+-keep class minggo.battery.activity.LoginActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:92
+-keep class minggo.battery.activity.RegisterActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:84
+-keep class minggo.battery.activity.SettingActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:97
 -keep class minggo.battery.reciever.TurnOnReciever { <init>(...); }
+
+# view AndroidManifest.xml #generated:107
+-keep class minggo.battery.service.BatteryService { <init>(...); }
+
+# view AndroidManifest.xml #generated:31
+-keep class minggo.battery.service.MinggoApplication { <init>(...); }
+
+# view res/layout/fragment_alert.xml #generated:127
+-keep class minggo.battery.view.RecordButton { <init>(...); }
 

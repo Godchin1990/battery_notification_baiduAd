@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="minggo.battery"
-    android:versionCode="8"
     android:installLocation="internalOnly"
-    android:versionName="2.8" >
+    android:versionCode="9"
+    android:versionName="3.0" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -22,20 +22,26 @@
     </uses-permission>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
     </uses-permission>
-	<uses-permission android:name="android.permission.VIBRATE" >
+    <uses-permission android:name="android.permission.VIBRATE" >
     </uses-permission>
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-	
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
+        android:name="minggo.battery.service.MinggoApplication"
         android:allowBackup="false"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" 
-        android:persistent="true">
-		
-        <meta-data android:name="BaiduMobAd_APP_ID" android:value="f8554d2e" /> 
-		<meta-data android:name="BaiduMobAd_APP_SEC" android:value="f8554d2e" />
-        
+        android:persistent="true"
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="BaiduMobAd_APP_ID"
+            android:value="f8554d2e" />
+        <meta-data
+            android:name="BaiduMobAd_APP_SEC"
+            android:value="f8554d2e" />
+
         <!-- 渠道商编号，其中name请不要改，将value修改为渠道商编号。渠道名称请到mtj.baidu.com的渠道管理中修改 -->
         <meta-data
             android:name="BaiduMobAd_CHANNEL"
@@ -59,39 +65,52 @@
         <meta-data
             android:name="BaiduMobAd_ONLY_WIFI"
             android:value="false" />
-		<activity android:name="com.baidu.mobads.AppActivity" 
-		    android:configChanges="keyboard|keyboardHidden|orientation" />
-        
-       <!--  <activity
-            android:name="minggo.battery.activity.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.NoTitleBar"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> -->
+        <activity
+            android:name="com.baidu.mobads.AppActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation" />
+
         <activity
             android:name="minggo.battery.activity.IndexActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.NoTitleBar"
-            >
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="minggo.battery.activity.SettingActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="minggo.battery.activity.LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="minggo.battery.activity.RegisterActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" />
 
-        <receiver android:name="minggo.battery.reciever.TurnOnReciever" >
+        <receiver
+            android:name="minggo.battery.reciever.TurnOnReciever"
+            android:permission="android.permission.BIND_DEVICE_ADMIN" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.SCREEN_ON" />
+                <action android:name="android.intent.action.SCREEN_OFF" />
             </intent-filter>
         </receiver>
 
-        <service android:name="minggo.battery.BatteryService" />
+        <service
+            android:name="minggo.battery.service.BatteryService"
+            android:process="minggo.battery.alarm" >
+            <intent-filter android:priority="1000" >
+                <action android:name="minggo.battery.alarm.service" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
