@@ -95,6 +95,43 @@
         android:textColor="#000"
         android:textSize="17sp" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/exitapp"
+        android:layout_below="@+id/low_power_bt"
+        android:layout_marginTop="10dp" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/shape_feeling_set_tips"
+            android:gravity="left"
+            android:lineSpacingExtra="3dp"
+            android:padding="10dp"
+            android:text="@string/all_setting_tip"
+            android:textColor="#666666"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView2"
+            android:layout_alignTop="@+id/textView2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-8dp"
+            android:background="@color/all_bg"
+            android:text="@string/notice"
+            android:paddingLeft="2dp"
+            android:textColor="@color/index_navi_bt_normal"
+            android:textSize="12dp" />
+
+        
+    </RelativeLayout>
+
     <Button
         android:id="@+id/exitapp"
         android:layout_width="match_parent"

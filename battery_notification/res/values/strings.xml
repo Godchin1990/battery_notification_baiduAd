@@ -21,7 +21,9 @@
     <string name="shuai_dian_shu">甩点数</string>
     <string name="minggo_battery">Minggo提醒您：</string>
     <string name="feelin_setting_tip">　　您可以根据自己的心情提醒或者任务提醒需要，设置一周中的某一天内容。您所设置的内容将会在状态栏中显示提醒哦！ps如果您想恢复默认可以在菜单设置中选择恢复啦！</string>
+    <string name="all_setting_tip">1.为了更好为您服务，务必在内存清除前设置成白名单，以免应用停止。\n 2.如果选择关闭整点报时后，您自定义的报时录音也将会被停止。\n 3.如果要开启自定义录音报时，需要先注册登陆后使用。\n 4.如果关闭自定义的心情提醒，应用将会选择系统默认提醒语呈现在通知栏。\n 5.邮件地址：minggo8en@gmail.com，您的建议和意见是我们进步的动力。</string>
     <string name="tips">提示：</string>
+    <string name="notice"> 注意：</string>
     <string name="tips_1">提示</string>
     <string name="delete">删除</string>
     <string name="record_sound">录音</string>

@@ -95,4 +95,15 @@ public class SettingActivity extends Activity implements OnClickListener{
 			break;
 		}
 	}
+	@Override
+	protected void onPause() {
+		super.onPause();
+		StatService.onPause(this);
+	}
+	@Override
+	protected void onResume() {
+		super.onResume();
+		StatService.onResume(this);
+	}
+	
 }
