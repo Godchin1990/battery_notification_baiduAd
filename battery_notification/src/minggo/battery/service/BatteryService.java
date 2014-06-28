@@ -209,7 +209,7 @@ public class BatteryService extends Service{
 		if (level%10==0&&cuurentLevel!=level&&level<=30) {
 			cuurentLevel = level;
 			try {
-				if(!PreferenceShareUtil.getLowPowerFlag(this))
+				if(PreferenceShareUtil.getLowPowerFlag(this))
 				PlaySound.play("sound/failShout.mp3", asm);
 			} catch (IOException e) {
 				e.printStackTrace();

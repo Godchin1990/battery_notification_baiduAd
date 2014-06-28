@@ -2,8 +2,6 @@ package minggo.battery.reciever;
 
 import java.io.IOException;
 
-import com.baidu.mobstat.c;
-
 import minggo.battery.model.SoundRecord;
 import minggo.battery.model.User;
 import minggo.battery.service.MinggoApplication;

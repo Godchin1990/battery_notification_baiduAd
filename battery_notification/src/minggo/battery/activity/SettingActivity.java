@@ -59,7 +59,7 @@ public class SettingActivity extends Activity implements OnClickListener{
 		case R.id.low_power_bt:
 			boolean flag0 = !lowPowerbt.isSelected();
 			lowPowerbt.setSelected(flag0);
-			PreferenceShareUtil.saveLowPowerFlag(this, flag0);
+			PreferenceShareUtil.saveLowPowerFlag(this, !PreferenceShareUtil.getLowPowerFlag(this));
 			//统计用户设置低电量提醒
 			StatService.onEvent(SettingActivity.this, "battery_alert", flag0+"");
 			break;
@@ -67,13 +67,13 @@ public class SettingActivity extends Activity implements OnClickListener{
 			boolean flag1 = !feelingBt.isSelected();
 			System.out.println("选择了什么东西--->"+flag1);
 			feelingBt.setSelected(flag1);
-			PreferenceShareUtil.saveUseFeeling(this, flag1);
+			PreferenceShareUtil.saveUseFeeling(this, !PreferenceShareUtil.getUseFeeling(this));
 			StatService.onEvent(SettingActivity.this, "feeling_set", flag1+"");
 			break;
 		case R.id.zheng_sound_bt:
 			boolean flag2 = !timeSoundbt.isSelected();
 			timeSoundbt.setSelected(flag2);
-			PreferenceShareUtil.saveZhengTimeFlag(this, flag2);
+			PreferenceShareUtil.saveZhengTimeFlag(this, !PreferenceShareUtil.getZhengTimeFlag(this));
 			//统计用户设置整点报时提醒
 			StatService.onEvent(SettingActivity.this, "time_alert", flag2+"");
 			break;

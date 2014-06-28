@@ -84,9 +84,11 @@ public class PreferenceShareUtil {
 		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_PRIVATE);
 		if (share != null) {
 			//System.out.println("数据库拿到的时候--->"+share.getBoolean(LOW_POWER_SOUND, false));
-			return share.getBoolean(LOW_POWER_SOUND, false);
+			return share.getBoolean(LOW_POWER_SOUND, true);
+		}else{
+			saveLowPowerFlag(context, true);
 		}
-		return false;
+		return true;
 	}
 	/**
 	 * 获取用户整点报时声音的设置
@@ -97,6 +99,8 @@ public class PreferenceShareUtil {
 		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_PRIVATE);
 		if (share != null) {
 			return share.getBoolean(ZHENG_TIME_SOUND, true);
+		}else{
+			saveZhengTimeFlag(context, true);
 		}
 		return true;
 	}
