@@ -19,5 +19,6 @@
     <color name="menu_item_pressed">#282A2B</color>
     <color name="white">#ffffffff</color>
     <color name="gray">#EBEBEB</color>
+    <color name="tran">#00000000</color>
 
 </resources>

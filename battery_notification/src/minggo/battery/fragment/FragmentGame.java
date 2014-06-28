@@ -36,7 +36,6 @@ import com.baidu.mobstat.StatService;
  */
 public class FragmentGame extends Fragment implements OnClickListener {
 
-	private Button changebt;
 
 	public static AssetManager assetManager;
 	private ShakeListener mShakeListener = null;
@@ -55,6 +54,10 @@ public class FragmentGame extends Fragment implements OnClickListener {
 	private Activity activity;
 	private View gameView;
 	private LayoutInflater inflater;
+	
+	private Button shuaiDianziBt;
+	private Button shuaijiawuBt;
+	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -88,11 +91,17 @@ public class FragmentGame extends Fragment implements OnClickListener {
 		this.inflater = inflater;
 		gameView = inflater.inflate(R.layout.fragment_game, container, false);
 		seZiiv = (ImageView) gameView.findViewById(R.id.game_shack_iv);
-		changebt = (Button) gameView.findViewById(R.id.changebt);
+		shuaiDianziBt = (Button) gameView.findViewById(R.id.bt_sezi_dian);
+		shuaijiawuBt = (Button) gameView.findViewById(R.id.bt_sezi_jiawu);
 		adView = (AdView) gameView.findViewById(R.id.adView);
 
 		adView.setListener(new AdListener());
-		changebt.setOnClickListener(this);
+		shuaiDianziBt.setOnClickListener(this);
+		shuaijiawuBt.setOnClickListener(this);
+		seZiiv.setOnClickListener(this);
+		
+		onClick(shuaiDianziBt);
+		
 		return gameView;
 	}
 
@@ -239,7 +248,7 @@ public class FragmentGame extends Fragment implements OnClickListener {
 		mVibrator.vibrate(new long[] { 500, 200, 500, 200 }, -1); // 第一个｛｝里面是节奏数组，
 																	// 第二个参数是重复次数，-1为不重复，非-1则从pattern的指定下标开始重复
 		try {
-			PlaySound.getInstance().play("sound/shake_sound_male.mp3", assetManager);
+			PlaySound.play("sound/shake_sound_male.mp3", assetManager);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -311,22 +320,29 @@ public class FragmentGame extends Fragment implements OnClickListener {
 	public void onClick(View v) {
 
 		switch (v.getId()) {
+		case R.id.game_shack_iv:
+			// 统计用户点击删除广告
+			StatService.onEvent(activity, "hit_sezi", telephone + "_" + new MinggoDate().toString());
+			i=51;
+			break;
 		case R.id.cancel_ad_iv:
 			// 统计用户点击删除广告
 			StatService.onEvent(activity, "cancel_baidu_ad", telephone + "_" + new MinggoDate().toString());
 			adView.setVisibility(View.GONE);
 			cancelAdIv.setVisibility(View.GONE);
 			break;
-		case R.id.changebt:
-			if (!changejiawu) {
-				changejiawu = true;
-				seZiiv.setImageResource(sourceIds[0]);
-				changebt.setText(R.string.shuai_dian_shu);
-			} else {
-				changejiawu = false;
-				seZiiv.setImageResource(sourceIds2[0]);
-				changebt.setText(R.string.shuai_jia_wu);
-			}
+		case R.id.bt_sezi_jiawu:
+			changejiawu = true;
+			seZiiv.setImageResource(sourceIds[0]);
+			
+			shuaiDianziBt.setSelected(false);
+			shuaijiawuBt.setSelected(true);
+			break;
+		case R.id.bt_sezi_dian:
+			changejiawu = false;
+			seZiiv.setImageResource(sourceIds2[0]);
+			shuaiDianziBt.setSelected(true);
+			shuaijiawuBt.setSelected(false);
 			break;
 		default:
 			break;

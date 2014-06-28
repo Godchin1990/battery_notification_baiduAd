@@ -3,6 +3,7 @@ package minggo.battery.service;
 import java.io.IOException;
 
 import minggo.battery.R;
+import minggo.battery.activity.IndexActivity;
 import minggo.battery.activity.MainActivity;
 import minggo.battery.reciever.TimeChangeReciever;
 import minggo.battery.util.MinggoDate;
@@ -159,7 +160,7 @@ public class BatteryService extends Service{
 		notification.contentView = remoteViews;
 		
 		//点击下滑view处理的跳转事件
-		Intent intent = new Intent(context, MainActivity.class);
+		Intent intent = new Intent(context, IndexActivity.class);
 
 		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -209,7 +210,7 @@ public class BatteryService extends Service{
 			cuurentLevel = level;
 			try {
 				if(!PreferenceShareUtil.getLowPowerFlag(this))
-				PlaySound.getInstance().play("sound/failShout.mp3", asm);
+				PlaySound.play("sound/failShout.mp3", asm);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -236,14 +237,14 @@ public class BatteryService extends Service{
 	 */
 	private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 		int level = 0;
-		int scale = 0;
+		//int scale = 0;
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			
 			String action = intent.getAction();
 			if (Intent.ACTION_BATTERY_CHANGED.equals(action)) {
 				level = intent.getIntExtra("level", 0);
-				scale = intent.getIntExtra("scale", 0);
+				//scale = intent.getIntExtra("scale", 0);
 				modifyBattery(level);
 				//String BatteryV = "当前电压为：" + intent.getIntExtra("voltage", 0); 
 				//String BatteryT = "当前温度为：" + intent.getIntExtra("temperature", 0); 

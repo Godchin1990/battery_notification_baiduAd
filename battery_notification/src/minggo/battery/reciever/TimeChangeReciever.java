@@ -15,6 +15,7 @@ import minggo.battery.util.UserUtil;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 /**
  * 时间广播监听器
@@ -32,7 +33,7 @@ public class TimeChangeReciever extends BroadcastReceiver {
 		String action = intent.getAction();
 		if (action.equals(Intent.ACTION_TIME_TICK)) {
 			// System.out.println("整点报时--->"+date.get24Hour()+"点");
-			if (!PreferenceShareUtil.getZhengTimeFlag(context)) {
+			if (PreferenceShareUtil.getZhengTimeFlag(context)) {
 				date = new MinggoDate();
 				user = UserUtil.getUser(context, MinggoApplication.EMAIL);
 				if (user.type == 0) {
@@ -68,6 +69,8 @@ public class TimeChangeReciever extends BroadcastReceiver {
 						}
 					}
 				}
+			}else{
+				Log.i("alert", "设置了不提醒");
 			}
 		}
 	}

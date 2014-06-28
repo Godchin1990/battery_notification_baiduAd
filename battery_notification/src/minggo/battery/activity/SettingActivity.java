@@ -20,6 +20,8 @@ public class SettingActivity extends Activity implements OnClickListener{
 	
 	private View backV;
 	private Button feelingBt;
+	private Button timeSoundbt;
+	private Button lowPowerbt;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +34,17 @@ public class SettingActivity extends Activity implements OnClickListener{
 	 */
 	private void initUI(){
 		backV = findViewById(R.id.lo_setting_back);
+		timeSoundbt = (Button) findViewById(R.id.zheng_sound_bt);
 		feelingBt = (Button) findViewById(R.id.bt_feeling_setting);
+		lowPowerbt = (Button) findViewById(R.id.low_power_bt);
+		
+		lowPowerbt.setOnClickListener(this);
 		backV.setOnClickListener(this);
 		feelingBt.setOnClickListener(this);
+		timeSoundbt.setOnClickListener(this);
 		
+		lowPowerbt.setSelected(!PreferenceShareUtil.getLowPowerFlag(this));
+		timeSoundbt.setSelected(!PreferenceShareUtil.getZhengTimeFlag(this));
 		feelingBt.setSelected(!PreferenceShareUtil.getUseFeeling(this));
 	}
 	
@@ -47,12 +56,26 @@ public class SettingActivity extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.low_power_bt:
+			boolean flag0 = !lowPowerbt.isSelected();
+			lowPowerbt.setSelected(flag0);
+			PreferenceShareUtil.saveLowPowerFlag(this, flag0);
+			//统计用户设置低电量提醒
+			StatService.onEvent(SettingActivity.this, "battery_alert", flag0+"");
+			break;
 		case R.id.bt_feeling_setting:
-			boolean flag = !feelingBt.isSelected();
-			System.out.println("选择了什么东西--->"+flag);
-			feelingBt.setSelected(flag);
-			PreferenceShareUtil.saveUseFeeling(this, !feelingBt.isSelected());
-			StatService.onEvent(SettingActivity.this, "feeling_set", flag+"");
+			boolean flag1 = !feelingBt.isSelected();
+			System.out.println("选择了什么东西--->"+flag1);
+			feelingBt.setSelected(flag1);
+			PreferenceShareUtil.saveUseFeeling(this, flag1);
+			StatService.onEvent(SettingActivity.this, "feeling_set", flag1+"");
+			break;
+		case R.id.zheng_sound_bt:
+			boolean flag2 = !timeSoundbt.isSelected();
+			timeSoundbt.setSelected(flag2);
+			PreferenceShareUtil.saveZhengTimeFlag(this, flag2);
+			//统计用户设置整点报时提醒
+			StatService.onEvent(SettingActivity.this, "time_alert", flag2+"");
 			break;
 		case R.id.lo_setting_back:
 			onBackPressed();

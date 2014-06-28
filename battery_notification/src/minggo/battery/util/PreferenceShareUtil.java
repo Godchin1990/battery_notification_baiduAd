@@ -21,6 +21,7 @@ public class PreferenceShareUtil {
 	public static final String FRIDAY_FELLING = "friday_felling";
 	public static final String SATURDAY_FELLING = "saturday_felling";
 	public static final String DEFAULT_FELLING_SETTING = "default_felling_setting";
+	public static final String DEFAULT_ALERT_SETTING = "default_alert_setting";
 	
 	
 	/**
@@ -29,7 +30,7 @@ public class PreferenceShareUtil {
 	 * @param flag
 	 */
 	public static void saveUseFeeling(Context context,boolean flag){
-		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_PRIVATE);
+		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_WORLD_WRITEABLE);
 		Editor editor = share.edit();
 		editor.putBoolean(DEFAULT_FELLING_SETTING, flag);
 		editor.commit();
@@ -54,7 +55,7 @@ public class PreferenceShareUtil {
 	 * @return
 	 */
 	public static String getFeeling(Context context,String whichDay){
-		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_APPEND);
+		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_PRIVATE);
 		if (share != null) {
 			//System.out.println("数据库拿到的时候--->"+share.getBoolean(LOW_POWER_SOUND, false));
 			return share.getString(whichDay, "");
@@ -80,7 +81,7 @@ public class PreferenceShareUtil {
 	 * @return
 	 */
 	public static boolean getLowPowerFlag(Context context) {
-		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_APPEND);
+		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_PRIVATE);
 		if (share != null) {
 			//System.out.println("数据库拿到的时候--->"+share.getBoolean(LOW_POWER_SOUND, false));
 			return share.getBoolean(LOW_POWER_SOUND, false);
@@ -93,11 +94,11 @@ public class PreferenceShareUtil {
 	 * @return
 	 */
 	public static boolean getZhengTimeFlag(Context context) {
-		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_APPEND);
+		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_PRIVATE);
 		if (share != null) {
-			return share.getBoolean(ZHENG_TIME_SOUND, false);
+			return share.getBoolean(ZHENG_TIME_SOUND, true);
 		}
-		return false;
+		return true;
 	}
 	/**
 	 * 保存用户低电量声音设置
@@ -105,7 +106,7 @@ public class PreferenceShareUtil {
 	 * @param flag
 	 */
 	public static void saveLowPowerFlag(Context context,boolean flag) {
-		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_APPEND);
+		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_WORLD_WRITEABLE);
 		Editor editor = share.edit();
 		editor.putBoolean(LOW_POWER_SOUND, flag);
 		editor.commit();
@@ -117,7 +118,7 @@ public class PreferenceShareUtil {
 	 * @param flag
 	 */
 	public static void saveZhengTimeFlag(Context context,boolean flag) {
-		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_APPEND);
+		SharedPreferences share = context.getSharedPreferences(USER_DATA, Context.MODE_WORLD_WRITEABLE);
 		Editor editor = share.edit();
 		editor.putBoolean(ZHENG_TIME_SOUND, flag);
 		editor.commit();

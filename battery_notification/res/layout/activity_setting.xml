@@ -59,7 +59,39 @@
         android:drawableRight="@drawable/on_off_button"
         android:gravity="center_vertical"
         android:paddingLeft="28dp"
-        android:text="使用自定义心情提醒"
+        android:text="自定义心情通知栏显示"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/zheng_sound_bt"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/bt_feeling_setting"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/preference_single_item"
+        android:clickable="true"
+        android:drawableRight="@drawable/on_off_button"
+        android:gravity="center_vertical"
+        android:paddingLeft="28dp"
+        android:text="@string/time_alarm"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/low_power_bt"
+        android:layout_below="@+id/zheng_sound_bt"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/preference_single_item"
+        android:clickable="true"
+        android:drawableRight="@drawable/on_off_button"
+        android:gravity="center_vertical"
+        android:paddingLeft="28dp"
+        android:text="@string/battery_low"
         android:textColor="#000"
         android:textSize="17sp" />
 
