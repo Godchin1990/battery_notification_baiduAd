@@ -11,6 +11,7 @@
     <color name="index_navi_bt_normal">#4F4F4F</color>
     <!-- 首页导航字体选中颜色 -->
     <color name="index_navi_bt_pressed">#30B900</color>
+    <color name="sound_item_pressed">#EAEAEA</color>
     <color name="alert_try_listen">#48D415</color>
     <color name="navi_index">#33BA03</color>
     <color name="navi_index_bg">#E4E4E4</color>

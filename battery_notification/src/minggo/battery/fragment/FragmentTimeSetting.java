@@ -19,7 +19,11 @@ import minggo.battery.util.VibratorUtil;
 import minggo.battery.view.RecordButton;
 import minggo.battery.view.RecordButton.OnEventListener;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -32,6 +36,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -43,7 +48,8 @@ import android.widget.TextView;
  * @author minggo
  * @time 2014-6-16 S下午9:18:35
  */
-public class FragmentTimeSetting extends Fragment implements TryListener, OnClickListener,OnItemClickListener {
+public class FragmentTimeSetting extends Fragment implements TryListener, OnClickListener, OnItemClickListener,
+		OnItemLongClickListener {
 
 	private Activity activity;
 	private View timeSettinView;
@@ -63,7 +69,7 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 	private ImageView arrowDownIv;
 	private String currHour = "00:00";
 	private TextView currHourTv;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -95,6 +101,7 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 
 		return timeSettinView;
 	}
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
@@ -123,7 +130,7 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 
 			break;
 		case R.id.iv_list_time:
-			hoursLv.setVisibility(hoursLv.getVisibility()==View.GONE?View.VISIBLE:View.GONE);
+			hoursLv.setVisibility(hoursLv.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
 			break;
 		case R.id.iv_switch:
 			if (user.useDefineSound == 0) {
@@ -146,26 +153,28 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 	 * 获取播放录音列表
 	 */
 	private void getSoundList() {
-		
-		if (hourAdapter==null) {
+
+		if (hourAdapter == null) {
 			hourAdapter = new HourAdapter(activity, hours);
 			hoursLv.setAdapter(hourAdapter);
 			hoursLv.setOnItemClickListener(this);
 		}
-		
+
 		if (user == null) {
 			user = UserUtil.getUser(activity, MinggoApplication.EMAIL);
 		}
 		if (user.useDefineSound == 0) {
-			
+
 			soundRecordList.clear();
 			soundRecordList.addAll(((MinggoApplication) activity.getApplication()).defaultSoundList);
-			
+
 			listTipsTv.setText(R.string.alert_list_tips_sys);
 			recordButton.setEnabled(false);
 			switchIv.setImageResource(R.drawable.switch_off);
 			recordButton.setOnEventListener(new VoiceListener(), false);
+			soundLv.setOnItemLongClickListener(null);
 		} else {
+			soundLv.setOnItemLongClickListener(this);
 			soundRecordList.clear();
 			List<SoundRecord> list = SoundRecordUtil.getSoundRecordList(activity, 2);
 			if (list != null && !list.isEmpty()) {
@@ -201,16 +210,16 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 		@Override
 		public void onFinishedRecord(String audioPath, int time) {
 			try {
-				
-				Log.i("record", audioPath+",time-->"+time);
+
+				Log.i("record", audioPath + ",time-->" + time);
 				SoundRecord soundRecord = new SoundRecord();
-				soundRecord.longTime = String.valueOf(time)+"''";
+				soundRecord.longTime = String.valueOf(time) + "''";
 				soundRecord.path = audioPath;
-				soundRecord.type =2;
+				soundRecord.type = 2;
 				soundRecord.whichHour = Integer.parseInt(currHour.substring(0, 2));
-				
+
 				SoundRecordUtil.saveSubscriptionGiftType(activity, soundRecord);
-				
+
 				PlaySound.play("sound/qrcode_completed.mp3", assetManager);
 				getSoundList();
 				refreshSoundListUI();
@@ -266,7 +275,7 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 							public void onFinish() {
 								isRepeat0 = false;
 							}
-						},soundRecordList.get(position).type);
+						}, soundRecordList.get(position).type);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -306,11 +315,50 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 		}
 	};
 
+	private void deleteSoundRecord(final int position){
+
+		AlertDialog.Builder builder = new Builder(activity);
+		String time = String.valueOf(soundRecordList.get(position).whichHour);
+		if (time.length()<2) {
+			time="0"+time+":00";
+		}else{
+			time= time+":00";
+		}
+		String message = activity.getString(R.string.delete)+time+activity.getString(R.string.record_sound)+"?";
+		builder.setMessage(message);
+		builder.setTitle(R.string.tips_1);
+		builder.setPositiveButton(R.string.submit, new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				SoundRecordUtil.deleteSound(activity, soundRecordList.get(position));
+				soundRecordList.remove(position);
+				soundAdapter.notifyDataSetChanged();
+			}
+		});
+		builder.setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+				dialog.cancel();
+			}
+		});
+		builder.show();
+	}
+
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		currHour = hours[position];
 		currHourTv.setText(currHour);
 		hoursLv.setVisibility(View.GONE);
+	}
+
+	@Override
+	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long id) {
+		Log.i("record", "长按可删除");
+		deleteSoundRecord(position);
+		return false;
 	}
 
 }

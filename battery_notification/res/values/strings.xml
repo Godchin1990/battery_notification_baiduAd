@@ -15,12 +15,16 @@
     <string name="default_feeling">使用每日默认提醒</string>
     <string name="exit">退出</string>
     <string name="submit">确定</string>
+    <string name="cancel">取消</string>
     <string name="shuai_yi_shuai">摇一摇手机</string>
     <string name="shuai_jia_wu">甩家务</string>
     <string name="shuai_dian_shu">甩点数</string>
     <string name="minggo_battery">Minggo提醒您：</string>
     <string name="feelin_setting_tip">　　您可以根据自己的心情提醒或者任务提醒需要，设置一周中的某一天内容。您所设置的内容将会在状态栏中显示提醒哦！ps如果您想恢复默认可以在菜单设置中选择恢复啦！</string>
     <string name="tips">提示：</string>
+    <string name="tips_1">提示</string>
+    <string name="delete">删除</string>
+    <string name="record_sound">录音</string>
     <string name="alert_list_tips_sys">孙燕姿报时提醒</string>
     <string name="alert_list_tips_user">自定义报时提醒</string>
     <string-array name="hour">

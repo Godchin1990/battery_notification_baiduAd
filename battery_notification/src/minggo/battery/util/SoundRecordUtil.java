@@ -1,5 +1,6 @@
 package minggo.battery.util;
 
+import java.io.File;
 import java.util.List;
 
 import minggo.battery.dao.DBConfig;
@@ -70,5 +71,24 @@ public class SoundRecordUtil {
 			return soundRecords.get(0);
 		}
 		return null;
+	}
+	/**
+	 * 删除录音
+	 * @param context
+	 * @param soundRecord
+	 * @return
+	 */
+	public static boolean deleteSound(Context context,SoundRecord soundRecord){
+		
+		SQLiteDatabase db = new DbOpenHelper(context).getReadableDatabase();
+		int count = db.delete(DBConfig.TABLE_SOUND_RECORD, "whichHour=?", new String[]{String.valueOf(soundRecord.whichHour)});
+		File file = new File(soundRecord.path);
+		if (file.isFile()&&file.exists()) {
+			file.delete();
+		}
+		if (count>0) {
+			return true;
+		}
+		return false;
 	}
 }
