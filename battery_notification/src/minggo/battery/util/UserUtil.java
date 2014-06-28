@@ -41,6 +41,22 @@ public class UserUtil {
 		db.close();
 		return userList;
 	}
+	/**
+	 * 判断是否注册过
+	 * @param context
+	 * @return
+	 */
+	public static boolean isExistUser(Context context){
+		List<User> userList = null;
+		SQLiteDatabase db = new DbOpenHelper(context).getReadableDatabase();
+		Cursor query = db.query(DBConfig.TABLE_USER,null,"type=?",new String[]{"1"},null, null, null);
+		userList = DaoUtils.cursor2ObjectList(query, User.class);
+		db.close();
+		if (userList!=null&&!userList.isEmpty()) {
+			return true;
+		}
+		return false;
+	}
 	
 	/**
 	 * 获取某一时间的录音

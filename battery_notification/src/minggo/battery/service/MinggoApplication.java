@@ -75,7 +75,7 @@ public class MinggoApplication extends Application {
 			user.name = "sys_minggo";
 			user.email = EMAIL;
 			user.password = "12345678";
-			user.type = 1;
+			user.type = 0;
 			user.useDefineSound = 0;
 			user.useDefinFeeling = 0;
 			UserUtil.saveUser(this, user);

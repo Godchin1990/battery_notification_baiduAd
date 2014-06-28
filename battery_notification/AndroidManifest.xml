@@ -85,6 +85,14 @@
             android:name="minggo.battery.activity.SettingActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="minggo.battery.activity.LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="minggo.battery.activity.RegisterActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" />
 
         <receiver
             android:name="minggo.battery.reciever.TurnOnReciever"

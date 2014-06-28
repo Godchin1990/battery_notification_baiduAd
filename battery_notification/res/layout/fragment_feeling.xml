@@ -423,7 +423,7 @@
                 android:layout_marginTop="-8dp"
                 android:background="@color/all_bg"
                 android:text="@string/tips"
-                android:textColor="@color/index_navi_bt_normal"
+                android:textColor="@color/index_navi_bt_pressed"
                 android:textSize="12dp" />
 
             <View

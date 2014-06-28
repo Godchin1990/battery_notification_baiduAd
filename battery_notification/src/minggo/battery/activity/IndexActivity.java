@@ -141,7 +141,14 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 			translate(position);
 		}
 	}
-
+	
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		StatService.onPageEnd(IndexActivity.this, getFragment(currIndex));
+		finish();
+	}
+	
 	/**
 	 * 获取fragment名字
 	 * 
@@ -221,6 +228,7 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 			intent4.putExtra(Intent.EXTRA_SUBJECT, this.getString(R.string.email_title));
 			intent4.putExtra(Intent.EXTRA_TEXT, this.getString(R.string.email_content));
 			startActivity(Intent.createChooser(intent4, this.getString(R.string.email_select_tips)));
+			menuView.setVisibility(View.GONE);
 			break;
 		case R.id.lo_menu_3:
 			Intent intent3 = new Intent(Intent.ACTION_SEND);
@@ -228,6 +236,7 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 			intent3.putExtra(Intent.EXTRA_SUBJECT, this.getString(R.string.share_title));
 			intent3.putExtra(Intent.EXTRA_TEXT, this.getString(R.string.share_content));
 			startActivity(Intent.createChooser(intent3, this.getString(R.string.share_select_tips)));
+			menuView.setVisibility(View.GONE);
 			break;
 		case R.id.bt_index_menu:
 			if (menuView.getVisibility() == View.GONE) {
@@ -235,9 +244,10 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 			} else {
 				menuView.setVisibility(View.GONE);
 			}
+			
 			break;
 		case R.id.lo_menu_1:
-			System.out.println("RRRRRRRRRRR");
+			startActivity(new Intent(this, LoginActivity.class));
 			menuView.setVisibility(View.GONE);
 			break;
 		case R.id.lo_menu_2:
@@ -262,7 +272,9 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 			break;
 		}
 	}
-
+	
+	
+	
 	/**
 	 * 设置快捷键
 	 * 

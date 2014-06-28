@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import minggo.battery.R;
+import minggo.battery.activity.LoginActivity;
 import minggo.battery.adapter.HourAdapter;
 import minggo.battery.adapter.SoundAdapter;
 import minggo.battery.adapter.SoundAdapter.TryListener;
@@ -22,6 +23,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -133,15 +135,20 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 			hoursLv.setVisibility(hoursLv.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
 			break;
 		case R.id.iv_switch:
-			if (user.useDefineSound == 0) {
-				user.useDefineSound = 1;
-				UserUtil.saveUser(activity, user);
-			} else {
-				user.useDefineSound = 0;
-				UserUtil.saveUser(activity, user);
+			
+			if (UserUtil.isExistUser(activity)) {
+				if (user.useDefineSound == 0) {
+					user.useDefineSound = 1;
+					UserUtil.saveUser(activity, user);
+				} else {
+					user.useDefineSound = 0;
+					UserUtil.saveUser(activity, user);
+				}
+				getSoundList();
+				refreshSoundListUI();
+			}else{
+				activity.startActivity(new Intent(activity, LoginActivity.class));
 			}
-			getSoundList();
-			refreshSoundListUI();
 			break;
 
 		default:

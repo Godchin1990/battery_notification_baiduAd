@@ -10,6 +10,7 @@
     <string name="saturday">适当的休息很重要哦！</string>
     <string name="version">Minggo电池[version 1.3]</string>
     <string name="author">Minggo电池</string>
+    <string name="login_title">用户登录</string>
     <string name="battery_low">低电量声音</string>
     <string name="time_alarm">整点报时声音</string>
     <string name="default_feeling">使用每日默认提醒</string>
@@ -21,7 +22,7 @@
     <string name="shuai_dian_shu">甩点数</string>
     <string name="minggo_battery">Minggo提醒您：</string>
     <string name="feelin_setting_tip">　　您可以根据自己的心情提醒或者任务提醒需要，设置一周中的某一天内容。您所设置的内容将会在状态栏中显示提醒哦！ps如果您想恢复默认可以在菜单设置中选择恢复啦！</string>
-    <string name="all_setting_tip">1.为了更好为您服务，务必在内存清除前设置成白名单，以免应用停止。\n 2.如果选择关闭整点报时后，您自定义的报时录音也将会被停止。\n 3.如果要开启自定义录音报时，需要先注册登陆后使用。\n 4.如果关闭自定义的心情提醒，应用将会选择系统默认提醒语呈现在通知栏。\n 5.邮件地址：minggo8en@gmail.com，您的建议和意见是我们进步的动力。</string>
+    <string name="all_setting_tip">&#160;1.务必在内存清除前设置成白名单，以免应用停止。\n 2.关闭整点报时后，您自定义的报时录音也将会被停止。\n 3.开启自定义录音报时，先注册登陆后使用。\n 4.长按操作删除自定义录音报时列表项。\n 5.关闭自定义的心情提醒，应用将会选择系统默认提醒语呈现在通知栏。\n 6.邮件地址：minggo8en@gmail.com，您的建议和意见是我们进步的动力。</string>
     <string name="tips">提示：</string>
     <string name="notice"> 注意：</string>
     <string name="tips_1">提示</string>
@@ -35,6 +36,12 @@
     <string name="share_content">我正在使用minggo的电量显示和整点报时，觉得很不错。明星为您报时，每天每时都有心情：http://shouji.360tpcdn.com/140603/b7bc0490b262ac9fee04e025897ef6c2/minggo.battery_3.apk\n</string>
     <string name="email_select_tips">请选择邮件软件发送</string>
     <string name="share_select_tips">请选择可分享软件</string>
+    <string name="user_no_exist">用户不存在</string>
+    <string name="user_exist">用户已存在</string>
+    <string name="input_email_right">请输入正确的邮件格式</string>
+    <string name="input_null">输入不能为空</string>
+    <string name="login_success">登陆成功</string>
+    <string name="register_success">注册成功</string>
     <string-array name="hour">
 　　        <item>00:00</item>
 　　        <item>01:00</item>

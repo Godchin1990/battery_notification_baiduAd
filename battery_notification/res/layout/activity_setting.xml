@@ -133,7 +133,7 @@
                 android:background="@color/all_bg"
                 android:paddingLeft="2dp"
                 android:text="@string/notice"
-                android:textColor="@color/index_navi_bt_normal"
+                android:textColor="@color/index_navi_bt_pressed"
                 android:textSize="12dp" />
         </RelativeLayout>
 
