@@ -57,7 +57,7 @@ public class FragmentGame extends Fragment implements OnClickListener {
 	
 	private Button shuaiDianziBt;
 	private Button shuaijiawuBt;
-	
+	private boolean isShaking;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -156,6 +156,9 @@ public class FragmentGame extends Fragment implements OnClickListener {
 				StatService.onEvent(activity, "shake", telephone);// 统计用户使用甩色子
 
 				mShakeListener.stop();
+				
+				isShaking = true;
+				
 				if (startVibrato()) {
 					new Handler().postDelayed(new Runnable() {
 						@Override
@@ -193,6 +196,7 @@ public class FragmentGame extends Fragment implements OnClickListener {
 									hdl.postDelayed(this, 160);
 								}
 							} else {
+								isShaking = false;
 								i = 0;
 								seZiiv.setImageResource(sourceIds2[(int) (Math.random() * 6)]);
 								hdl.removeCallbacks(this);
@@ -228,6 +232,7 @@ public class FragmentGame extends Fragment implements OnClickListener {
 								}
 
 							} else {
+								isShaking = false;
 								i = 0;
 								seZiiv.setImageResource(sourceIds[(int) (Math.random() * 6)]);
 								hdl.removeCallbacks(this);
@@ -323,7 +328,9 @@ public class FragmentGame extends Fragment implements OnClickListener {
 		case R.id.game_shack_iv:
 			// 统计用户点击删除广告
 			StatService.onEvent(activity, "hit_sezi", telephone + "_" + new MinggoDate().toString());
-			i=51;
+			if (isShaking) {
+				i=51;
+			}
 			break;
 		case R.id.cancel_ad_iv:
 			// 统计用户点击删除广告
