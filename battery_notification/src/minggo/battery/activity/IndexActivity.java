@@ -222,6 +222,7 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		switch (v.getId()) {
 
 		case R.id.lo_menu_4:
+			
 			Intent intent4 = new Intent(Intent.ACTION_SENDTO);
 			intent4.setType("text/plain");
 			intent4.setData(Uri.parse("mailto:minggo8en@gmail.com"));
@@ -229,6 +230,7 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 			intent4.putExtra(Intent.EXTRA_TEXT, this.getString(R.string.email_content));
 			startActivity(Intent.createChooser(intent4, this.getString(R.string.email_select_tips)));
 			menuView.setVisibility(View.GONE);
+			StatService.onEvent(this, "menu_send_email", "send_email");
 			break;
 		case R.id.lo_menu_3:
 			Intent intent3 = new Intent(Intent.ACTION_SEND);
@@ -237,6 +239,7 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 			intent3.putExtra(Intent.EXTRA_TEXT, this.getString(R.string.share_content));
 			startActivity(Intent.createChooser(intent3, this.getString(R.string.share_select_tips)));
 			menuView.setVisibility(View.GONE);
+			StatService.onEvent(this, "menu_share", "share_apk");
 			break;
 		case R.id.bt_index_menu:
 			if (menuView.getVisibility() == View.GONE) {
@@ -249,10 +252,12 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		case R.id.lo_menu_1:
 			startActivity(new Intent(this, LoginActivity.class));
 			menuView.setVisibility(View.GONE);
+			StatService.onEvent(this, "menu_login", "user_login");
 			break;
 		case R.id.lo_menu_2:
 			startActivity(new Intent(this, SettingActivity.class));
 			menuView.setVisibility(View.GONE);
+			StatService.onEvent(this, "menu_setting", "setting_application");
 			break;
 		case R.id.bt_index_alert:
 			viewPager.setCurrentItem(0);
