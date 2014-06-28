@@ -339,17 +339,22 @@ public class FragmentGame extends Fragment implements OnClickListener {
 			cancelAdIv.setVisibility(View.GONE);
 			break;
 		case R.id.bt_sezi_jiawu:
-			changejiawu = true;
-			seZiiv.setImageResource(sourceIds[0]);
+			if (!isShaking) {
+				changejiawu = true;
+				seZiiv.setImageResource(sourceIds[0]);
+				
+				shuaiDianziBt.setSelected(false);
+				shuaijiawuBt.setSelected(true);
+			}
 			
-			shuaiDianziBt.setSelected(false);
-			shuaijiawuBt.setSelected(true);
 			break;
 		case R.id.bt_sezi_dian:
-			changejiawu = false;
-			seZiiv.setImageResource(sourceIds2[0]);
-			shuaiDianziBt.setSelected(true);
-			shuaijiawuBt.setSelected(false);
+			if (!isShaking) {
+				changejiawu = false;
+				seZiiv.setImageResource(sourceIds2[0]);
+				shuaiDianziBt.setSelected(true);
+				shuaijiawuBt.setSelected(false);
+			}
 			break;
 		default:
 			break;
