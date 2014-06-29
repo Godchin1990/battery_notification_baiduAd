@@ -21,3 +21,9 @@
 -keep class com.baidu.mobads.** {
   public protected *;
 }
+-keepclassmembers class minggo.battery.model.User {
+  public *;
+}
+-keepclassmembers class minggo.battery.model.SoundRecord {
+  public *;
+}
