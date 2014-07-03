@@ -5,6 +5,7 @@ import java.io.IOException;
 import minggo.battery.R;
 import minggo.battery.activity.IndexActivity;
 import minggo.battery.activity.MainActivity;
+import minggo.battery.reciever.BootReciever;
 import minggo.battery.reciever.TimeChangeReciever;
 import minggo.battery.util.MinggoDate;
 import minggo.battery.util.PlaySound;
@@ -76,14 +77,17 @@ public class BatteryService extends Service{
 	 */
 	public TimeChangeReciever timeChangeReciever;
 	
+	public BootReciever bootReciever;
+	
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		timeChangeReciever = new TimeChangeReciever();
+		bootReciever = new BootReciever();
 		context = this.getApplicationContext();
 		this.registerReceiver(broadcastReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 		this.registerReceiver(timeChangeReciever, new IntentFilter(Intent.ACTION_TIME_TICK));
 		this.registerReceiver(feelingReceiever, new IntentFilter("minggo.bettery.feeling"));
+		
 		
 		date = new MinggoDate();
 		initImage();
