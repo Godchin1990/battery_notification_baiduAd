@@ -65,6 +65,7 @@ public class RegisterActivity extends Activity implements OnClickListener{
 					StatService.onEvent(this, "register", email+","+pass);
 					
 					this.startActivity(new Intent(this, IndexActivity.class));
+					finish();
 				}else{
 					Toast.makeText(this, R.string.user_exist, Toast.LENGTH_SHORT).show();
 				}
