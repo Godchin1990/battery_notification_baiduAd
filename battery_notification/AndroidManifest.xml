@@ -41,11 +41,13 @@
         <meta-data
             android:name="BaiduMobAd_APP_SEC"
             android:value="f8554d2e" />
-
+		<!-- 机锋市场要求的标识 -->
+		<!-- <meta-data android:name="com.baidu.mobads.chid" android:value="gfan"/> -->
+		
         <!-- 渠道商编号，其中name请不要改，将value修改为渠道商编号。渠道名称请到mtj.baidu.com的渠道管理中修改 -->
         <meta-data
             android:name="BaiduMobAd_CHANNEL"
-            android:value="百度_[bdad]" />
+            android:value="360_[bdad]" />
         <!-- 您从百度网站获取的APP KEY -->
         <meta-data
             android:name="BaiduMobAd_STAT_ID"
