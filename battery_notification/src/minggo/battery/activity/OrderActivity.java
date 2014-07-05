@@ -26,6 +26,7 @@ public class OrderActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_order);
 		initUI();
+		
 		MinggoApplication.allActivities.add(this);
 		statisticEmail();
 	}
