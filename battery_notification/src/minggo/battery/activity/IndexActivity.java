@@ -65,6 +65,7 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 	private View settingView;
 	private View shareView;
 	private View feedbackView;
+	private View personalView;
 
 	private boolean isFirst;// 判断是不是第一次打开运用
 	private SharedPreferences preferences;
@@ -100,12 +101,15 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		settingView = findViewById(R.id.lo_menu_2);
 		shareView = findViewById(R.id.lo_menu_3);
 		feedbackView = findViewById(R.id.lo_menu_4);
+		personalView = findViewById(R.id.lo_menu_5);
+		
 		menuBt = (ImageButton) findViewById(R.id.bt_index_menu);
 
 		feedbackView.setOnClickListener(this);
 		loginView.setOnClickListener(this);
 		settingView.setOnClickListener(this);
 		shareView.setOnClickListener(this);
+		personalView.setOnClickListener(this);
 		alertBt.setOnClickListener(this);
 		seziBt.setOnClickListener(this);
 		feelingBt.setOnClickListener(this);
@@ -221,6 +225,11 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 
+		case R.id.lo_menu_5:
+			startActivity(new Intent(this, OrderActivity.class));
+			menuView.setVisibility(View.GONE);
+			StatService.onEvent(this, "menu_order", "order_tips");
+			break;
 		case R.id.lo_menu_4:
 			
 			Intent intent4 = new Intent(Intent.ACTION_SENDTO);

@@ -44,6 +44,8 @@
     <string name="input_null">输入不能为空</string>
     <string name="login_success">登陆成功</string>
     <string name="register_success">注册成功</string>
+    <string name="order_tips">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;给你的她/他设定自己的录音整点提醒，每一小时都有你的窝心的话语，这样可以体现细心和爱的表现，从这个一刻开始吧啦啦！！！
+\n&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;做一个私人定制的应用，您可以发送自己的录音到指定邮件minggo8en@gmail.com，那边将会倾力帮您制作您喜欢的提醒录音和提示语哦！下一秒的爱等着你啦&#8230;</string>
     <string-array name="hour">
 　　        <item>00:00</item>
 　　        <item>01:00</item>

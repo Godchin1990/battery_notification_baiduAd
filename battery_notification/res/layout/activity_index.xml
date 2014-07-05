@@ -256,6 +256,37 @@
                 android:textColor="@color/head_tv_bg"
                 android:textSize="16dp" />
         </LinearLayout>
+        <View
+            android:id="@+id/head_divider_5"
+            android:layout_width="wrap_content"
+            android:layout_height="1px"
+            android:layout_below="@+id/lo_menu_4"
+            android:background="@color/menu_divider" />
+        <LinearLayout
+            android:id="@+id/lo_menu_5"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_below="@+id/head_divider_5"
+            android:background="@drawable/selector_menu_item_bg"
+            android:gravity="left|center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ofm_qrcode_icon" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="私人定制"
+                android:textColor="#48D415"
+                android:textSize="16dp" />
+        </LinearLayout>
     </RelativeLayout>
 
 </RelativeLayout>
