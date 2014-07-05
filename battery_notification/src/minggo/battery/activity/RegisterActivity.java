@@ -7,6 +7,7 @@ import minggo.battery.util.UserUtil;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -65,7 +66,13 @@ public class RegisterActivity extends Activity implements OnClickListener{
 					StatService.onEvent(this, "register", email+","+pass);
 					
 					this.startActivity(new Intent(this, IndexActivity.class));
-					finish();
+					new Handler().postDelayed(new Runnable() {
+						@Override
+						public void run() {
+							finish();
+						}
+					}, 1000);
+					
 				}else{
 					Toast.makeText(this, R.string.user_exist, Toast.LENGTH_SHORT).show();
 				}
