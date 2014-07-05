@@ -23,10 +23,15 @@ public class UserUtil {
 	 * @param user
 	 */
 	public static void saveUser(Context context,User user){
+		try {
+			SQLiteDatabase db = new DbOpenHelper(context).getWritableDatabase();
+			db.replace(DBConfig.TABLE_USER, null, DaoUtils.object2ContentValues(user));
+			db.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return;
+		}
 		
-		SQLiteDatabase db = new DbOpenHelper(context).getWritableDatabase();
-		db.replace(DBConfig.TABLE_USER, null, DaoUtils.object2ContentValues(user));
-		db.close();
 	}
 	/**
 	 * 获取录音列表
@@ -35,10 +40,15 @@ public class UserUtil {
 	 */
 	public static List<User> getUserList(Context context){
 		List<User> userList = null;
-		SQLiteDatabase db = new DbOpenHelper(context).getReadableDatabase();
-		Cursor query = db.query(DBConfig.TABLE_USER,null,null,null,null, null, null);
-		userList = DaoUtils.cursor2ObjectList(query, User.class);
-		db.close();
+		try {
+			SQLiteDatabase db = new DbOpenHelper(context).getReadableDatabase();
+			Cursor query = db.query(DBConfig.TABLE_USER,null,null,null,null, null, null);
+			userList = DaoUtils.cursor2ObjectList(query, User.class);
+			db.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 		return userList;
 	}
 	/**
@@ -48,15 +58,45 @@ public class UserUtil {
 	 */
 	public static boolean isExistUser(Context context){
 		List<User> userList = null;
-		SQLiteDatabase db = new DbOpenHelper(context).getReadableDatabase();
-		Cursor query = db.query(DBConfig.TABLE_USER,null,"type=?",new String[]{"1"},null, null, null);
-		userList = DaoUtils.cursor2ObjectList(query, User.class);
-		db.close();
+		try {
+			SQLiteDatabase db = new DbOpenHelper(context).getReadableDatabase();
+			Cursor query = db.query(DBConfig.TABLE_USER,null,"type=?",new String[]{"1"},null, null, null);
+			userList = DaoUtils.cursor2ObjectList(query, User.class);
+			db.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
 		if (userList!=null&&!userList.isEmpty()) {
 			return true;
 		}
 		return false;
 	}
+	/**
+	 * 判断是否注册过
+	 * @param context
+	 * @return
+	 */
+	public static User getFirstUser(Context context){
+		List<User> userList = null;
+		try {
+			SQLiteDatabase db = new DbOpenHelper(context).getReadableDatabase();
+			Cursor query = db.query(DBConfig.TABLE_USER,null,"type=?",new String[]{"1"},null, null, null);
+			userList = DaoUtils.cursor2ObjectList(query, User.class);
+			db.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		if (userList!=null&&!userList.isEmpty()) {
+			return userList.get(0);
+		}
+		return null;
+	}
+	
+	
 	
 	/**
 	 * 获取某一时间的录音
@@ -65,10 +105,16 @@ public class UserUtil {
 	 */
 	public static User getUser(Context context,String email){
 		List<User> userList = null;
-		SQLiteDatabase db = new DbOpenHelper(context).getReadableDatabase();
-		Cursor query = db.query(DBConfig.TABLE_USER,null,"email=?",new String[]{email},null, null, null);
-		userList = DaoUtils.cursor2ObjectList(query, User.class);
-		db.close();
+		try {
+			SQLiteDatabase db = new DbOpenHelper(context).getReadableDatabase();
+			Cursor query = db.query(DBConfig.TABLE_USER,null,"email=?",new String[]{email},null, null, null);
+			userList = DaoUtils.cursor2ObjectList(query, User.class);
+			db.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
 		if (userList!=null&&!userList.isEmpty()) {
 			return userList.get(0);
 		}

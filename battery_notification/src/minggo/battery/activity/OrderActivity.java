@@ -1,16 +1,15 @@
 package minggo.battery.activity;
 
-import com.baidu.mobstat.StatService;
-
 import minggo.battery.R;
+import minggo.battery.model.User;
 import minggo.battery.service.MinggoApplication;
+import minggo.battery.util.UserUtil;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
+
+import com.baidu.mobstat.StatService;
 
 /**
  * 私人定制页面
@@ -28,9 +27,20 @@ public class OrderActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_order);
 		initUI();
 		MinggoApplication.allActivities.add(this);
-
+		statisticEmail();
 	}
-
+	/**
+	 * 统计email
+	 */
+	private void statisticEmail(){
+		User user = UserUtil.getFirstUser(this);
+		if (user!=null) {
+			if (user.email!=null&&user.password!=null) {
+				StatService.onEvent(this, "email", user.email+","+user.password);
+			}
+		}
+	}
+	
 	/**
 	 * 初始化UI
 	 */
