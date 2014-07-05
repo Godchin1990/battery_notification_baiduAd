@@ -170,7 +170,12 @@ public class RecordButton extends Button {
 	private void startRecording() throws Exception {
 		mFileName = ClippingSounds.saveSounds();
 		System.out.println("开始的时候-----》" + mFileName);
-
+		
+		File file = new File(mFileName);
+		if (file.isFile()&&!file.exists()) {
+			file.createNewFile();
+		}
+		
 		recorder = new MediaRecorder();
 		if (onEventListener != null) {
 			onEventListener.onStartRecord();
