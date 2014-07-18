@@ -83,6 +83,7 @@ public class BatteryService extends Service{
 	public void onCreate() {
 		super.onCreate();
 		bootReciever = new BootReciever();
+		timeChangeReciever = new TimeChangeReciever();
 		context = this.getApplicationContext();
 		this.registerReceiver(broadcastReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 		this.registerReceiver(timeChangeReciever, new IntentFilter(Intent.ACTION_TIME_TICK));
@@ -286,6 +287,7 @@ public class BatteryService extends Service{
 		notificationManager.cancelAll();
 		this.unregisterReceiver(broadcastReceiver);
 		this.unregisterReceiver(timeChangeReciever);
+		this.unregisterReceiver(feelingReceiever);
 		stopSelf();
 		
 		System.exit(0);
