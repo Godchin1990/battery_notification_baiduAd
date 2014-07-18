@@ -1,18 +1,15 @@
 package minggo.battery.activity;
 
-import com.baidu.mobstat.StatService;
-
 import minggo.battery.R;
-import minggo.battery.service.BatteryService;
 import minggo.battery.service.MinggoApplication;
-import minggo.battery.util.MinggoDate;
 import minggo.battery.util.PreferenceShareUtil;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+
+import com.baidu.mobstat.StatService;
 /**
  * 设置页面
  * @author minggo

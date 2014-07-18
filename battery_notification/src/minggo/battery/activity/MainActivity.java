@@ -332,7 +332,7 @@ public class MainActivity extends Activity implements OnClickListener{
 	public boolean startVibrato(){		//定义震动
 		mVibrator.vibrate( new long[]{500,200,500,200}, -1); //第一个｛｝里面是节奏数组， 第二个参数是重复次数，-1为不重复，非-1则从pattern的指定下标开始重复
 		try {
-			PlaySound.getInstance().play("sound/shake_sound_male.mp3", assetManager);
+			PlaySound.play("sound/shake_sound_male.mp3", assetManager);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

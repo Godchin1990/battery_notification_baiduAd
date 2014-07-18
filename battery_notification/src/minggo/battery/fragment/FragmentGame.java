@@ -53,7 +53,6 @@ public class FragmentGame extends Fragment implements OnClickListener {
 	private AdView adView;
 	private Activity activity;
 	private View gameView;
-	private LayoutInflater inflater;
 	
 	private Button shuaiDianziBt;
 	private Button shuaijiawuBt;
@@ -88,7 +87,6 @@ public class FragmentGame extends Fragment implements OnClickListener {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		this.inflater = inflater;
 		gameView = inflater.inflate(R.layout.fragment_game, container, false);
 		seZiiv = (ImageView) gameView.findViewById(R.id.game_shack_iv);
 		cancelAdIv = (ImageView) gameView.findViewById(R.id.cancel_ad_iv);

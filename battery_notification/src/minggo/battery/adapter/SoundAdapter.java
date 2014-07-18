@@ -41,11 +41,9 @@ public class SoundAdapter extends BaseAdapter {
 
 	@Override
 	public long getItemId(int position) {
-		// TODO Auto-generated method stub
 		return position;
 	}
 	
-	private int clickIndex = -1;
 	
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
@@ -77,7 +75,6 @@ public class SoundAdapter extends BaseAdapter {
 			@Override
 			public void onClick(final View v) {
 				tryListener.onTryClick(v,position);
-				clickIndex = position;
 			}
 		});
 		

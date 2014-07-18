@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import minggo.battery.R;
 import minggo.battery.activity.IndexActivity;
-import minggo.battery.activity.MainActivity;
 import minggo.battery.reciever.BootReciever;
 import minggo.battery.reciever.TimeChangeReciever;
 import minggo.battery.util.MinggoDate;

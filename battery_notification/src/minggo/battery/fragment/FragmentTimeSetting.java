@@ -25,7 +25,6 @@ import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -55,7 +54,6 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 
 	private Activity activity;
 	private View timeSettinView;
-	private LayoutInflater inflater;
 	public static AssetManager assetManager;
 	private RecordButton recordButton;
 
@@ -88,7 +86,6 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		this.inflater = inflater;
 		timeSettinView = inflater.inflate(R.layout.fragment_alert, container, false);
 		recordButton = (RecordButton) timeSettinView.findViewById(R.id.bt_record_sound);
 		soundLv = (ListView) timeSettinView.findViewById(R.id.lv_alert_sounds);

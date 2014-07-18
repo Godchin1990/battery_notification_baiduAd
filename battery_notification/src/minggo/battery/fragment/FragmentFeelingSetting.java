@@ -25,7 +25,6 @@ public class FragmentFeelingSetting extends Fragment implements OnClickListener 
 
 	private Activity activity;
 	private View feelingSettingView;
-	private LayoutInflater inflater;
 	private MinggoDate date;
 
 	private Button write1Bt;
@@ -68,7 +67,6 @@ public class FragmentFeelingSetting extends Fragment implements OnClickListener 
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		this.inflater = inflater;
 		feelingSettingView = inflater.inflate(R.layout.fragment_feeling, container, false);
 		initUI();
 		initData();
@@ -82,7 +80,6 @@ public class FragmentFeelingSetting extends Fragment implements OnClickListener 
 	
 	@Override
 	public void setUserVisibleHint(boolean isVisibleToUser) {
-		// TODO Auto-generated method stub
 		super.setUserVisibleHint(isVisibleToUser);
 		if (isVisibleToUser&&!isFirst) {
 			initData();
