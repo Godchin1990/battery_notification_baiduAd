@@ -3,12 +3,12 @@
     <string name="app_name">电量显示和整点报时</string>
     <!-- 小米专用 -->
     <!-- <string name="app_name">报时电池</string> -->
-    <string name="sunday">今天不要工作太累哦，加油！</string>
+    <string name="sunday">哟，还有一天假期，珍惜珍惜！</string>
     <string name="monday">快乐学习，快乐工作啦！</string>
     <string name="tuestday">每天进步一点点，good！</string>
     <string name="wednesday">是一个突破自己的日子哦！</string>
-    <string name="thursday">运动愉快，走起！</string>
-    <string name="friday">跟她逛逛街也不错哦！</string>
+    <string name="thursday">适合运动的一天，准备好了吗？</string>
+    <string name="friday">漂亮的完成今天的事，周末更愉快哦！</string>
     <string name="saturday">适当的休息很重要哦！</string>
     <string name="version">Minggo电池[version 1.3]</string>
     <string name="author">Minggo电池</string>
@@ -35,7 +35,7 @@
     <string name="email_title">电量显示和整点报时意见反馈</string>
     <string name="share_title">我正在使用电量显示和整点报时</string>
     <string name="email_content">建议与意见：</string>
-    <string name="share_content">我正在使用minggo的电量显示和整点报时，觉得很不错。明星为您报时，每天每时都有心情：http://shouji.360tpcdn.com/140603/b7bc0490b262ac9fee04e025897ef6c2/minggo.battery_3.apk\n</string>
+    <string name="share_content">我正在使用的《电量显示和整点报时》，真心不错。明星为您报时，每天每时都有心情：http://shouji.360tpcdn.com/140704/f6ee889174f35efec73e94940b6ba37d/minggo.battery_10.apk\n</string>
     <string name="email_select_tips">请选择邮件软件发送</string>
     <string name="share_select_tips">请选择可分享软件</string>
     <string name="user_no_exist">用户不存在</string>
