@@ -5,9 +5,12 @@ import minggo.battery.model.User;
 import minggo.battery.service.MinggoApplication;
 import minggo.battery.util.UserUtil;
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 
 import com.baidu.mobstat.StatService;
 
@@ -20,7 +23,7 @@ import com.baidu.mobstat.StatService;
 public class OrderActivity extends Activity implements OnClickListener {
 
 	private View backBt;
-
+	private Button orderBt;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,7 +50,9 @@ public class OrderActivity extends Activity implements OnClickListener {
 	 */
 	private void initUI() {
 		backBt = findViewById(R.id.lo_order_back);
+		orderBt = (Button) findViewById(R.id.bt_order);
 		backBt.setOnClickListener(this);
+		orderBt.setOnClickListener(this);
 	}
 
 	@Override
@@ -55,6 +60,9 @@ public class OrderActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.lo_order_back:
 			onBackPressed();
+			break;
+		case R.id.bt_order:
+			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(MinggoApplication.TAOBAO_URL)));
 			break;
 		default:
 			break;
