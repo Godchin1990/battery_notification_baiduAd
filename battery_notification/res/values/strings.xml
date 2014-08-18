@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">电量显示和整点报时</string>
+    <!-- 客户名字 -->
+    <!-- <string name="app_name">XXX</string> -->
     <!-- 小米专用 -->
     <!-- <string name="app_name">报时电池</string> -->
     <string name="sunday">哟，还有一天假期，珍惜珍惜！</string>
@@ -11,6 +13,8 @@
     <string name="friday">漂亮的完成今天的事，周末更愉快哦！</string>
     <string name="saturday">适当的休息很重要哦！</string>
     <string name="version">Minggo电池[version 1.3]</string>
+     <!-- 小米专用 -->
+    <!-- <string name="author">报时电池</string> -->
     <string name="author">Minggo电池</string>
     <string name="login_title">用户登录</string>
     <string name="battery_low">低电量声音</string>

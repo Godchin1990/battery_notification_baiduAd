@@ -10,9 +10,11 @@ import minggo.battery.util.PlaySound;
 import minggo.battery.util.PreferenceShareUtil;
 import minggo.battery.util.SoundRecordUtil;
 import minggo.battery.util.UserUtil;
+import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Vibrator;
 import android.util.Log;
 
 /**
@@ -25,17 +27,25 @@ public class TimeChangeReciever extends BroadcastReceiver {
 
 	private MinggoDate date;
 	private User user;
-
+	private Vibrator vibrator;
+	
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		String action = intent.getAction();
+		
 		if (action.equals(Intent.ACTION_TIME_TICK)) {
+			
 			// System.out.println("整点报时--->"+date.get24Hour()+"点");
 			if (PreferenceShareUtil.getZhengTimeFlag(context)) {
+				if (vibrator==null) {
+					vibrator = (Vibrator) context.getSystemService(Service.VIBRATOR_SERVICE);
+				}
+				
 				date = new MinggoDate();
 				user = UserUtil.getUser(context, MinggoApplication.EMAIL);
 				if (user.type == 0) {
 					if (date.getMinutes() == 00 && date.get24Hour() > 5) {
+						vibrator.vibrate(500);
 						// System.out.println("整点报时--->"+date.get24Hour()+"点");
 						try {
 							PlaySound.play("sound/" + date.get24Hour() + ".mp3", context.getAssets());
@@ -48,7 +58,7 @@ public class TimeChangeReciever extends BroadcastReceiver {
 						SoundRecord soundRecord = SoundRecordUtil.getSoundRecord(context, date.get24Hour());
 
 						if (soundRecord != null) {
-
+							vibrator.vibrate(500);
 							try {
 								PlaySound.playVoice2(soundRecord.path, context.getResources().getAssets(), 2);
 							} catch (IOException e) {
@@ -56,6 +66,7 @@ public class TimeChangeReciever extends BroadcastReceiver {
 							}
 						} else {
 							if (date.getMinutes() == 00 && date.get24Hour() > 5) {
+								vibrator.vibrate(500);
 								// System.out.println("整点报时--->"+date.get24Hour()+"点");
 								try {
 									PlaySound.play("sound/" + date.get24Hour() + ".mp3",

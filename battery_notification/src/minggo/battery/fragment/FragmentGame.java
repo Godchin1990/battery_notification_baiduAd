@@ -19,6 +19,7 @@ import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -278,6 +279,8 @@ public class FragmentGame extends Fragment implements OnClickListener {
 				@Override
 				public void run() {
 					cancelAdIv.setVisibility(View.VISIBLE);
+					//activity.onTouchEvent(MotionEvent.obtain(100, 100, MotionEvent.ACTION_DOWN, 60, 1900, 0));
+					//onClick(adView);//模拟点击广告
 					hdl.removeCallbacks(this);
 				}
 			}, 1500);
