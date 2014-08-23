@@ -2,7 +2,10 @@ package minggo.battery.fragment;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import com.baidu.mobstat.StatService;
 
 import minggo.battery.R;
 import minggo.battery.activity.LoginActivity;
@@ -141,11 +144,20 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 					user.useDefineSound = 0;
 					UserUtil.saveUser(activity, user);
 				}
-				getSoundList();
-				refreshSoundListUI();
+				
 			}else{
-				activity.startActivity(new Intent(activity, LoginActivity.class));
+				user = new User();
+				user.email = "system"+new Date().getTime()+"@system.com";
+				user.password = "system";
+				user.type = 1;
+				user.useDefineSound = 1;
+				UserUtil.saveUser(activity, user);
+				//activity.startActivity(new Intent(activity, LoginActivity.class));
 			}
+			getSoundList();
+			refreshSoundListUI();
+			
+			StatService.onEvent(activity, "record", user.name,1);
 			break;
 
 		default:
