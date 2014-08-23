@@ -25,8 +25,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
+import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -129,6 +131,7 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		viewPager.setOffscreenPageLimit(2);
 
 		StatService.onPageStart(this, getFragment(currIndex));
+		
 	}
 
 	public class MyOnPageChangeListener implements OnPageChangeListener {
@@ -148,9 +151,14 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 	
 	@Override
 	public void onBackPressed() {
-		super.onBackPressed();
-		StatService.onPageEnd(IndexActivity.this, getFragment(currIndex));
-		finish();
+		
+		if (menuView.getVisibility() == View.GONE) {
+			StatService.onPageEnd(IndexActivity.this, getFragment(currIndex));
+			super.onBackPressed();
+		} else {
+			menuView.setVisibility(View.GONE);
+		}
+		
 	}
 	
 	/**
@@ -316,5 +324,15 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 			editor.putBoolean("isfrist", false);
 			editor.commit();
 		}
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		if (menuView.getVisibility() == View.GONE) {
+			menuView.setVisibility(View.VISIBLE);
+		} else {
+			menuView.setVisibility(View.GONE);
+		}
+		return false;
 	}
 }

@@ -157,7 +157,6 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 			getSoundList();
 			refreshSoundListUI();
 			
-			StatService.onEvent(activity, "record", user.name,1);
 			break;
 
 		default:
@@ -239,6 +238,8 @@ public class FragmentTimeSetting extends Fragment implements TryListener, OnClic
 				PlaySound.play("sound/qrcode_completed.mp3", assetManager);
 				getSoundList();
 				refreshSoundListUI();
+				StatService.onEvent(activity, "record", user.name,1);
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
