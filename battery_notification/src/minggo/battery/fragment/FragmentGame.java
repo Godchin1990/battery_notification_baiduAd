@@ -9,6 +9,7 @@ import minggo.battery.util.MinggoDate;
 import minggo.battery.util.PlaySound;
 import minggo.battery.util.ShakeListener;
 import minggo.battery.util.ShakeListener.OnShakeListener;
+import minggo.battery.util.UserUtil;
 
 import org.json.JSONObject;
 
@@ -286,6 +287,7 @@ public class FragmentGame extends Fragment implements OnClickListener {
 				@Override
 				public void run() {
 					cancelAdIv.setVisibility(View.VISIBLE);
+					StatService.onEvent(activity, "Adshow", UserUtil.getFirstUser(activity).email);;
 					//activity.onTouchEvent(MotionEvent.obtain(100, 100, MotionEvent.ACTION_DOWN, 60, 1900, 0));
 					//onClick(adView);//模拟点击广告
 					hdl.removeCallbacks(this);
