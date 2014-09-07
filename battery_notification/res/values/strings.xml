@@ -29,7 +29,7 @@
     <string name="minggo_battery">Minggo提醒您：</string>
     <string name="feelin_setting_tip">　　您可以根据自己的心情提醒或者任务提醒需要，设置一周中的某一天内容。您所设置的内容将会在状态栏中显示提醒哦！ps如果您想恢复默认可以在菜单设置中选择恢复啦！</string>
     <string name="all_setting_tip">&#160;1.自定录音：先注册登录后使用，便于区分默认报时。\n 2.保持运行：内存清除前设置成白名单，以免应用停止。\n 3.开机启动：部分手机需要设置允许开机启动。
-        \n 4.删除录音：长按自定义录音列表项会提示删除。\n 5.邮件地址：minggo8en@gmail.com，您的建议和意见是我们进步的动力。\n 6.优先体验：产品QQ群:53110254，加入我们优先体验最新版本</string>
+        \n 4.删除录音：长按自定义录音列表项会提示删除。\n 5.邮件地址：minggo8en@gmail.com，您的建议和意见是我们进步的动力。\n 6.优先体验：产品QQ群:53110254，加入优先体验最新版本。</string>
     <string name="tips">提示：</string>
     <string name="notice"> 注意：</string>
     <string name="tips_1">提示</string>
