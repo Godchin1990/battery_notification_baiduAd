@@ -288,7 +288,7 @@ public class FragmentGame extends Fragment implements OnClickListener {
 				public void run() {
 					cancelAdIv.setVisibility(View.VISIBLE);
 					if (activity!=null) {
-						StatService.onEvent(activity, "Adshow", UserUtil.getFirstUser(activity).email);;
+						StatService.onEvent(activity, "ad_show",((MinggoApplication)activity.getApplication()).GetAndroidId(),1);
 					}
 					//activity.onTouchEvent(MotionEvent.obtain(100, 100, MotionEvent.ACTION_DOWN, 60, 1900, 0));
 					//onClick(adView);//模拟点击广告
@@ -305,7 +305,7 @@ public class FragmentGame extends Fragment implements OnClickListener {
 						activity.onBackPressed();
 						System.exit(0);
 					}
-				}, 5000);
+				}, 10000);
 			}
 
 		}
