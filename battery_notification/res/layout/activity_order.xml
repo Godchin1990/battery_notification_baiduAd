@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@+id/iv_logo"
+                android:layout_toRightOf="@+id/iv_logo8"
                 android:text="私人定制"
                 android:textColor="@color/head_tv_bg"
                 android:textSize="18sp" />
@@ -57,7 +57,7 @@
                 android:src="@drawable/abc_ic_ab_back_holo_dark" />
 
             <ImageView
-                android:id="@+id/iv_logo"
+                android:id="@+id/iv_logo8"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_centerVertical="true"

@@ -24,12 +24,9 @@ public class FragmentPerson extends Fragment implements OnClickListener{
 	private Button drinkBt;
 	private Button birthBt;
 	private Button anyBt;
-	private Button zhengdianBt;
-	private Button defineSoundBt;
-	private Button lowpowerBt;
-	private Button useFeelBt;
-	private Button shcokBt;
-	private Button defaultBt;
+	private Button memorialBt;
+	private Button sickBt;
+	
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,23 +40,15 @@ public class FragmentPerson extends Fragment implements OnClickListener{
 		drinkBt = (Button) mainView.findViewById(R.id.bt_drink);
 		birthBt = (Button) mainView.findViewById(R.id.bt_birthday);
 		anyBt = (Button) mainView.findViewById(R.id.bt_any);
-		zhengdianBt = (Button) mainView.findViewById(R.id.bt_alert);
-		defineSoundBt = (Button) mainView.findViewById(R.id.bt_alert_define);
-		lowpowerBt = (Button) mainView.findViewById(R.id.bt_low_power);
-		useFeelBt = (Button) mainView.findViewById(R.id.bt_feeling_use);
-		shcokBt = (Button) mainView.findViewById(R.id.bt_shock);
-		defaultBt = (Button) mainView.findViewById(R.id.bt_use_default);
+		memorialBt = (Button) mainView.findViewById(R.id.bt_memorial);
+		sickBt = (Button) mainView.findViewById(R.id.bt_sick);
 		
-		defaultBt.setOnClickListener(this);
 		drinkBt.setOnClickListener(this);
 		feelSetBt.setOnClickListener(this);
 		birthBt.setOnClickListener(this);
 		anyBt.setOnClickListener(this);
-		zhengdianBt.setOnClickListener(this);
-		defineSoundBt.setOnClickListener(this);
-		lowpowerBt.setOnClickListener(this);
-		shcokBt.setOnClickListener(this);
-		useFeelBt.setOnClickListener(this);
+		memorialBt.setOnClickListener(this);
+		sickBt.setOnClickListener(this);
 		
 	}
 	
@@ -78,24 +67,13 @@ public class FragmentPerson extends Fragment implements OnClickListener{
 		case R.id.bt_any:
 			
 			break;
-		case R.id.bt_alert:
+		case R.id.bt_memorial:
 			
 			break;
-		case R.id.bt_alert_define:
+		case R.id.bt_sick:
 			
 			break;
-		case R.id.bt_low_power:
 			
-			break;
-		case R.id.bt_feeling_use:
-			
-			break;
-		case R.id.bt_shock:
-			
-			break;
-		case R.id.bt_use_default:
-			
-			break;
 		default:
 			break;
 		}
