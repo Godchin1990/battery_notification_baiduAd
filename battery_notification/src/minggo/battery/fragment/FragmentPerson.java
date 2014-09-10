@@ -1,6 +1,7 @@
 package minggo.battery.fragment;
 
 import minggo.battery.R;
+import minggo.battery.activity.DefineAlarmActivity;
 import minggo.battery.activity.FeelingSettingActivity;
 import android.app.Activity;
 import android.content.Intent;
@@ -24,8 +25,6 @@ public class FragmentPerson extends Fragment implements OnClickListener{
 	private Button drinkBt;
 	private Button birthBt;
 	private Button anyBt;
-	private Button memorialBt;
-	private Button sickBt;
 	
 	
 	@Override
@@ -40,16 +39,10 @@ public class FragmentPerson extends Fragment implements OnClickListener{
 		drinkBt = (Button) mainView.findViewById(R.id.bt_drink);
 		birthBt = (Button) mainView.findViewById(R.id.bt_birthday);
 		anyBt = (Button) mainView.findViewById(R.id.bt_any);
-		memorialBt = (Button) mainView.findViewById(R.id.bt_memorial);
-		sickBt = (Button) mainView.findViewById(R.id.bt_sick);
-		
 		drinkBt.setOnClickListener(this);
 		feelSetBt.setOnClickListener(this);
 		birthBt.setOnClickListener(this);
 		anyBt.setOnClickListener(this);
-		memorialBt.setOnClickListener(this);
-		sickBt.setOnClickListener(this);
-		
 	}
 	
 	@Override
@@ -65,13 +58,7 @@ public class FragmentPerson extends Fragment implements OnClickListener{
 			
 			break;
 		case R.id.bt_any:
-			
-			break;
-		case R.id.bt_memorial:
-			
-			break;
-		case R.id.bt_sick:
-			
+			activity.startActivity(new Intent(activity, DefineAlarmActivity.class));
 			break;
 			
 		default:

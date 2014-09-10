@@ -20,6 +20,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
+            android:text="报时列表"
+            android:textColor="@color/navi_index"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="@color/navi_index" />
+
+        <Button
+            android:id="@+id/bt_alarm_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_person_collection"
+            android:drawableLeft="@drawable/emoji_35"
+            android:drawablePadding="5dp"
+            android:gravity="left|center_vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="提醒设置列表"
+            android:textColor="@color/text_normal"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:text="我的个性"
             android:textColor="@color/navi_index"
             android:textSize="14sp" />
@@ -42,26 +71,6 @@
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
             android:text="我的心情"
-            android:textColor="@color/text_normal"
-            android:textSize="16sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E2E2E2" />
-
-        <Button
-            android:id="@+id/bt_memorial"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_person_collection"
-            android:drawableLeft="@drawable/emoji_394"
-            android:drawablePadding="5dp"
-            android:gravity="left|center_vertical"
-            android:paddingBottom="10dp"
-            android:paddingLeft="5dp"
-            android:paddingTop="10dp"
-            android:text="纪念日提醒"
             android:textColor="@color/text_normal"
             android:textSize="16sp" />
 
@@ -99,7 +108,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="6dp"
             android:background="@color/navi_index" />
-        
+
         <Button
             android:id="@+id/bt_drink"
             android:layout_width="match_parent"
@@ -139,21 +148,6 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#E2E2E2" />
-
-        <Button
-            android:id="@+id/bt_sick"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_person_collection"
-            android:drawableLeft="@drawable/emoji_442"
-            android:drawablePadding="5dp"
-            android:gravity="left|center_vertical"
-            android:paddingBottom="10dp"
-            android:paddingLeft="5dp"
-            android:paddingTop="10dp"
-            android:text="吃药提醒"
-            android:textColor="@color/text_normal"
-            android:textSize="16sp" />
     </LinearLayout>
 
 </ScrollView>

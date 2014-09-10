@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_bg" >
+
+    <RelativeLayout
+        android:id="@+id/head"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/head_bg" >
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/tv_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/iv_logo"
+            android:text="@string/login_title"
+            android:textColor="@color/head_tv_bg"
+            android:textSize="18sp" />
+
+        <RelativeLayout
+            android:id="@+id/lo_define_alarm_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/selector_menu_item_bg" >
+
+            <TextView
+                android:id="@+id/tv_define_alarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/iv_logo4"
+                android:text="自定义闹钟"
+                android:textColor="@color/head_tv_bg"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/abc_ic_ab_back_holo_dark" />
+
+            <ImageView
+                android:id="@+id/iv_logo4"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/imageView3"
+                android:src="@drawable/logo" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/head" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_bg_icon"
+            android:padding="8dp"
+            android:src="@drawable/emoji_298" />
+
+        <EditText
+            android:id="@+id/ed_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/imageView1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_toRightOf="@+id/imageView1"
+            android:background="@color/all_bg"
+            android:drawableBottom="@drawable/shape_line"
+            android:ems="10"
+            android:hint="输入标题"
+            android:textSize="16sp"
+            android:textColor="@color/text_normal"
+            android:textColorHint="#d1d1d1" >
+        </EditText>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/imageView1"
+            android:layout_below="@+id/imageView1"
+            android:layout_marginTop="20dp"
+            android:text="提醒周期"
+            android:textColor="@color/text_normal"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView1"
+            android:layout_alignBottom="@+id/textView1"
+            android:layout_alignRight="@+id/ed_title"
+            android:layout_marginRight="20dp"
+            android:text="响铃一次"
+            android:textColor="@color/text_light"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="0.8dp"
+            android:layout_alignLeft="@+id/textView1"
+            android:layout_alignRight="@+id/ed_title"
+            android:layout_below="@+id/textView1"
+            android:layout_marginTop="10dp"
+            android:background="@color/navi_index" />
+
+        <RelativeLayout
+            android:id="@+id/lo_alarm_date"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignLeft="@+id/textView3"
+            android:layout_below="@+id/textView3"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/selector_person_collection"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="提醒日期"
+                android:textColor="@color/text_normal"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/arrow_right" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:layout_toLeftOf="@+id/imageView2"
+                android:text="2014-9-10"
+                android:textColor="@color/text_light"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/v_divider1"
+            android:layout_width="wrap_content"
+            android:layout_height="0.8dp"
+            android:layout_alignLeft="@+id/textView1"
+            android:layout_alignRight="@+id/ed_title"
+            android:layout_below="@+id/lo_alarm_date"
+            android:background="@color/navi_index" />
+
+        <RelativeLayout
+            android:id="@+id/lo_time_select"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignLeft="@+id/v_divider1"
+            android:layout_alignRight="@+id/v_divider1"
+            android:layout_below="@+id/v_divider1"
+            android:background="@drawable/selector_person_collection"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="提醒时间"
+                android:textColor="@color/text_normal"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/ImageView01"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/arrow_right" />
+
+            <TextView
+                android:id="@+id/tv_alarm_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:layout_toLeftOf="@+id/ImageView01"
+                android:text="12:39"
+                android:textColor="@color/text_light"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/v_divider2"
+            android:layout_width="wrap_content"
+            android:layout_height="0.8dp"
+            android:layout_alignLeft="@+id/lo_time_select"
+            android:layout_alignRight="@+id/lo_time_select"
+            android:layout_below="@+id/lo_time_select"
+            android:background="@color/navi_index" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true" >
+
+        <View
+            android:id="@+id/v_divider3"
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/navi_index" />
+
+        <View
+            android:id="@+id/v_divider4"
+            android:layout_width="0.8dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/v_divider3"
+            android:layout_centerHorizontal="true"
+            android:background="@color/navi_index" />
+
+        <Button
+            android:id="@+id/bt_scan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/v_divider4"
+            android:layout_toLeftOf="@+id/v_divider4"
+            android:background="@drawable/selector_person_collection"
+            android:gravity="center"
+            android:text="预览"
+            android:textColor="@color/navi_index"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/bt_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/v_divider4"
+            android:layout_toRightOf="@+id/v_divider4"
+            android:background="@drawable/selector_person_collection"
+            android:gravity="center"
+            android:text="保存"
+            android:textColor="@color/navi_index"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

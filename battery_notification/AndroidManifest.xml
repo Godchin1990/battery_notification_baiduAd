@@ -103,6 +103,14 @@
             android:name="minggo.battery.activity.FeelingSettingActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="minggo.battery.activity.TimeSelectActivity"
+            android:label="@string/app_name"
+            android:theme="@style/popStyle" />
+        <activity
+            android:name="minggo.battery.activity.DefineAlarmActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" />
 
         <receiver
             android:name="minggo.battery.reciever.TurnOnReciever"

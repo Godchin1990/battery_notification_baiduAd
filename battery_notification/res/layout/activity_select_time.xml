@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:gravity="bottom" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@color/all_bg" >
+
+        <ImageView
+            android:id="@+id/iv_cancel"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/selector_person_collection"
+            android:padding="10dp"
+            android:src="@drawable/flat_cancel" />
+
+        <ImageView
+            android:id="@+id/iv_save"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:padding="10dp"
+            android:src="@drawable/flat_save" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="0.8dp"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/iv_cancel"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/iv_save"
+            android:text="TextView" />
+
+        <View
+            android:id="@+id/v_divider3"
+            android:layout_width="wrap_content"
+            android:layout_height="0.8dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/navi_index"
+            android:layout_below="@+id/iv_cancel" />
+
+        <DatePicker
+            android:id="@+id/dp_select_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="18dp"
+            android:layout_below="@+id/v_divider3" />
+
+        <TimePicker
+            android:id="@+id/tp_select_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/v_divider3"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/v_divider1"
+            android:layout_width="0.8dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_cancel"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/iv_cancel"
+            android:background="@color/navi_index" />
+
+        <View
+            android:id="@+id/v_divider2"
+            android:layout_width="0.8dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_save"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/iv_save"
+            android:background="@color/navi_index" />
+
+        <TextView
+            android:id="@+id/tv_tltle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView1"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/v_divider2"
+            android:layout_toRightOf="@+id/v_divider1"
+            android:gravity="center"
+            android:text="时间选择"
+            android:textColor="@color/text_normal"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</RelativeLayout>
