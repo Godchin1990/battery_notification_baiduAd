@@ -462,6 +462,8 @@ minggo.battery.R$drawable: int dice_action_1
 minggo.battery.R$drawable: int dice_action_2
 minggo.battery.R$drawable: int dice_action_3
 minggo.battery.R$drawable: int divider_horizontal_timeline
+minggo.battery.R$drawable: int emoji_301
+minggo.battery.R$drawable: int emoji_49
 minggo.battery.R$drawable: int favorites_map_remarkpen
 minggo.battery.R$drawable: int favorites_map_remarkpen_b
 minggo.battery.R$drawable: int ic_preference_single_normal
@@ -483,6 +485,7 @@ minggo.battery.R$drawable: int notification_battery_logo_99
 minggo.battery.R$drawable: int notification_information_bg
 minggo.battery.R$drawable: int off_icon
 minggo.battery.R$drawable: int ofm_feedback_icon
+minggo.battery.R$drawable: int ofm_qrcode_icon
 minggo.battery.R$drawable: int ofm_send_icon
 minggo.battery.R$drawable: int on_icon
 minggo.battery.R$drawable: int on_off_button
@@ -527,6 +530,13 @@ minggo.battery.R$drawable: int voice_6
 minggo.battery.R$drawable: int voice_7
 minggo.battery.R$drawable: int voice_8
 minggo.battery.R$drawable: int voice_9
+minggo.battery.R$id: int ImageView01
+minggo.battery.R$id: int ImageView02
+minggo.battery.R$id: int ImageView03
+minggo.battery.R$id: int ImageView04
+minggo.battery.R$id: int ImageView05
+minggo.battery.R$id: int LinearLayout01
+minggo.battery.R$id: int RelativeLayout01
 minggo.battery.R$id: int action_settings
 minggo.battery.R$id: int adView
 minggo.battery.R$id: int app_version_tv
@@ -539,6 +549,7 @@ minggo.battery.R$id: int bt_index_menu
 minggo.battery.R$id: int bt_index_seii
 minggo.battery.R$id: int bt_login
 minggo.battery.R$id: int bt_monday_pen
+minggo.battery.R$id: int bt_order
 minggo.battery.R$id: int bt_record_sound
 minggo.battery.R$id: int bt_register
 minggo.battery.R$id: int bt_saturday_pen
@@ -570,11 +581,14 @@ minggo.battery.R$id: int head_divider
 minggo.battery.R$id: int head_divider_2
 minggo.battery.R$id: int head_divider_3
 minggo.battery.R$id: int head_divider_4
+minggo.battery.R$id: int head_divider_5
 minggo.battery.R$id: int ib_try_listen
 minggo.battery.R$id: int ib_try_top
 minggo.battery.R$id: int imageView1
 minggo.battery.R$id: int imageView2
 minggo.battery.R$id: int imageView3
+minggo.battery.R$id: int imageView4
+minggo.battery.R$id: int imageView5
 minggo.battery.R$id: int index_viewPager
 minggo.battery.R$id: int iv_list_time
 minggo.battery.R$id: int iv_logo
@@ -591,7 +605,9 @@ minggo.battery.R$id: int lo_menu_1
 minggo.battery.R$id: int lo_menu_2
 minggo.battery.R$id: int lo_menu_3
 minggo.battery.R$id: int lo_menu_4
+minggo.battery.R$id: int lo_menu_5
 minggo.battery.R$id: int lo_navi
+minggo.battery.R$id: int lo_order_back
 minggo.battery.R$id: int lo_register_back
 minggo.battery.R$id: int lo_setting_back
 minggo.battery.R$id: int lo_tips
@@ -604,14 +620,20 @@ minggo.battery.R$id: int submitButton
 minggo.battery.R$id: int textView1
 minggo.battery.R$id: int textView2
 minggo.battery.R$id: int textView3
+minggo.battery.R$id: int textView4
+minggo.battery.R$id: int textView5
 minggo.battery.R$id: int tv_alert_time
 minggo.battery.R$id: int tv_app_name
 minggo.battery.R$id: int tv_friday
 minggo.battery.R$id: int tv_friday_feeling
 minggo.battery.R$id: int tv_hour
 minggo.battery.R$id: int tv_list_tips
+minggo.battery.R$id: int tv_list_tips0
+minggo.battery.R$id: int tv_list_tips1
+minggo.battery.R$id: int tv_list_tips2
 minggo.battery.R$id: int tv_monday
 minggo.battery.R$id: int tv_monday_feeling
+minggo.battery.R$id: int tv_order_tips
 minggo.battery.R$id: int tv_saturday
 minggo.battery.R$id: int tv_saturday_feeling
 minggo.battery.R$id: int tv_second
@@ -630,6 +652,7 @@ minggo.battery.R$id: int zheng_sound_bt
 minggo.battery.R$layout: int activity_index
 minggo.battery.R$layout: int activity_login
 minggo.battery.R$layout: int activity_main
+minggo.battery.R$layout: int activity_order
 minggo.battery.R$layout: int activity_register
 minggo.battery.R$layout: int activity_setting
 minggo.battery.R$layout: int fragment_alert
@@ -662,6 +685,7 @@ minggo.battery.R$string: int login_title
 minggo.battery.R$string: int minggo_battery
 minggo.battery.R$string: int monday
 minggo.battery.R$string: int notice
+minggo.battery.R$string: int order_tips
 minggo.battery.R$string: int record_sound
 minggo.battery.R$string: int register_success
 minggo.battery.R$string: int saturday
@@ -693,12 +717,28 @@ minggo.battery.activity.LoginActivity: LoginActivity()
 minggo.battery.activity.LoginActivity: void onClick(android.view.View)
 minggo.battery.activity.MainActivity: void onClick(android.view.View)
 minggo.battery.activity.MainActivity: void shake_activity_back(android.view.View)
+minggo.battery.activity.OrderActivity
+minggo.battery.activity.OrderActivity: OrderActivity()
+minggo.battery.activity.OrderActivity: void onClick(android.view.View)
 minggo.battery.activity.RegisterActivity
 minggo.battery.activity.RegisterActivity: RegisterActivity()
 minggo.battery.activity.RegisterActivity: void onClick(android.view.View)
 minggo.battery.activity.SettingActivity
 minggo.battery.activity.SettingActivity: SettingActivity()
 minggo.battery.activity.SettingActivity: void onClick(android.view.View)
+minggo.battery.model.SoundRecord: int whichHour
+minggo.battery.model.SoundRecord: java.lang.String path
+minggo.battery.model.SoundRecord: java.lang.String longTime
+minggo.battery.model.SoundRecord: int type
+minggo.battery.model.SoundRecord: SoundRecord()
+minggo.battery.model.User: java.lang.String email
+minggo.battery.model.User: java.lang.String name
+minggo.battery.model.User: java.lang.String telephone
+minggo.battery.model.User: java.lang.String password
+minggo.battery.model.User: int useDefineSound
+minggo.battery.model.User: int useDefinFeeling
+minggo.battery.model.User: int type
+minggo.battery.model.User: User()
 minggo.battery.reciever.TurnOnReciever
 minggo.battery.reciever.TurnOnReciever: TurnOnReciever()
 minggo.battery.service.BatteryService

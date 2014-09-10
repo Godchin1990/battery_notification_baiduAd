@@ -7,6 +7,7 @@ import minggo.battery.R;
 import minggo.battery.adapter.BatteryPagerAdpater;
 import minggo.battery.fragment.FragmentFeelingSetting;
 import minggo.battery.fragment.FragmentGame;
+import minggo.battery.fragment.FragmentPerson;
 import minggo.battery.fragment.FragmentTimeSetting;
 import minggo.battery.service.BatteryService;
 import minggo.battery.service.MinggoApplication;
@@ -60,6 +61,7 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 	private FragmentFeelingSetting feelingSettingFgm;
 	private FragmentGame gameFgm;
 	private FragmentTimeSetting timeSettingFgm;
+	private FragmentPerson personFgm;
 
 	private ImageButton menuBt;
 	private View menuView;
@@ -119,10 +121,11 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		timeSettingFgm = new FragmentTimeSetting();
 		gameFgm = new FragmentGame();
 		feelingSettingFgm = new FragmentFeelingSetting();
-
+		personFgm = new FragmentPerson();
+		
 		fragmentList.add(timeSettingFgm);
 		fragmentList.add(gameFgm);
-		fragmentList.add(feelingSettingFgm);
+		fragmentList.add(personFgm);
 
 		pagerAdpater = new BatteryPagerAdpater(getSupportFragmentManager(), fragmentList);
 		viewPager.setAdapter(pagerAdpater);

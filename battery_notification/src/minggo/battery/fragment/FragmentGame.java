@@ -4,14 +4,17 @@ import java.io.IOException;
 
 import minggo.battery.R;
 import minggo.battery.listener.BaiduAdListener;
+import minggo.battery.service.MinggoApplication;
 import minggo.battery.util.MinggoDate;
 import minggo.battery.util.PlaySound;
 import minggo.battery.util.ShakeListener;
 import minggo.battery.util.ShakeListener.OnShakeListener;
+import minggo.battery.util.UserUtil;
 
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -59,6 +62,8 @@ public class FragmentGame extends Fragment implements OnClickListener {
 	private Button shuaijiawuBt;
 	private boolean isShaking;
 
+	private boolean isRecycle;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -83,7 +88,10 @@ public class FragmentGame extends Fragment implements OnClickListener {
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		this.activity = activity;
-
+		Intent intent = activity.getIntent();
+		if (intent!=null) {
+			isRecycle = intent.getBooleanExtra("isRecycle", false);
+		}
 	}
 
 	@Override
@@ -279,11 +287,26 @@ public class FragmentGame extends Fragment implements OnClickListener {
 				@Override
 				public void run() {
 					cancelAdIv.setVisibility(View.VISIBLE);
+					if (activity!=null) {
+						StatService.onEvent(activity, "ad_show",((MinggoApplication)activity.getApplication()).GetAndroidId(),1);
+					}
 					//activity.onTouchEvent(MotionEvent.obtain(100, 100, MotionEvent.ACTION_DOWN, 60, 1900, 0));
 					//onClick(adView);//模拟点击广告
 					hdl.removeCallbacks(this);
 				}
 			}, 1500);
+			
+			if (isRecycle) {
+				hdl.postDelayed(new Runnable() {
+					
+					@Override
+					public void run() {
+						//MinggoApplication.finishAllActivity();
+						activity.onBackPressed();
+						System.exit(0);
+					}
+				}, 10000);
+			}
 
 		}
 
@@ -362,5 +385,10 @@ public class FragmentGame extends Fragment implements OnClickListener {
 		default:
 			break;
 		}
+	}
+	@Override
+	public void onDetach() {
+		super.onDetach();
+		activity = null;
 	}
 }

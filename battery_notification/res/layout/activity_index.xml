@@ -83,7 +83,7 @@
                 android:layout_weight="1.0"
                 android:background="@color/transparent"
                 android:gravity="center"
-                android:text="心情"
+                android:text="我的"
                 android:textColor="@drawable/selector_index_navi_bt"
                 android:textSize="16dp" />
         </LinearLayout>

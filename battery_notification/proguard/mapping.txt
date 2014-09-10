@@ -1377,6 +1377,7 @@ android.support.v4.view.accessibility.AccessibilityNodeProviderCompat -> android
     android.support.v4.view.accessibility.AccessibilityNodeInfoCompat createAccessibilityNodeInfo(int) -> a
     boolean performAction(int,int,android.os.Bundle) -> a
     java.util.List findAccessibilityNodeInfosByText(java.lang.String,int) -> a
+    android.support.v4.view.accessibility.AccessibilityNodeInfoCompat findFocus(int) -> b
 android.support.v4.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderImpl -> android.support.v4.view.a.k:
     java.lang.Object newAccessibilityNodeProviderBridge(android.support.v4.view.accessibility.AccessibilityNodeProviderCompat) -> a
 android.support.v4.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderJellyBeanImpl -> android.support.v4.view.a.l:
@@ -1395,6 +1396,7 @@ android.support.v4.view.accessibility.AccessibilityNodeProviderCompat$Accessibil
     boolean performAction(int,int,android.os.Bundle) -> a
     java.util.List findAccessibilityNodeInfosByText(java.lang.String,int) -> a
     java.lang.Object createAccessibilityNodeInfo(int) -> a
+    java.lang.Object findFocus(int) -> b
 android.support.v4.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderStubImpl -> android.support.v4.view.a.p:
     java.lang.Object newAccessibilityNodeProviderBridge(android.support.v4.view.accessibility.AccessibilityNodeProviderCompat) -> a
 android.support.v4.view.accessibility.AccessibilityNodeProviderCompatJellyBean -> android.support.v4.view.a.q:
@@ -1415,10 +1417,12 @@ android.support.v4.view.accessibility.AccessibilityNodeProviderCompatKitKat$1 ->
     android.view.accessibility.AccessibilityNodeInfo createAccessibilityNodeInfo(int) -> createAccessibilityNodeInfo
     java.util.List findAccessibilityNodeInfosByText(java.lang.String,int) -> findAccessibilityNodeInfosByText
     boolean performAction(int,int,android.os.Bundle) -> performAction
+    android.view.accessibility.AccessibilityNodeInfo findFocus(int) -> findFocus
 android.support.v4.view.accessibility.AccessibilityNodeProviderCompatKitKat$AccessibilityNodeInfoBridge -> android.support.v4.view.a.v:
     java.lang.Object createAccessibilityNodeInfo(int) -> a
     boolean performAction(int,int,android.os.Bundle) -> a
     java.util.List findAccessibilityNodeInfosByText(java.lang.String,int) -> a
+    java.lang.Object findFocus(int) -> b
 android.support.v4.view.accessibility.AccessibilityRecordCompat -> android.support.v4.view.a.w:
     android.support.v4.view.accessibility.AccessibilityRecordCompat$AccessibilityRecordImpl IMPL -> a
     java.lang.Object mRecord -> b
@@ -2512,8 +2516,9 @@ minggo.battery.activity.IndexActivity -> minggo.battery.activity.IndexActivity:
     android.view.View settingView -> D
     android.view.View shareView -> E
     android.view.View feedbackView -> F
-    boolean isFirst -> G
-    android.content.SharedPreferences preferences -> H
+    android.view.View personalView -> G
+    boolean isFirst -> H
+    android.content.SharedPreferences preferences -> I
     void onCreate(android.os.Bundle) -> onCreate
     void initView() -> f
     void onBackPressed() -> onBackPressed
@@ -2521,7 +2526,9 @@ minggo.battery.activity.IndexActivity -> minggo.battery.activity.IndexActivity:
     void translate(int) -> b
     void initImageView() -> g
     void onClick(android.view.View) -> onClick
+    void onPause() -> onPause
     void makeShortCut(boolean) -> b
+    boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
     int access$0(minggo.battery.activity.IndexActivity) -> a
     java.lang.String access$1(minggo.battery.activity.IndexActivity,int) -> a
     void access$2(minggo.battery.activity.IndexActivity,int) -> b
@@ -2543,6 +2550,16 @@ minggo.battery.activity.LoginActivity -> minggo.battery.activity.LoginActivity:
     void onResume() -> onResume
     void onPause() -> onPause
     void onBackPressed() -> onBackPressed
+minggo.battery.activity.OrderActivity -> minggo.battery.activity.OrderActivity:
+    android.view.View backBt -> a
+    android.widget.Button orderBt -> b
+    void onCreate(android.os.Bundle) -> onCreate
+    void statisticEmail() -> a
+    void initUI() -> b
+    void onClick(android.view.View) -> onClick
+    void onResume() -> onResume
+    void onPause() -> onPause
+    void onBackPressed() -> onBackPressed
 minggo.battery.activity.RegisterActivity -> minggo.battery.activity.RegisterActivity:
     android.view.View backBt -> a
     android.widget.EditText userNameEd -> b
@@ -2555,6 +2572,9 @@ minggo.battery.activity.RegisterActivity -> minggo.battery.activity.RegisterActi
     void onResume() -> onResume
     void onPause() -> onPause
     void onBackPressed() -> onBackPressed
+minggo.battery.activity.RegisterActivity$1 -> minggo.battery.activity.b:
+    minggo.battery.activity.RegisterActivity this$0 -> a
+    void run() -> run
 minggo.battery.activity.SettingActivity -> minggo.battery.activity.SettingActivity:
     android.view.View backV -> a
     android.widget.Button feelingBt -> b
@@ -2587,13 +2607,11 @@ minggo.battery.adapter.SoundAdapter -> minggo.battery.a.d:
     android.content.Context context -> a
     java.util.List list -> b
     minggo.battery.adapter.SoundAdapter$TryListener tryListener -> c
-    int clickIndex -> d
     int getCount() -> getCount
     java.lang.Object getItem(int) -> getItem
     long getItemId(int) -> getItemId
     android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
     minggo.battery.adapter.SoundAdapter$TryListener access$0(minggo.battery.adapter.SoundAdapter) -> a
-    void access$1(minggo.battery.adapter.SoundAdapter,int) -> a
 minggo.battery.adapter.SoundAdapter$1 -> minggo.battery.a.e:
     minggo.battery.adapter.SoundAdapter this$0 -> a
     int val$position -> b
@@ -2620,30 +2638,29 @@ minggo.battery.dao.SQLHelper -> minggo.battery.c.c:
 minggo.battery.fragment.FragmentFeelingSetting -> minggo.battery.d.a:
     android.app.Activity activity -> P
     android.view.View feelingSettingView -> Q
-    android.view.LayoutInflater inflater -> R
-    minggo.battery.util.MinggoDate date -> S
-    android.widget.Button write1Bt -> T
-    android.widget.Button write2Bt -> U
-    android.widget.Button write3Bt -> V
-    android.widget.Button write4Bt -> W
-    android.widget.Button write5Bt -> X
-    android.widget.Button write6Bt -> Y
-    android.widget.Button write7Bt -> Z
-    android.widget.TextView feeling1Tv -> aa
-    android.widget.TextView feeling2Tv -> ab
-    android.widget.TextView feeling3Tv -> ac
-    android.widget.TextView feeling4Tv -> ad
-    android.widget.TextView feeling5Tv -> ae
-    android.widget.TextView feeling6Tv -> af
-    android.widget.TextView feeling7Tv -> ag
-    android.widget.EditText input1Ed -> ah
-    android.widget.EditText input2Ed -> ai
-    android.widget.EditText input3Ed -> aj
-    android.widget.EditText input4Ed -> ak
-    android.widget.EditText input5Ed -> al
-    android.widget.EditText input6Ed -> am
-    android.widget.EditText input7Ed -> an
-    boolean isFirst -> ao
+    minggo.battery.util.MinggoDate date -> R
+    android.widget.Button write1Bt -> S
+    android.widget.Button write2Bt -> T
+    android.widget.Button write3Bt -> U
+    android.widget.Button write4Bt -> V
+    android.widget.Button write5Bt -> W
+    android.widget.Button write6Bt -> X
+    android.widget.Button write7Bt -> Y
+    android.widget.TextView feeling1Tv -> Z
+    android.widget.TextView feeling2Tv -> aa
+    android.widget.TextView feeling3Tv -> ab
+    android.widget.TextView feeling4Tv -> ac
+    android.widget.TextView feeling5Tv -> ad
+    android.widget.TextView feeling6Tv -> ae
+    android.widget.TextView feeling7Tv -> af
+    android.widget.EditText input1Ed -> ag
+    android.widget.EditText input2Ed -> ah
+    android.widget.EditText input3Ed -> ai
+    android.widget.EditText input4Ed -> aj
+    android.widget.EditText input5Ed -> ak
+    android.widget.EditText input6Ed -> al
+    android.widget.EditText input7Ed -> am
+    boolean isFirst -> an
     void onCreate(android.os.Bundle) -> c
     void onAttach(android.app.Activity) -> a
     android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
@@ -2671,10 +2688,9 @@ minggo.battery.fragment.FragmentGame -> minggo.battery.d.b:
     com.baidu.mobads.AdView adView -> ab
     android.app.Activity activity -> ac
     android.view.View gameView -> ad
-    android.view.LayoutInflater inflater -> ae
-    android.widget.Button shuaiDianziBt -> af
-    android.widget.Button shuaijiawuBt -> ag
-    boolean isShaking -> ah
+    android.widget.Button shuaiDianziBt -> ae
+    android.widget.Button shuaijiawuBt -> af
+    boolean isShaking -> ag
     void onCreate(android.os.Bundle) -> c
     void onAttach(android.app.Activity) -> a
     android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
@@ -2727,26 +2743,25 @@ minggo.battery.fragment.FragmentGame$AdListener$1 -> minggo.battery.d.h:
 minggo.battery.fragment.FragmentTimeSetting -> minggo.battery.d.i:
     android.app.Activity activity -> Q
     android.view.View timeSettinView -> R
-    android.view.LayoutInflater inflater -> S
     android.content.res.AssetManager assetManager -> P
-    minggo.battery.view.RecordButton recordButton -> T
-    java.util.List soundRecordList -> U
-    android.widget.ListView soundLv -> V
-    minggo.battery.adapter.SoundAdapter soundAdapter -> W
-    android.widget.ImageView switchIv -> X
-    minggo.battery.model.User user -> Y
-    android.widget.TextView listTipsTv -> Z
-    java.lang.String[] hours -> aa
-    android.widget.ListView hoursLv -> ab
-    minggo.battery.adapter.HourAdapter hourAdapter -> ac
-    android.widget.ImageView arrowDownIv -> ad
-    java.lang.String currHour -> ae
-    android.widget.TextView currHourTv -> af
-    android.os.Handler handler -> ag
-    boolean isRepeat0 -> ah
-    int currIndex -> ai
-    android.view.View v -> aj
-    java.lang.Runnable runnable -> ak
+    minggo.battery.view.RecordButton recordButton -> S
+    java.util.List soundRecordList -> T
+    android.widget.ListView soundLv -> U
+    minggo.battery.adapter.SoundAdapter soundAdapter -> V
+    android.widget.ImageView switchIv -> W
+    minggo.battery.model.User user -> X
+    android.widget.TextView listTipsTv -> Y
+    java.lang.String[] hours -> Z
+    android.widget.ListView hoursLv -> aa
+    minggo.battery.adapter.HourAdapter hourAdapter -> ab
+    android.widget.ImageView arrowDownIv -> ac
+    java.lang.String currHour -> ad
+    android.widget.TextView currHourTv -> ae
+    android.os.Handler handler -> af
+    boolean isRepeat0 -> ag
+    int currIndex -> ah
+    android.view.View v -> ai
+    java.lang.Runnable runnable -> aj
     void onCreate(android.os.Bundle) -> c
     void onAttach(android.app.Activity) -> a
     android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
@@ -2768,8 +2783,9 @@ minggo.battery.fragment.FragmentTimeSetting -> minggo.battery.d.i:
     android.app.Activity access$5(minggo.battery.fragment.FragmentTimeSetting) -> e
     void access$6(minggo.battery.fragment.FragmentTimeSetting) -> f
     void access$7(minggo.battery.fragment.FragmentTimeSetting) -> g
-    java.util.List access$8(minggo.battery.fragment.FragmentTimeSetting) -> h
-    minggo.battery.adapter.SoundAdapter access$9(minggo.battery.fragment.FragmentTimeSetting) -> i
+    minggo.battery.model.User access$8(minggo.battery.fragment.FragmentTimeSetting) -> h
+    java.util.List access$9(minggo.battery.fragment.FragmentTimeSetting) -> i
+    minggo.battery.adapter.SoundAdapter access$10(minggo.battery.fragment.FragmentTimeSetting) -> j
 minggo.battery.fragment.FragmentTimeSetting$1 -> minggo.battery.d.j:
     minggo.battery.fragment.FragmentTimeSetting this$0 -> a
     boolean handleMessage(android.os.Message) -> handleMessage
@@ -2804,36 +2820,41 @@ minggo.battery.listener.BaiduAdListener -> minggo.battery.e.a:
     void onVideoFinish() -> onVideoFinish
     void onVideoStart() -> onVideoStart
 minggo.battery.model.SoundRecord -> minggo.battery.f.a:
-    int whichHour -> a
-    java.lang.String path -> b
-    java.lang.String longTime -> c
-    int type -> d
+    int whichHour -> whichHour
+    java.lang.String path -> path
+    java.lang.String longTime -> longTime
+    int type -> type
 minggo.battery.model.User -> minggo.battery.f.b:
-    java.lang.String email -> a
-    java.lang.String name -> b
-    java.lang.String password -> c
-    int useDefineSound -> d
-    int useDefinFeeling -> e
-    int type -> f
-minggo.battery.reciever.TimeChangeReciever -> minggo.battery.reciever.a:
+    java.lang.String email -> email
+    java.lang.String name -> name
+    java.lang.String telephone -> telephone
+    java.lang.String password -> password
+    int useDefineSound -> useDefineSound
+    int useDefinFeeling -> useDefinFeeling
+    int type -> type
+minggo.battery.reciever.BootReciever -> minggo.battery.reciever.a:
+    void onReceive(android.content.Context,android.content.Intent) -> onReceive
+minggo.battery.reciever.TimeChangeReciever -> minggo.battery.reciever.b:
     minggo.battery.util.MinggoDate date -> a
     minggo.battery.model.User user -> b
+    android.os.Vibrator vibrator -> c
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
 minggo.battery.reciever.TurnOnReciever -> minggo.battery.reciever.TurnOnReciever:
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
 minggo.battery.service.BatteryService -> minggo.battery.service.BatteryService:
-    android.app.NotificationManager notificationManager -> b
-    android.app.Notification notification -> c
-    android.widget.RemoteViews remoteViews -> d
-    android.content.Context context -> e
-    int[] image -> f
-    int[] image1 -> g
-    android.content.res.AssetManager asm -> h
-    int cuurentLevel -> i
-    minggo.battery.util.MinggoDate date -> j
+    android.app.NotificationManager notificationManager -> c
+    android.app.Notification notification -> d
+    android.widget.RemoteViews remoteViews -> e
+    android.content.Context context -> f
+    int[] image -> g
+    int[] image1 -> h
+    android.content.res.AssetManager asm -> i
+    int cuurentLevel -> j
+    minggo.battery.util.MinggoDate date -> k
     minggo.battery.reciever.TimeChangeReciever timeChangeReciever -> a
-    android.content.BroadcastReceiver broadcastReceiver -> k
-    android.content.BroadcastReceiver feelingReceiever -> l
+    minggo.battery.reciever.BootReciever bootReciever -> b
+    android.content.BroadcastReceiver broadcastReceiver -> l
+    android.content.BroadcastReceiver feelingReceiever -> m
     void onCreate() -> onCreate
     void initImage() -> b
     java.lang.String getDayPrompt() -> a
@@ -2932,6 +2953,7 @@ minggo.battery.util.SoundRecordUtil -> minggo.battery.g.m:
 minggo.battery.util.UserUtil -> minggo.battery.g.n:
     void saveUser(android.content.Context,minggo.battery.model.User) -> a
     boolean isExistUser(android.content.Context) -> a
+    minggo.battery.model.User getFirstUser(android.content.Context) -> b
     minggo.battery.model.User getUser(android.content.Context,java.lang.String) -> a
 minggo.battery.util.VibratorUtil -> minggo.battery.g.o:
     void Vibrate(android.content.Context,java.lang.Long) -> a

@@ -1000,18 +1000,10 @@ android.support.v4.view.accessibility.AccessibilityNodeInfoCompatJellybeanMr2:
     21:21:AccessibilityNodeInfoCompatJellybeanMr2()
     24:25:public static void setViewIdResourceName(java.lang.Object,java.lang.String)
 android.support.v4.view.accessibility.AccessibilityNodeInfoCompatKitKat
-android.support.v4.view.accessibility.AccessibilityNodeProviderCompat:
-    246:246:public android.support.v4.view.accessibility.AccessibilityNodeInfoCompat findFocus(int)
-android.support.v4.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderKitKatImpl$1:
-    123:127:public java.lang.Object findFocus(int)
 android.support.v4.view.accessibility.AccessibilityNodeProviderCompatJellyBean:
     28:29:AccessibilityNodeProviderCompatJellyBean()
 android.support.v4.view.accessibility.AccessibilityNodeProviderCompatKitKat:
     28:29:AccessibilityNodeProviderCompatKitKat()
-android.support.v4.view.accessibility.AccessibilityNodeProviderCompatKitKat$1:
-    61:61:public android.view.accessibility.AccessibilityNodeInfo findFocus(int)
-android.support.v4.view.accessibility.AccessibilityNodeProviderCompatKitKat$AccessibilityNodeInfoBridge:
-    public abstract java.lang.Object findFocus(int)
 android.support.v4.view.accessibility.AccessibilityRecordCompat:
     539:539:public java.lang.Object getImpl()
     550:550:public static android.support.v4.view.accessibility.AccessibilityRecordCompat obtain(android.support.v4.view.accessibility.AccessibilityRecordCompat)
@@ -1581,15 +1573,14 @@ minggo.battery.dao.SQLHelper:
     14:14:public SQLHelper()
     80:80:public static java.lang.String getDrapTable(java.lang.String)
 minggo.battery.fragment.FragmentGame:
-    131:133:public boolean getUserVisibleHint()
+    132:134:public boolean getUserVisibleHint()
 minggo.battery.listener.BaiduAdListenerAdapter
-minggo.battery.model.User:
-    public java.lang.String telephone
 minggo.battery.service.BatteryService:
     public static boolean lowPowerSoundFlag
     public static boolean zhengSoundFlag
 minggo.battery.service.MinggoApplication:
     public static final java.lang.String EMAIL
+    public static final java.lang.String TAOBAO_URL
 minggo.battery.util.ClippingSounds:
     15:15:public ClippingSounds()
     45:53:public static java.lang.String saveSounds2()
@@ -1662,7 +1653,7 @@ minggo.battery.util.SoundRecordUtil:
     37:42:public static java.util.List getSoundRecordList(android.content.Context)
 minggo.battery.util.UserUtil:
     18:18:public UserUtil()
-    37:42:public static java.util.List getUserList(android.content.Context)
+    42:52:public static java.util.List getUserList(android.content.Context)
 minggo.battery.util.VibratorUtil:
     12:12:public VibratorUtil()
     28:30:public static void Vibrate(android.content.Context,long[],boolean)
