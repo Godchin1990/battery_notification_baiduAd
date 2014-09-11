@@ -27,3 +27,6 @@
 -keepclassmembers class minggo.battery.model.SoundRecord {
   public *;
 }
+-keepclassmembers class minggo.battery.model.Alarmer {
+  public *;
+}

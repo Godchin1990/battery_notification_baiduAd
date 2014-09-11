@@ -1,14 +1,19 @@
 package minggo.battery.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import minggo.battery.R;
 import minggo.battery.activity.IndexActivity;
+import minggo.battery.model.Alarmer;
+import minggo.battery.reciever.AlarmerReciever;
 import minggo.battery.reciever.BootReciever;
 import minggo.battery.reciever.TimeChangeReciever;
+import minggo.battery.util.AlarmUtil;
 import minggo.battery.util.MinggoDate;
 import minggo.battery.util.PlaySound;
 import minggo.battery.util.PreferenceShareUtil;
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -78,12 +83,18 @@ public class BatteryService extends Service{
 	
 	public BootReciever bootReciever;
 	
+	private AlarmerReciever alarmerReciever;
+	
+	private AlarmManager alarmManager;
+	
 	@Override
 	public void onCreate() {
 		super.onCreate();
 		bootReciever = new BootReciever();
 		timeChangeReciever = new TimeChangeReciever();
 		context = this.getApplicationContext();
+		alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+		
 		this.registerReceiver(broadcastReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 		this.registerReceiver(timeChangeReciever, new IntentFilter(Intent.ACTION_TIME_TICK));
 		this.registerReceiver(feelingReceiever, new IntentFilter("minggo.bettery.feeling"));
@@ -92,8 +103,35 @@ public class BatteryService extends Service{
 		date = new MinggoDate();
 		initImage();
 		initBattery();
+		initAlarm();
+	}
+	
+	/**
+	 * 初始化闹钟
+	 */
+	private void initAlarm(){
+		
+		/*Intent intent = new Intent(AlarmerReciever.MINGGO_ALARM_ACTION);
+		PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 123, intent, 0);
+		alarmManager.set(AlarmManager.RTC_WAKEUP, 5000, pendingIntent);*/
+		
+		List<Alarmer> alarmerList = AlarmUtil.queryAllAlarmerList(context);
+		if (alarmerList!=null&&!alarmerList.isEmpty()) {
+			for (Alarmer alarmer : alarmerList) {
+				if (alarmer.alarmerId==AlarmerReciever.DEFINE_ALARM||alarmer.alarmerId==AlarmerReciever.BIRTHDAY_ALARM) {
+					if (alarmer.alarmTime-System.currentTimeMillis()>=0) {
+						Intent intent = new Intent(AlarmerReciever.MINGGO_ALARM_ACTION);
+						PendingIntent pendingIntent = PendingIntent.getBroadcast(context, alarmer.alarmerId, intent, 0);
+						alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()-alarmer.alarmTime, pendingIntent);
+					}
+				}else if (alarmer.alarmerId==AlarmerReciever.DRINK_ALARM) {
+					
+				}
+			}
+		}
 		
 	}
+	
 	
 	/**
 	 * 初始化电池图片
@@ -288,8 +326,6 @@ public class BatteryService extends Service{
 		this.unregisterReceiver(timeChangeReciever);
 		this.unregisterReceiver(feelingReceiever);
 		stopSelf();
-		
-		System.exit(0);
 		super.onDestroy();
 	}
 
