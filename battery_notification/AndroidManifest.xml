@@ -121,6 +121,11 @@
                 <action android:name="android.intent.action.SCREEN_OFF" />
             </intent-filter>
         </receiver>
+        <receiver android:name="minggo.battery.reciever.AlarmerReciever">
+            <intent-filter>
+                <action android:name="minggo.alarm.action"/>
+            </intent-filter>
+        </receiver>
 
         <service
             android:name="minggo.battery.service.BatteryService"
