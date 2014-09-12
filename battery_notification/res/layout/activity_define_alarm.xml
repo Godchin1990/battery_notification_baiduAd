@@ -71,7 +71,7 @@
         android:layout_below="@+id/head" >
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/iv_alarm_icon"
             android:layout_width="52dp"
             android:layout_height="52dp"
             android:layout_alignParentLeft="true"
@@ -86,10 +86,10 @@
             android:id="@+id/ed_title"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_alignBottom="@+id/imageView1"
+            android:layout_alignBottom="@+id/iv_alarm_icon"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
-            android:layout_toRightOf="@+id/imageView1"
+            android:layout_toRightOf="@+id/iv_alarm_icon"
             android:background="@color/all_bg"
             android:drawableBottom="@drawable/shape_line"
             android:ems="10"
@@ -103,8 +103,8 @@
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/imageView1"
-            android:layout_below="@+id/imageView1"
+            android:layout_alignLeft="@+id/iv_alarm_icon"
+            android:layout_below="@+id/iv_alarm_icon"
             android:layout_marginTop="20dp"
             android:text="提醒周期"
             android:textColor="@color/text_normal"

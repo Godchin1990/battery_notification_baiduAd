@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_bg" >
+
+    <ImageView
+        android:id="@+id/iv_theme"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:background="@drawable/shape_bg_icon"
+        android:padding="8dp"
+        android:src="@drawable/emoji_298" />
+
+    <TextView
+        android:id="@+id/tv_alarm_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_theme"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="18:18"
+        android:textColor="@color/text_normal"
+        android:textSize="60sp" />
+
+    <TextView
+        android:id="@+id/tv_alarm_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_alarm_time"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="2sp"
+        android:text="2014-09-12"
+        android:textColor="@color/text_normal"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_alarm_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_alarm_date"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="今天是个好日子"
+        android:textColor="@color/text_light"
+        android:textSize="20sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+        <Button
+            android:id="@+id/bt_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/selector_bt_sound_record"
+            android:text="知道了"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

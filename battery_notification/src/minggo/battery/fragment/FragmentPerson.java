@@ -3,6 +3,7 @@ package minggo.battery.fragment;
 import minggo.battery.R;
 import minggo.battery.activity.DefineAlarmActivity;
 import minggo.battery.activity.FeelingSettingActivity;
+import minggo.battery.reciever.AlarmerReciever;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -55,10 +56,14 @@ public class FragmentPerson extends Fragment implements OnClickListener{
 			
 			break;
 		case R.id.bt_birthday:
-			
+			Intent intent2= new Intent(activity, DefineAlarmActivity.class);
+			intent2.putExtra("alarmType", AlarmerReciever.BIRTHDAY_ALARM);
+			activity.startActivity(intent2);
 			break;
 		case R.id.bt_any:
-			activity.startActivity(new Intent(activity, DefineAlarmActivity.class));
+			Intent intent1= new Intent(activity, DefineAlarmActivity.class);
+			intent1.putExtra("alarmType", AlarmerReciever.DEFINE_ALARM);
+			activity.startActivity(intent1);
 			break;
 			
 		default:
