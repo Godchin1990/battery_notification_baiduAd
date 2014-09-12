@@ -2,139 +2,242 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/all_bg" >
+    android:background="@color/all_bg"
+    android:fadingEdge="none"
+    android:scrollbars="none" >
 
-    <LinearLayout
-        android:id="@+id/lo_main"
+    <RelativeLayout
+        android:id="@+id/head"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="18dp"
-        android:background="@color/all_bg"
-        android:orientation="vertical"
-        android:paddingBottom="10dp" >
+        android:layout_height="48dp"
+        android:background="@color/head_bg" >
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/logo" />
 
         <TextView
+            android:id="@+id/tv_app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/iv_logo"
+            android:text="@string/login_title"
+            android:textColor="@color/head_tv_bg"
+            android:textSize="18sp" />
+
+        <RelativeLayout
+            android:id="@+id/lo_setting_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/selector_menu_item_bg" >
+
+            <TextView
+                android:id="@+id/tv_user_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/iv_logo11"
+                android:text="设置"
+                android:textColor="@color/head_tv_bg"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/abc_ic_ab_back_holo_dark" />
+
+            <ImageView
+                android:id="@+id/iv_logo11"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/imageView3"
+                android:src="@drawable/logo" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/head"
+        android:background="@color/all_bg"
+        android:fadingEdge="none"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:id="@+id/lo_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:text="使用习惯"
-            android:textColor="@color/navi_index"
-            android:textSize="14sp" />
+            android:background="@color/all_bg"
+            android:orientation="vertical"
+            android:paddingBottom="10dp" >
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="6dp"
-            android:background="@color/navi_index" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="使用习惯"
+                android:textColor="@color/navi_index"
+                android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/bt_alert"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_person_collection"
-            android:drawableRight="@drawable/on_off_button"
-            android:gravity="left"
-            android:paddingBottom="10dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:text="整点报时声音"
-            android:textColor="@color/text_normal"
-            android:textSize="16sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="6dp"
+                android:background="@color/navi_index" />
 
-        <Button
-            android:id="@+id/bt_alert_define"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_person_collection"
-            android:drawablePadding="10dp"
-            android:drawableRight="@drawable/on_off_button"
-            android:gravity="left"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="2dp"
-            android:text="自定义声音"
-            android:textColor="@color/text_light"
-            android:textSize="15sp" />
+            <Button
+                android:id="@+id/zheng_sound_bt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_person_collection"
+                android:drawableRight="@drawable/on_off_button"
+                android:gravity="left"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:text="整点报时声音"
+                android:textColor="@color/text_normal"
+                android:textSize="16sp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E2E2E2" />
+            <Button
+                android:id="@+id/bt_alert_define"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_person_collection"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/on_off_button"
+                android:gravity="left"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="2dp"
+                android:text="自己录音声音"
+                android:textColor="@color/text_light"
+                android:textSize="15sp" />
 
-        <Button
-            android:id="@+id/bt_low_power"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_person_collection"
-            android:drawableRight="@drawable/on_off_button"
-            android:gravity="left"
-            android:paddingBottom="10dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:text="低电量声音"
-            android:textColor="@color/text_normal"
-            android:textSize="16sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E2E2E2" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E2E2E2" />
+            <Button
+                android:id="@+id/low_power_bt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_person_collection"
+                android:drawableRight="@drawable/on_off_button"
+                android:gravity="left"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:text="低电量声音"
+                android:textColor="@color/text_normal"
+                android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/bt_shock"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_person_collection"
-            android:drawableRight="@drawable/on_off_button"
-            android:gravity="left"
-            android:paddingBottom="10dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:text="震动提醒"
-            android:textColor="@color/text_normal"
-            android:textSize="16sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E2E2E2" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E2E2E2" />
+            <Button
+                android:id="@+id/bt_shock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_person_collection"
+                android:drawableRight="@drawable/on_off_button"
+                android:gravity="left"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:text="震动提醒"
+                android:textColor="@color/text_normal"
+                android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/bt_feeling_use"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_person_collection"
-            android:drawableRight="@drawable/on_off_button"
-            android:gravity="left"
-            android:paddingBottom="10dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:text="显示心情"
-            android:textColor="@color/text_normal"
-            android:textSize="16sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E2E2E2" />
 
-        <Button
-            android:id="@+id/bt_use_default"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/selector_bt_sound_record"
-            android:gravity="center"
-            android:text="恢复默认"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+            <Button
+                android:id="@+id/bt_feeling_use"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_person_collection"
+                android:drawableRight="@drawable/on_off_button"
+                android:gravity="left"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:text="显示自定义心情"
+                android:textColor="@color/text_normal"
+                android:textSize="16sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E2E2E2" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:text="注意事项"
+                android:textColor="@color/navi_index"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="6dp"
+                android:background="@color/navi_index" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_feeling_set_tips"
+                android:gravity="left"
+                android:lineSpacingExtra="3dp"
+                android:padding="5dp"
+                android:text="@string/all_setting_tip"
+                android:textColor="#666666"
+                android:textSize="12dp" />
+
+            <Button
+                android:id="@+id/exitapp"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="28dp"
+                android:layout_weight="0.36"
+                android:background="@drawable/btn_style_red"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="@string/exit"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

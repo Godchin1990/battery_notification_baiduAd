@@ -23,11 +23,15 @@ public class SettingActivity extends Activity implements OnClickListener{
 	private Button lowPowerbt;
 	private Button exitbt;
 	
+	private Button shockBt;
+	private Button defineSoundBt;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_setting);
+		setContentView(R.layout.activity_setting_new);
 		initUI();
+		initData();
 		MinggoApplication.allActivities.add(this);
 	}
 	/**
@@ -36,20 +40,32 @@ public class SettingActivity extends Activity implements OnClickListener{
 	private void initUI(){
 		backV = findViewById(R.id.lo_setting_back);
 		timeSoundbt = (Button) findViewById(R.id.zheng_sound_bt);
-		feelingBt = (Button) findViewById(R.id.bt_feeling_setting);
+		feelingBt = (Button) findViewById(R.id.bt_feeling_use);
 		lowPowerbt = (Button) findViewById(R.id.low_power_bt);
 		exitbt = (Button) findViewById(R.id.exitapp);
+		shockBt = (Button) findViewById(R.id.bt_shock);
+		defineSoundBt = (Button) findViewById(R.id.bt_alert_define);
 		
 		lowPowerbt.setOnClickListener(this);
 		backV.setOnClickListener(this);
 		feelingBt.setOnClickListener(this);
 		timeSoundbt.setOnClickListener(this);
 		exitbt.setOnClickListener(this);
+		defineSoundBt.setOnClickListener(this);
+		shockBt.setOnClickListener(this);
 		
-		lowPowerbt.setSelected(!PreferenceShareUtil.getLowPowerFlag(this));
-		timeSoundbt.setSelected(!PreferenceShareUtil.getZhengTimeFlag(this));
-		feelingBt.setSelected(!PreferenceShareUtil.getUseFeeling(this));
 	}
+	/**
+	 * 初始化数据
+	 */
+	private void initData(){
+		lowPowerbt.setSelected(PreferenceShareUtil.getLowPowerFlag(this));
+		defineSoundBt.setSelected(PreferenceShareUtil.getDefineSoundFlag(this));
+		timeSoundbt.setSelected(PreferenceShareUtil.getZhengTimeFlag(this));
+		feelingBt.setSelected(PreferenceShareUtil.getUseFeeling(this));
+		shockBt.setSelected(PreferenceShareUtil.getShockFlag(this));
+	}
+	
 	
 	@Override
 	public void onBackPressed() {
@@ -71,7 +87,7 @@ public class SettingActivity extends Activity implements OnClickListener{
 			//统计用户设置低电量提醒
 			StatService.onEvent(SettingActivity.this, "battery_alert", flag0+"");
 			break;
-		case R.id.bt_feeling_setting:
+		case R.id.bt_feeling_use:
 			boolean flag1 = !feelingBt.isSelected();
 			System.out.println("选择了什么东西--->"+flag1);
 			feelingBt.setSelected(flag1);
@@ -87,6 +103,20 @@ public class SettingActivity extends Activity implements OnClickListener{
 			break;
 		case R.id.lo_setting_back:
 			onBackPressed();
+			break;
+		case R.id.bt_shock:
+			boolean flag3 = !shockBt.isSelected();
+			shockBt.setSelected(flag3);
+			PreferenceShareUtil.saveShockFlag(this, !PreferenceShareUtil.getShockFlag(this));
+			//统计用户设置整点报时提醒
+			StatService.onEvent(SettingActivity.this, "use_shack", flag3+"");
+			break;
+		case R.id.bt_alert_define:
+			boolean flag4 = !defineSoundBt.isSelected();
+			defineSoundBt.setSelected(flag4);
+			PreferenceShareUtil.saveDefineSoundFlag(this, !PreferenceShareUtil.getDefineSoundFlag(this));
+			//统计用户设置整点报时提醒
+			StatService.onEvent(SettingActivity.this, "define_sound", flag4+"");
 			break;
 		default:
 			break;

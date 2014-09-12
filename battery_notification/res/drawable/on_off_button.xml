@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/switch_on_cn" />
-    <item android:drawable="@drawable/switch_off_cn" />
+    <item android:state_selected="true" android:drawable="@drawable/switch_on_cn1" />
+    <item android:drawable="@drawable/switch_off_cn1" />
 </selector>
