@@ -29,7 +29,6 @@ import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -132,13 +131,12 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		viewPager.setCurrentItem(currIndex);
 		viewPager.setOnPageChangeListener(new MyOnPageChangeListener());
 		viewPager.setOffscreenPageLimit(2);
-
-		StatService.onPageStart(this, getFragment(currIndex));
 		
 	}
 
 	public class MyOnPageChangeListener implements OnPageChangeListener {
 		public void onPageScrollStateChanged(int position) {
+			
 		}
 
 		public void onPageScrolled(int position, float arg1, int arg2) {
@@ -188,15 +186,25 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 			break;
 		}
 		return labelId;
-
 	}
-
+	
+	@Override
+	protected void onResume() {
+		StatService.onPageStart(IndexActivity.this, getFragment(currIndex));
+		super.onResume();
+	}
+	@Override
+	protected void onPause() {
+		StatService.onPageEnd(IndexActivity.this, getFragment(currIndex));
+		super.onPause();
+	}
+	
 	/**
 	 * 导航底层图片移动当当前选择页面
 	 * 
 	 * @param tab
 	 */
-	private void translate(final int tab) {
+	private void translate(int tab) {
 
 		float startX = bmpW * (currIndex - defaultIndex);
 		float endX = bmpW * (tab - defaultIndex);
@@ -205,8 +213,8 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		seziBt.setSelected(tab == 1 ? true : false);
 		feelingBt.setSelected(tab == 2 ? true : false);
 
-		Animation animation = new TranslateAnimation(startX, endX, 0, 0);
 		currIndex = tab;
+		Animation animation = new TranslateAnimation(startX, endX, 0, 0);
 		animation.setFillAfter(true);// True:图片停在动画结束位置
 		animation.setDuration(300);
 		naviBottomIv.startAnimation(animation);
@@ -298,11 +306,6 @@ public class IndexActivity extends FragmentActivity implements OnClickListener {
 		}
 	}
 	
-	@Override
-	protected void onPause() {
-		super.onPause();
-		StatService.onPageEnd(IndexActivity.this, getFragment(currIndex));
-	}
 	
 	/**
 	 * 设置快捷键

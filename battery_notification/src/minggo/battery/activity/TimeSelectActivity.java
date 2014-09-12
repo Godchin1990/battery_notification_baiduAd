@@ -86,7 +86,9 @@ public class TimeSelectActivity extends Activity implements OnClickListener, OnT
 	public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
 	}
-
+	/**
+	 * 保存闹钟
+	 */
 	private void saveAlarm() {
 
 		if (type != null) {
@@ -94,7 +96,6 @@ public class TimeSelectActivity extends Activity implements OnClickListener, OnT
 				int year = datePicker.getYear();
 				int month = datePicker.getMonth();
 				int day = datePicker.getDayOfMonth();
-				System.out.println(year+","+month+","+day);
 				Intent intent = new Intent();
 				intent.putExtra("year", year);
 				intent.putExtra("month", month);
@@ -110,7 +111,6 @@ public class TimeSelectActivity extends Activity implements OnClickListener, OnT
 				intent.putExtra("minute", minute);
 						
 				setResult(DefineAlarmActivity.REQUEST_CODE_TIME, intent);
-				System.out.println(hour+","+minute);
 			}
 		}
 

@@ -1,5 +1,9 @@
 package minggo.battery.model;
 
+import java.io.Serializable;
+
+import minggo.battery.annotation.AutoIncrement;
+import minggo.battery.annotation.Exclude;
 import minggo.battery.annotation.Primarykey;
 
 /**
@@ -7,7 +11,13 @@ import minggo.battery.annotation.Primarykey;
  * @author minggo
  * @date 2014-9-11 下午2:51:01
  */
-public class Alarmer {
+public class Alarmer implements Serializable {
+	/**
+	 * 
+	 */
+	@Exclude
+	private static final long serialVersionUID = -4491419004339408810L;
+	@AutoIncrement
 	@Primarykey
 	public int alarmerId;
 	public String title;

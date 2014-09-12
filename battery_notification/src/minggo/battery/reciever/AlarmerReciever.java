@@ -1,5 +1,6 @@
 package minggo.battery.reciever;
 
+import minggo.battery.activity.AlarmWakeActivity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +21,8 @@ public class AlarmerReciever extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		System.out.println("闹钟进来了");
+		intent.setClass(context, AlarmWakeActivity.class);
+		context.startActivity(intent);
 	}
 
 }

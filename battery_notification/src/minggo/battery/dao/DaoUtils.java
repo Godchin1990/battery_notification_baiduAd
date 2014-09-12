@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Date;
 
+import minggo.battery.annotation.AutoIncrement;
 import minggo.battery.annotation.Exclude;
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -54,6 +55,45 @@ public final class DaoUtils {
 			e.printStackTrace();
 		}
 
+		return values;
+	}
+	/**
+	 * 将对象转为ContentValues 支持【int,long,double,String,date】除了自增字段
+	 * @param t
+	 * @return
+	 */
+	public static final <T> ContentValues object2ContentValuesWithoutIncrement(T t) {
+		ContentValues values = new ContentValues();
+		try {
+			Class<T> clazz = (Class<T>) t.getClass();
+			Field[] fields = clazz.getDeclaredFields();
+			for (Field field : fields) {
+				field.setAccessible(true);
+				// 将有Exclude注解的字段排除在外
+				if (field.getAnnotation(Exclude.class) != null||field.getAnnotation(AutoIncrement.class)!=null) {
+					continue;
+				}
+				Class<?> type = field.getType();
+				if (type.equals(int.class) || type.equals(Integer.class)) {
+					values.put(field.getName(), field.getInt(t));
+				} else if (type.equals(String.class)) {
+					values.put(field.getName(), String.valueOf(field.get(t)));
+				} else if (type.equals(long.class) || type.equals(Long.class)) {
+					values.put(field.getName(), field.getLong(t));
+				} else if (type.equals(double.class)
+						|| type.equals(Double.class)) {
+					values.put(field.getName(), field.getDouble(t));
+				} else if (type.equals(Date.class)) {
+					Date date = (Date) field.get(t);
+					if(date != null){
+						values.put(field.getName(),date.getTime());
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return values;
 	}
 
