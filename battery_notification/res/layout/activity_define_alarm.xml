@@ -94,9 +94,9 @@
             android:drawableBottom="@drawable/shape_line"
             android:ems="10"
             android:hint="输入标题"
-            android:textSize="16sp"
             android:textColor="@color/text_normal"
-            android:textColorHint="#d1d1d1" >
+            android:textColorHint="#d1d1d1"
+            android:textSize="16sp" >
         </EditText>
 
         <TextView
@@ -137,7 +137,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_alignLeft="@+id/textView3"
-            android:layout_below="@+id/textView3"
+            android:layout_below="@+id/bt_alarm_shock"
             android:layout_marginRight="20dp"
             android:background="@drawable/selector_person_collection"
             android:gravity="center_vertical" >
@@ -227,6 +227,38 @@
             android:layout_alignRight="@+id/lo_time_select"
             android:layout_below="@+id/lo_time_select"
             android:background="@color/navi_index" />
+
+        <Button
+            android:id="@+id/bt_alarm_sound"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignLeft="@+id/v_divider2"
+            android:layout_alignRight="@+id/v_divider2"
+            android:layout_below="@+id/textView3"
+            android:background="@drawable/selector_person_collection"
+            android:drawableRight="@drawable/on_off_button"
+            android:gravity="left|center_vertical"
+            android:paddingBottom="1dp"
+            android:text="提醒声音"
+            android:textColor="@color/text_normal"
+            android:textSize="16sp"
+            android:drawableBottom="@drawable/shape_line" />
+        <Button
+            android:id="@+id/bt_alarm_shock"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignLeft="@+id/v_divider2"
+            android:layout_alignRight="@+id/v_divider2"
+            android:layout_below="@+id/bt_alarm_sound"
+            android:background="@drawable/selector_person_collection"
+            android:drawableRight="@drawable/on_off_button"
+            android:gravity="left|center_vertical"
+            android:paddingBottom="1dp"
+            android:text="提醒震动"
+            android:textColor="@color/text_normal"
+            android:textSize="16sp"
+            android:drawableBottom="@drawable/shape_line" />
+
     </RelativeLayout>
 
     <RelativeLayout
