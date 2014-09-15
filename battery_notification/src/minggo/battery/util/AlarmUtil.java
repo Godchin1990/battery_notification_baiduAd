@@ -150,6 +150,7 @@ public class AlarmUtil {
 			db.setTransactionSuccessful();
 			if (count > 0) {
 				// Log.i("database", "删除很多----->"+count);
+				
 				return true;
 			}
 		} catch (Exception e) {

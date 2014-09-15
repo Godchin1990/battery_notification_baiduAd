@@ -1,12 +1,20 @@
 # view res/layout/activity_index.xml #generated:113
 -keep class android.support.v4.view.ViewPager { <init>(...); }
 
-# view res/layout/activity_main.xml #generated:123
 # view res/layout/fragment_game.xml #generated:74
 -keep class com.baidu.mobads.AdView { <init>(...); }
 
 # view AndroidManifest.xml #generated:71
 -keep class com.baidu.mobads.AppActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:114
+-keep class minggo.battery.activity.AlarmWakeActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:110
+-keep class minggo.battery.activity.DefineAlarmActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:102
+-keep class minggo.battery.activity.FeelingSettingActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:75
 -keep class minggo.battery.activity.IndexActivity { <init>(...); }
@@ -23,10 +31,16 @@
 # view AndroidManifest.xml #generated:86
 -keep class minggo.battery.activity.SettingActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:103
+# view AndroidManifest.xml #generated:106
+-keep class minggo.battery.activity.TimeSelectActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:128
+-keep class minggo.battery.reciever.AlarmerReciever { <init>(...); }
+
+# view AndroidManifest.xml #generated:119
 -keep class minggo.battery.reciever.TurnOnReciever { <init>(...); }
 
-# view AndroidManifest.xml #generated:113
+# view AndroidManifest.xml #generated:134
 -keep class minggo.battery.service.BatteryService { <init>(...); }
 
 # view AndroidManifest.xml #generated:31
