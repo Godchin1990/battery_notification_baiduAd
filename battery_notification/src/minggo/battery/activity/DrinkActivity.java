@@ -184,6 +184,7 @@ public class DrinkActivity extends Activity implements OnClickListener, OnItemCl
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
+		//setResult(1001);
 		finish();
 	}
 

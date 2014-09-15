@@ -170,11 +170,9 @@ public class AlarmUtil {
 		SQLiteDatabase db = new DbOpenHelper(context).getReadableDatabase();
 		try {
 			db.beginTransaction();
-			int count = db.delete(DBConfig.TABLE_ALARM, "alarmTime=? and type=?", new String[] { alarmer.alarmTime + "",alarmer.type+""});
+			Cursor count = db.query(DBConfig.TABLE_ALARM, null,"alarmTime=? and type=?", new String[]{ alarmer.alarmTime + "",alarmer.type+""},null,null,null);
 			db.setTransactionSuccessful();
-			if (count > 0) {
-				// Log.i("database", "删除很多----->"+count);
-				
+			if (count.moveToFirst()) {
 				return true;
 			}
 		} catch (Exception e) {
@@ -219,9 +217,6 @@ public class AlarmUtil {
 			}
 		}
 	}
-	
-	
-	
 	/**
 	 * 判断是不是同一个闹钟
 	 * @param alarmer
@@ -231,10 +226,9 @@ public class AlarmUtil {
 		SQLiteDatabase db = new DbOpenHelper(context).getReadableDatabase();
 		try {
 			db.beginTransaction();
-			int count = db.delete(DBConfig.TABLE_ALARM, "alarmTime>? and alarmTime<? and type=?", new String[] { (alarmer.alarmTime-60*1000) + "",(alarmer.alarmTime+60*1000) + "",alarmer.type+""});
+			Cursor query = db.query(DBConfig.TABLE_ALARM, null, "alarmTime>? and alarmTime<? and type=?", new String[] { (alarmer.alarmTime-60*1000) + "",(alarmer.alarmTime+60*1000) + "",alarmer.type+""},null,null,null);
 			db.setTransactionSuccessful();
-			if (count > 0) {
-				// Log.i("database", "删除很多----->"+count);
+			if (query.moveToFirst()) {
 				return true;
 			}
 		} catch (Exception e) {
@@ -258,10 +252,9 @@ public class AlarmUtil {
 		SQLiteDatabase db = new DbOpenHelper(context).getReadableDatabase();
 		try {
 			db.beginTransaction();
-			int count = db.delete(DBConfig.TABLE_ALARM, "alarmerId", new String[] { (alarmer.alarmerId) + ""});
+			Cursor query =  db.query(DBConfig.TABLE_ALARM, null,"alarmerId=? and type=?", new String[] { alarmer.alarmerId + "",alarmer.type+""},null,null,null);
 			db.setTransactionSuccessful();
-			if (count > 0) {
-				// Log.i("database", "删除很多----->"+count);
+			if (query.moveToFirst()) {
 				return true;
 			}
 		} catch (Exception e) {

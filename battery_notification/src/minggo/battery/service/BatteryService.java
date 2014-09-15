@@ -137,7 +137,7 @@ public class BatteryService extends Service {
 					Calendar today = Calendar.getInstance();
 					Calendar alarmCalendar = Calendar.getInstance();
 					alarmCalendar.setTimeInMillis(alarmer.alarmTime);
-					if (alarmCalendar.after(today)) {
+					if (today.after(alarmCalendar)) {
 						today.set(Calendar.HOUR_OF_DAY, alarmCalendar.get(Calendar.HOUR_OF_DAY));
 						today.set(Calendar.MINUTE, alarmCalendar.get(Calendar.MINUTE));
 						today.set(Calendar.SECOND, alarmCalendar.get(Calendar.SECOND));

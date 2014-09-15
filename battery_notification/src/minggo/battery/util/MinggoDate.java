@@ -38,6 +38,13 @@ public class MinggoDate{
 		return dateStr;
 	}
 	/**
+	 * 格式化成yyyy-MM-dd hh:mm
+	 */
+	public static String toString(long dateTime){
+		
+		return new SimpleDateFormat("yyyy-MM-dd hh:mm").format(new Date(dateTime));
+	}
+	/**
 	 * 获取long类型的time
 	 * @return
 	 */

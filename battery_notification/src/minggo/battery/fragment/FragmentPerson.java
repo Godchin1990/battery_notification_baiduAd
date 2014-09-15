@@ -1,6 +1,7 @@
 package minggo.battery.fragment;
 
 import minggo.battery.R;
+import minggo.battery.activity.AlarmListActivity;
 import minggo.battery.activity.DefineAlarmActivity;
 import minggo.battery.activity.DrinkActivity;
 import minggo.battery.activity.FeelingSettingActivity;
@@ -27,7 +28,7 @@ public class FragmentPerson extends Fragment implements OnClickListener{
 	private Button drinkBt;
 	private Button birthBt;
 	private Button anyBt;
-	
+	private Button allAlarmBt;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class FragmentPerson extends Fragment implements OnClickListener{
 	
 	private void initUI(){
 		feelSetBt = (Button) mainView.findViewById(R.id.bt_feeling);
+		allAlarmBt = (Button) mainView.findViewById(R.id.bt_alarm_list);
 		drinkBt = (Button) mainView.findViewById(R.id.bt_drink);
 		birthBt = (Button) mainView.findViewById(R.id.bt_birthday);
 		anyBt = (Button) mainView.findViewById(R.id.bt_any);
@@ -45,11 +47,15 @@ public class FragmentPerson extends Fragment implements OnClickListener{
 		feelSetBt.setOnClickListener(this);
 		birthBt.setOnClickListener(this);
 		anyBt.setOnClickListener(this);
+		allAlarmBt.setOnClickListener(this);
 	}
 	
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.bt_alarm_list:
+			activity.startActivity(new Intent(activity, AlarmListActivity.class));
+			break;
 		case R.id.bt_feeling:
 			activity.startActivity(new Intent(activity, FeelingSettingActivity.class));
 			break;
