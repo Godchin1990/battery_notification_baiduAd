@@ -2,6 +2,7 @@ package minggo.battery.activity;
 
 import java.util.List;
 
+import minggo.battery.adapter.DrinkAdapter;
 import minggo.battery.model.Alarmer;
 import android.app.Activity;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ public class DrinkActivity extends Activity implements OnClickListener,OnItemCli
 	private EditText titleTv;
 	private ListView drinkLv;
 	private List<Alarmer> alarmList;
+	private DrinkAdapter drinkAdapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
