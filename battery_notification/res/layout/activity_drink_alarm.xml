@@ -65,7 +65,7 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <minggo.battery.view.BatteryScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/lo_bottom"
@@ -178,20 +178,20 @@
                 android:textColor="@color/text_normal"
                 android:textSize="16sp" />
 
-            <ListView
+            <minggo.battery.view.BatteryListView
                 android:id="@+id/lv_drink"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_alignLeft="@+id/bt_alarm_shock"
                 android:layout_alignRight="@+id/bt_alarm_shock"
                 android:scrollbars="none"
                 android:dividerHeight="0.8dp"
-                android:divider="@color/navi_index"
+                android:divider="#d1d1d1"
                 android:fadingEdge="none"
                 android:layout_below="@+id/bt_alarm_shock" >
-            </ListView>
+            </minggo.battery.view.BatteryListView>
         </RelativeLayout>
-    </minggo.battery.view.BatteryScrollView>
+    </ScrollView>
 
     <RelativeLayout
         android:id="@+id/lo_bottom"
@@ -214,7 +214,7 @@
             android:background="@color/navi_index" />
 
         <Button
-            android:id="@+id/bt_scan"
+            android:id="@+id/bt_drink_scan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

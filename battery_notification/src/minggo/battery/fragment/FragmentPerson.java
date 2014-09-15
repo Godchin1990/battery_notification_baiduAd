@@ -2,6 +2,7 @@ package minggo.battery.fragment;
 
 import minggo.battery.R;
 import minggo.battery.activity.DefineAlarmActivity;
+import minggo.battery.activity.DrinkActivity;
 import minggo.battery.activity.FeelingSettingActivity;
 import minggo.battery.reciever.AlarmerReciever;
 import android.app.Activity;
@@ -53,7 +54,7 @@ public class FragmentPerson extends Fragment implements OnClickListener{
 			activity.startActivity(new Intent(activity, FeelingSettingActivity.class));
 			break;
 		case R.id.bt_drink:
-			
+			activity.startActivity(new Intent(activity, DrinkActivity.class));
 			break;
 		case R.id.bt_birthday:
 			Intent intent2= new Intent(activity, DefineAlarmActivity.class);

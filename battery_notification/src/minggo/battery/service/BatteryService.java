@@ -1,6 +1,7 @@
 package minggo.battery.service;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
 import minggo.battery.R;
@@ -129,11 +130,28 @@ public class BatteryService extends Service {
 						Intent intent = new Intent(AlarmerReciever.MINGGO_ALARM_ACTION);
 						intent.putExtra("alarm", alarmer);
 						PendingIntent pendingIntent = PendingIntent.getBroadcast(context, alarmer.alarmerId, intent, 0);
-						alarmManager.set(AlarmManager.RTC_WAKEUP, alarmer.alarmTime-System.currentTimeMillis(),
+						alarmManager.set(AlarmManager.RTC_WAKEUP, alarmer.alarmTime,
 								pendingIntent);
 					}
 				} else if (alarmer.alarmerId == AlarmerReciever.DRINK_ALARM) {
-
+					Calendar today = Calendar.getInstance();
+					Calendar alarmCalendar = Calendar.getInstance();
+					alarmCalendar.setTimeInMillis(alarmer.alarmTime);
+					if (alarmCalendar.after(today)) {
+						today.set(Calendar.HOUR_OF_DAY, alarmCalendar.get(Calendar.HOUR_OF_DAY));
+						today.set(Calendar.MINUTE, alarmCalendar.get(Calendar.MINUTE));
+						today.set(Calendar.SECOND, alarmCalendar.get(Calendar.SECOND));
+						alarmer.alarmTime = today.getTimeInMillis();
+						AlarmUtil.updateAlarm(context,alarmer);
+						
+						if (alarmer.alarmTime - System.currentTimeMillis() >= 0) {
+							Intent intent = new Intent(AlarmerReciever.MINGGO_ALARM_ACTION);
+							intent.putExtra("alarm", alarmer);
+							PendingIntent pendingIntent = PendingIntent.getBroadcast(context, alarmer.alarmerId, intent, 0);
+							alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, alarmer.alarmTime,24*60*60*1000,pendingIntent);
+						}
+					}
+					
 				}
 			}
 		}
@@ -356,12 +374,18 @@ public class BatteryService extends Service {
 			if (alarmer.alarmTime - System.currentTimeMillis() >= 0) {
 				Intent intent0 = new Intent(AlarmerReciever.MINGGO_ALARM_ACTION);
 				intent0.putExtra("alarm", alarmer);
-				PendingIntent pendingIntent = PendingIntent.getBroadcast(context, alarmer.alarmerId, intent0, 0);
+				PendingIntent pendingIntent = null;
+				if (intent0.getBooleanExtra("update", false)) {
+					pendingIntent = PendingIntent.getBroadcast(context, alarmer.alarmerId, intent0, PendingIntent.FLAG_UPDATE_CURRENT);
+				}else{
+					pendingIntent = PendingIntent.getBroadcast(context, alarmer.alarmerId, intent0,0);
+				}
 				alarmManager
 						.set(AlarmManager.RTC_WAKEUP, alarmer.alarmTime, pendingIntent);
 				System.out.println("新增闹钟成功！");
 			}
 		}
+		
 		return START_STICKY;
 	}
 

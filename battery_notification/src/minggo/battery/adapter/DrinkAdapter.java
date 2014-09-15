@@ -59,7 +59,7 @@ public class DrinkAdapter extends BaseAdapter {
 		calendar.get(Calendar.HOUR_OF_DAY);
 		calendar.get(Calendar.MINUTE);
 		viewHolder.drinkTv.setText(calendar.get(Calendar.HOUR_OF_DAY)+":"+(calendar.get(Calendar.MINUTE)<10?"0"+calendar.get(Calendar.MINUTE):calendar.get(Calendar.MINUTE)));
-		viewHolder.consequenceTv.setText("第"+position+1+"次");
+		viewHolder.consequenceTv.setText("第"+(position+1)+"次");
 		return convertView;
 	}
 	

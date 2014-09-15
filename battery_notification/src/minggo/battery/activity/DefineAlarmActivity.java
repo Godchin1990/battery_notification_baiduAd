@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.baidu.mobstat.StatActivity;
 import com.baidu.mobstat.StatService;
 
 /**

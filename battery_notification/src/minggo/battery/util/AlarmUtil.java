@@ -112,7 +112,7 @@ public class AlarmUtil {
 	}
 
 	/**
-	 * 获取前20条快速提示搜索词
+	 * 查询出所有闹钟的列表
 	 * 
 	 * @return
 	 */
@@ -122,6 +122,30 @@ public class AlarmUtil {
 		try {
 			db.beginTransaction();
 			Cursor query = db.query(DBConfig.TABLE_ALARM, null, null, null, null, null, null);
+			keyList = DaoUtils.cursor2ObjectList(query, Alarmer.class);
+			db.setTransactionSuccessful();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (db != null) {
+				db.endTransaction();
+				db.close();
+				db = null;
+			}
+		}
+		return keyList;
+	}
+	/**
+	 * 根据类型查询列表
+	 * @return
+	 */
+	public static List<Alarmer> queryAlarmerByType(Context context,int type) {
+		List<Alarmer> keyList = null;
+		SQLiteDatabase db = new DbOpenHelper(context).getReadableDatabase();
+		try {
+			db.beginTransaction();
+			Cursor query = db.query(DBConfig.TABLE_ALARM, null, "type=?", new String[]{type+""}, null, null, null);
 			keyList = DaoUtils.cursor2ObjectList(query, Alarmer.class);
 			db.setTransactionSuccessful();
 		} catch (Exception e) {
@@ -196,6 +220,8 @@ public class AlarmUtil {
 		}
 	}
 	
+	
+	
 	/**
 	 * 判断是不是同一个闹钟
 	 * @param alarmer
@@ -206,6 +232,33 @@ public class AlarmUtil {
 		try {
 			db.beginTransaction();
 			int count = db.delete(DBConfig.TABLE_ALARM, "alarmTime>? and alarmTime<? and type=?", new String[] { (alarmer.alarmTime-60*1000) + "",(alarmer.alarmTime+60*1000) + "",alarmer.type+""});
+			db.setTransactionSuccessful();
+			if (count > 0) {
+				// Log.i("database", "删除很多----->"+count);
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			if (db != null) {
+				db.endTransaction();
+				db.close();
+				db = null;
+			}
+		}
+		return false;
+	}
+	/**
+	 * 判断是不是同一个喝水闹钟
+	 * @param alarmer
+	 * @return
+	 */
+	public static boolean isExistDrinkAlarm(Context context,Alarmer alarmer){
+		SQLiteDatabase db = new DbOpenHelper(context).getReadableDatabase();
+		try {
+			db.beginTransaction();
+			int count = db.delete(DBConfig.TABLE_ALARM, "alarmerId", new String[] { (alarmer.alarmerId) + ""});
 			db.setTransactionSuccessful();
 			if (count > 0) {
 				// Log.i("database", "删除很多----->"+count);
