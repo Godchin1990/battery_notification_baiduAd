@@ -115,6 +115,10 @@
             android:name="minggo.battery.activity.AlarmWakeActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="minggo.battery.activity.DrinkActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" />
 
         <receiver
             android:name="minggo.battery.reciever.TurnOnReciever"
