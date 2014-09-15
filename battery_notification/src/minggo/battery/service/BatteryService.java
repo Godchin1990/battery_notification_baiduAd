@@ -127,6 +127,7 @@ public class BatteryService extends Service {
 						|| alarmer.alarmerId == AlarmerReciever.BIRTHDAY_ALARM) {
 					if (alarmer.alarmTime - System.currentTimeMillis() >= 0) {
 						Intent intent = new Intent(AlarmerReciever.MINGGO_ALARM_ACTION);
+						intent.putExtra("alarm", alarmer);
 						PendingIntent pendingIntent = PendingIntent.getBroadcast(context, alarmer.alarmerId, intent, 0);
 						alarmManager.set(AlarmManager.RTC_WAKEUP, alarmer.alarmTime-System.currentTimeMillis(),
 								pendingIntent);
@@ -354,6 +355,7 @@ public class BatteryService extends Service {
 			Alarmer alarmer = (Alarmer) intent.getSerializableExtra("alarm");
 			if (alarmer.alarmTime - System.currentTimeMillis() >= 0) {
 				Intent intent0 = new Intent(AlarmerReciever.MINGGO_ALARM_ACTION);
+				intent0.putExtra("alarm", alarmer);
 				PendingIntent pendingIntent = PendingIntent.getBroadcast(context, alarmer.alarmerId, intent0, 0);
 				alarmManager
 						.set(AlarmManager.RTC_WAKEUP, alarmer.alarmTime, pendingIntent);

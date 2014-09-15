@@ -23,7 +23,7 @@ public class AlarmerReciever extends BroadcastReceiver {
 		System.out.println("闹钟进来了");
 		Intent intent2 = new Intent(context, AlarmWakeActivity.class);
 		intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
-		intent.putExtra("alarm", intent.getSerializableExtra("alarm"));
+		intent2.putExtra("alarm", intent.getSerializableExtra("alarm"));
 		context.startActivity(intent2);
 	}
 

@@ -52,43 +52,42 @@ public class TimeChangeReciever extends BroadcastReceiver {
 				}
 
 			} else if (PreferenceShareUtil.getZhengTimeFlag(context) && PreferenceShareUtil.getDefineSoundFlag(context)) {
+				//System.out.println("使用自己的声音");
 				if (vibrator == null) {
 					vibrator = (Vibrator) context.getSystemService(Service.VIBRATOR_SERVICE);
 				}
 
 				date = new MinggoDate();
-				user = UserUtil.getFirstUser(context);
-				if (user != null && user.type == 1) {
-					if (date.getMinutes() == 00) {
-						SoundRecord soundRecord = SoundRecordUtil.getSoundRecord(context, date.get24Hour());
 
-						if (soundRecord != null) {
+				if (date.getMinutes() == 00) {
+					SoundRecord soundRecord = SoundRecordUtil.getSoundRecord(context, date.get24Hour());
+
+					if (soundRecord != null) {
+						//System.out.println("已录音自己的声音");
+						if (PreferenceShareUtil.getShockFlag(context)) {
+							vibrator.vibrate(500);
+						}
+						try {
+							PlaySound.playVoice2(soundRecord.path, context.getResources().getAssets(), 2);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					} else {
+						if (date.getMinutes() == 00 && date.get24Hour() > 5) {
 							if (PreferenceShareUtil.getShockFlag(context)) {
 								vibrator.vibrate(500);
 							}
+							//System.out.println("没有录音整点报时--->"+date.get24Hour()+"点");
 							try {
-								PlaySound.playVoice2(soundRecord.path, context.getResources().getAssets(), 2);
+								PlaySound.play("sound/" + date.get24Hour() + ".mp3", context.getAssets());
 							} catch (IOException e) {
 								e.printStackTrace();
-							}
-						} else {
-							if (date.getMinutes() == 00 && date.get24Hour() > 5) {
-								if (PreferenceShareUtil.getShockFlag(context)) {
-									vibrator.vibrate(500);
-								}
-								// System.out.println("整点报时--->"+date.get24Hour()+"点");
-								try {
-									PlaySound.play("sound/" + date.get24Hour() + ".mp3", context.getAssets());
-								} catch (IOException e) {
-									e.printStackTrace();
-								}
 							}
 						}
 					}
 				}
-			} else {
-				Log.i("alert", "设置了不提醒");
 			}
+
 		}
 	}
 

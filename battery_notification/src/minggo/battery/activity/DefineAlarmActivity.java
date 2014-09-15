@@ -33,8 +33,11 @@ public class DefineAlarmActivity extends Activity implements OnClickListener {
 	private View dateSelectV;
 	private View timeSelectV;
 	private View backV;
-	private Button sacnBt;
+	private Button scanBt;
 	private Button saveBt;
+	private Button soundBt;
+	private Button shockBt;
+	
 	private String title;
 
 	private TextView dateTv;
@@ -94,6 +97,9 @@ public class DefineAlarmActivity extends Activity implements OnClickListener {
 			themeIv.setImageResource(R.drawable.emoji_298);
 			themeTv.setText("自定义闹钟");
 		}
+		
+		shockBt.setSelected(true);
+		soundBt.setSelected(true);
 	}
 
 	/**
@@ -105,17 +111,22 @@ public class DefineAlarmActivity extends Activity implements OnClickListener {
 		dateSelectV = findViewById(R.id.lo_alarm_date);
 		timeSelectV = findViewById(R.id.lo_time_select);
 		backV = findViewById(R.id.lo_define_alarm_back);
-		sacnBt = (Button) findViewById(R.id.bt_scan);
+		scanBt = (Button) findViewById(R.id.bt_scan);
 		saveBt = (Button) findViewById(R.id.bt_save);
+		soundBt = (Button) findViewById(R.id.bt_alarm_sound);
+		shockBt = (Button) findViewById(R.id.bt_alarm_shock);
+		
 		dateTv = (TextView) findViewById(R.id.tv_date);
 		timeTv = (TextView) findViewById(R.id.tv_alarm_time);
 		themeTv = (TextView) findViewById(R.id.tv_theme);
 		themeIv = (ImageView) findViewById(R.id.iv_alarm_icon);
 
+		shockBt.setOnClickListener(this);
+		soundBt.setOnClickListener(this);
 		dateSelectV.setOnClickListener(this);
 		backV.setOnClickListener(this);
 		timeSelectV.setOnClickListener(this);
-		sacnBt.setOnClickListener(this);
+		scanBt.setOnClickListener(this);
 		saveBt.setOnClickListener(this);
 	}
 
@@ -136,6 +147,11 @@ public class DefineAlarmActivity extends Activity implements OnClickListener {
 		alarmer.repeat = 0;
 		alarmer.title = title;
 		alarmer.type = alarmType;
+		
+		alarmer.shock = shockBt.isSelected()?1:2;
+		alarmer.sound = soundBt.isSelected()?1:2;
+		alarmer.soundPath = "sound/zdclock_strike.mp3";
+		
 		if (!AlarmUtil.isExistAlarm(this, alarmer) && !AlarmUtil.isTheSameAlarm(this, alarmer)) {
 
 			System.out.println("alarmer.alarmTime--" + alarmer.alarmTime + "," + System.currentTimeMillis());
@@ -169,6 +185,12 @@ public class DefineAlarmActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.bt_alarm_sound:
+			soundBt.setSelected(!soundBt.isSelected());
+			break;
+		case R.id.bt_alarm_shock:
+			shockBt.setSelected(!shockBt.isSelected());
+			break;
 		case R.id.lo_alarm_date:
 			Intent intent0 = new Intent(this, TimeSelectActivity.class);
 			intent0.putExtra("title", "提醒日期选择");

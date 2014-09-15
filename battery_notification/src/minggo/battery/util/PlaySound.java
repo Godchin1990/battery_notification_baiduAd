@@ -146,6 +146,35 @@ public class PlaySound {
 		});
 	}
 	
+	/**
+	 * 播放闹钟录音
+	 * @param soundpath
+	 * @param asm
+	 * @param type 1系统用户 2：自定义用户
+	 * @param looping 是否循环
+	 * @throws IOException
+	 */
+	public static void playDefineAlarmVoice2(String soundpath,final AssetManager asm,int type,boolean looping) throws IOException{
+		
+		
+		player = new MediaPlayer();
+		player.setLooping(looping);
+		if (type==1) {
+			AssetFileDescriptor afd = asm.openFd(soundpath);
+			player.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(),afd.getLength());
+		}else if (type==2) {
+			player.setDataSource(soundpath);
+		}
+		player.prepare();
+		player.start();
+		player.setOnCompletionListener(new OnCompletionListener() {
+			@Override
+			public void onCompletion(MediaPlayer mp) {
+				mp.release();
+			}
+		});
+	}
+	
 	
 	
 	

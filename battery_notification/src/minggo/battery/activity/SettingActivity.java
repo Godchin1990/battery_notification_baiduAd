@@ -2,8 +2,10 @@ package minggo.battery.activity;
 
 import minggo.battery.R;
 import minggo.battery.service.MinggoApplication;
+import minggo.battery.util.MinggoDate;
 import minggo.battery.util.PreferenceShareUtil;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,6 +27,7 @@ public class SettingActivity extends Activity implements OnClickListener{
 	
 	private Button shockBt;
 	private Button defineSoundBt;
+	private MinggoDate date = new MinggoDate();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +96,7 @@ public class SettingActivity extends Activity implements OnClickListener{
 			feelingBt.setSelected(flag1);
 			PreferenceShareUtil.saveUseFeeling(this, !PreferenceShareUtil.getUseFeeling(this));
 			StatService.onEvent(SettingActivity.this, "feeling_set", flag1+"");
+			refreshNotify();
 			break;
 		case R.id.zheng_sound_bt:
 			boolean flag2 = !timeSoundbt.isSelected();
@@ -133,4 +137,62 @@ public class SettingActivity extends Activity implements OnClickListener{
 		StatService.onResume(this);
 	}
 	
+	/**
+	 * 发出广播
+	 * 
+	 * @param feeling
+	 */
+	private void sendFeelingBroadcast(int dayOfWeek, String feeling) {
+		if (date.getDayOfWeek() == dayOfWeek) {
+			Intent intent = new Intent("minggo.bettery.feeling");
+			intent.putExtra("feeling", feeling);
+			this.sendBroadcast(intent);
+		}
+	}
+	/**
+	 * 刷新通知栏
+	 */
+	private void refreshNotify(){
+		
+		if (PreferenceShareUtil.getUseFeeling(this)) {
+			sendFeelingBroadcast(date.getDayOfWeek(),PreferenceShareUtil.getFeeling(this, date.getWeek2ENstr()));
+		}else{
+			sendFeelingBroadcast(date.getDayOfWeek(),getDayPrompt());
+		}
+	}
+	
+	
+	/**
+	 * 每天的提示语
+	 * @return
+	 */
+	private String getDayPrompt(){
+		String feeling = "";
+		switch (date.getDayOfWeek()) {
+		case 1:
+			feeling = this.getString(R.string.sunday);
+			break;
+		case 2:
+			feeling = this.getString(R.string.monday);
+			break;
+		case 3:
+			feeling = this.getString(R.string.tuestday);
+			break;
+		case 4:
+			feeling = this.getString(R.string.wednesday);
+			break;
+		case 5:
+			feeling = this.getString(R.string.thursday);
+			break;
+		case 6:
+			feeling = this.getString(R.string.friday);
+			break;
+		case 7:
+			feeling = this.getString(R.string.saturday);
+			break;
+		default:
+			break;
+		}
+		return feeling;
+	}
 }

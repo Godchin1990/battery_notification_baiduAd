@@ -25,4 +25,7 @@ public class Alarmer implements Serializable {
 	public long alarmTime;
 	public int type;//1:自定义提醒;2.生日提醒;3.喝水提醒
 	public String soundPath;
+	
+	public int sound;//1：声音提醒 2:不声音提醒
+	public int shock;//1:震动提醒 2:不震动提醒
 }
