@@ -25,7 +25,8 @@ public class MinggoApplication extends Application {
 	public List<SoundRecord> defaultSoundList;
 	public static final String EMAIL = "minggo8en@gmail.com";
 	public static Stack<Activity> allActivities;
-	public static final String TAOBAO_URL = "http://bang.taobao.com/item.htm?id=40301430368&spm=686.1000925.1000774.14.yJvphM&mt=";
+	//http://item.taobao.com/item.htm?spm=a1z10.1.w4004-7871465182.2.k49qDs&id=40301430368
+	public static final String TAOBAO_URL = "http://item.taobao.com/item.htm?spm=a1z10.1.w4004-7871465182.2.k49qDs&id=40301430368";
 
 	@Override
 	public void onCreate() {
