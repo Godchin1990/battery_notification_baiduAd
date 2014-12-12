@@ -369,7 +369,7 @@ public class BatteryService extends Service {
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		if (intent.getSerializableExtra("alarm") != null) {
+		if (intent!=null&&intent.getSerializableExtra("alarm") != null) {
 			Alarmer alarmer = (Alarmer) intent.getSerializableExtra("alarm");
 			if (alarmer.alarmTime - System.currentTimeMillis() >= 0) {
 				Intent intent0 = new Intent(AlarmerReciever.MINGGO_ALARM_ACTION);
