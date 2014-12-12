@@ -1,164 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/all_bg"
-    android:scrollbars="none" >
+    android:gravity="center" >
 
-    <LinearLayout
-        android:id="@+id/lo_main"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="18dp"
         android:background="@color/all_bg"
-        android:orientation="vertical"
-        android:paddingBottom="10dp" >
+        android:scrollbars="none" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="报时列表"
-            android:textColor="@color/navi_index"
-            android:textSize="14sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="6dp"
-            android:background="@color/navi_index" />
-
-        <Button
-            android:id="@+id/bt_alarm_list"
+        <LinearLayout
+            android:id="@+id/lo_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/selector_person_collection"
-            android:drawableLeft="@drawable/emoji_35"
-            android:drawablePadding="5dp"
-            android:gravity="left|center_vertical"
-            android:paddingBottom="10dp"
-            android:paddingLeft="5dp"
-            android:paddingTop="10dp"
-            android:text="闹钟列表"
-            android:textColor="@color/text_normal"
-            android:textSize="16sp" />
+            android:background="@color/all_bg"
+            android:orientation="vertical"
+            android:paddingBottom="10dp" >
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E2E2E2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="报时列表"
+                android:textColor="@color/navi_index"
+                android:textSize="14sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:text="我的个性"
-            android:textColor="@color/navi_index"
-            android:textSize="14sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="6dp"
+                android:background="@color/navi_index" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="6dp"
-            android:background="@color/navi_index" />
+            <Button
+                android:id="@+id/bt_alarm_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_person_collection"
+                android:drawableLeft="@drawable/emoji_35"
+                android:drawablePadding="5dp"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:text="闹钟列表"
+                android:textColor="@color/text_normal"
+                android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/bt_feeling"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_person_collection"
-            android:drawableLeft="@drawable/smiley_76"
-            android:drawablePadding="5dp"
-            android:gravity="left|center_vertical"
-            android:paddingBottom="10dp"
-            android:paddingLeft="5dp"
-            android:paddingTop="10dp"
-            android:text="我的心情"
-            android:textColor="@color/text_normal"
-            android:textSize="16sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E2E2E2" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E2E2E2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:text="我的个性"
+                android:textColor="@color/navi_index"
+                android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/bt_any"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_person_collection"
-            android:drawableLeft="@drawable/emoji_298"
-            android:drawablePadding="5dp"
-            android:gravity="left|center_vertical"
-            android:paddingBottom="10dp"
-            android:paddingLeft="5dp"
-            android:paddingTop="10dp"
-            android:text="任意闹钟"
-            android:textColor="@color/text_normal"
-            android:textSize="16sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="6dp"
+                android:background="@color/navi_index" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E2E2E2" />
+            <Button
+                android:id="@+id/bt_feeling"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_person_collection"
+                android:drawableLeft="@drawable/smiley_76"
+                android:drawablePadding="5dp"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:text="我的心情"
+                android:textColor="@color/text_normal"
+                android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:text="日常通知"
-            android:textColor="@color/navi_index"
-            android:textSize="14sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E2E2E2" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="6dp"
-            android:background="@color/navi_index" />
+            <Button
+                android:id="@+id/bt_any"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_person_collection"
+                android:drawableLeft="@drawable/emoji_298"
+                android:drawablePadding="5dp"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:text="任意闹钟"
+                android:textColor="@color/text_normal"
+                android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/bt_drink"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_person_collection"
-            android:drawableLeft="@drawable/smiley_60"
-            android:drawablePadding="5dp"
-            android:gravity="left|center_vertical"
-            android:paddingBottom="10dp"
-            android:paddingLeft="5dp"
-            android:paddingTop="10dp"
-            android:text="喝水闹钟"
-            android:textColor="@color/text_normal"
-            android:textSize="16sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E2E2E2" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E2E2E2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:text="日常通知"
+                android:textColor="@color/navi_index"
+                android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/bt_birthday"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_person_collection"
-            android:drawableLeft="@drawable/emoji_103"
-            android:drawablePadding="5dp"
-            android:gravity="left|center_vertical"
-            android:paddingBottom="10dp"
-            android:paddingLeft="5dp"
-            android:paddingTop="10dp"
-            android:text="生日闹钟"
-            android:textColor="@color/text_normal"
-            android:textSize="16sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="6dp"
+                android:background="@color/navi_index" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E2E2E2" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/bt_drink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_person_collection"
+                android:drawableLeft="@drawable/smiley_60"
+                android:drawablePadding="5dp"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:text="喝水闹钟"
+                android:textColor="@color/text_normal"
+                android:textSize="16sp" />
 
-</ScrollView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E2E2E2" />
+
+            <Button
+                android:id="@+id/bt_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_person_collection"
+                android:drawableLeft="@drawable/emoji_103"
+                android:drawablePadding="5dp"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:text="生日闹钟"
+                android:textColor="@color/text_normal"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E2E2E2" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
